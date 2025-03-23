@@ -34,4 +34,4 @@ const slideUp = (up) => {
     }, ANIMATION_DELAY)
 }
 
-export { currentSlide, slideUp, pushScreen, locked }
+export { ANIMATION_DELAY, currentSlide, slideUp, pushScreen, locked }
