@@ -1,6 +1,6 @@
 import { ref, computed } from 'vue';
 
-const contentWidth = ref(0);
+// const contentWidth = ref(0);
 
 const screenWidth = ref(0);
 const screenHeight = ref(0);
@@ -15,9 +15,9 @@ const breakpoints = {
 }
 
 const isMobile = computed(() => (screenWidth.value < breakpoints.sm));
-const isFullDesktop  = computed(() => (screenWidth.value > breakpoints.max));
-const scalePercent = computed(()=> {
-    const rawPercent = (screenWidth.value - breakpoints.sm)/(breakpoints.max - breakpoints.sm);
+const isFullDesktop = computed(() => (screenWidth.value > breakpoints.max));
+const scalePercent = computed(() => {
+    const rawPercent = (screenWidth.value - breakpoints.sm) / (breakpoints.max - breakpoints.sm);
     let result;
     if (rawPercent < 0) {
         result = 0;

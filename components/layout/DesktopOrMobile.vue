@@ -1,7 +1,7 @@
 <template>
-    <div v-if="isMobile" class="bg-red-100">
+    <DesktopController v-if="!isMobile" class="bg-red-100">
         <slot/>
-    </div>
+    </DesktopController>
     <div v-else class="bg-red-500">
         <slot/>
     </div>
@@ -9,4 +9,5 @@
 
 <script setup>
 import { isMobile } from '~/helpers/break';
+import DesktopController from './DesktopController.vue';
 </script>

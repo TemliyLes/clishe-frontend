@@ -11,9 +11,9 @@ const fontSize = (min, max) => {
     };
 
     if (!isFullDesktop.value && !isMobile.value) {
-        result = min + ((max-min)*scalePercent.value);
+        result = min + ((max - min) * scalePercent.value);
     };
-    
+
     return `font-size: ${result}px;`
 };
 
