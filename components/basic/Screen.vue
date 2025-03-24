@@ -13,11 +13,12 @@
 
 <script setup>
 import { isMobile } from '~/helpers/break';
-import { pushScreen, currentSlide, slideUp, locked, ANIMATION_DELAY } from '~/helpers/scroll';
+import { pushScreen, currentSlide, screenList, slideUp, locked, ANIMATION_DELAY } from '~/helpers/scroll';
 
 const exist = ref(false);
 
-const slideIndex = ref(0);
+const inst = ref();
+const slideIndex = computed(() => screenList.value.indexOf(inst.value))
 
 const transformStylesPerCurrentSlide = computed(() => {
     let val;
@@ -47,6 +48,7 @@ onMounted(() => {
 });
 
 const onInit = (e) => {
-    slideIndex.value = pushScreen(e);
+    inst.value = e;
+    pushScreen(e);
 }
 </script>

@@ -1,6 +1,5 @@
 import { ref, computed } from 'vue';
-
-let iter = -1;
+import { isMobile } from './break';
 
 const ANIMATION_DELAY = 700;
 
@@ -11,13 +10,10 @@ const currentSlide = ref(0);
 const screenList = ref([]);
 
 const pushScreen = (screen) => {
-    iter++;
     screenList.value.push(screen);
-    return iter
 }
 
 const slideUp = (up) => {
-    console.log(currentSlide.value);
     locked.value = true;
     if (up) {
         if (currentSlide.value) {
@@ -34,4 +30,8 @@ const slideUp = (up) => {
     }, ANIMATION_DELAY)
 }
 
-export { ANIMATION_DELAY, currentSlide, slideUp, pushScreen, locked }
+watch(() => isMobile.value, () => {
+    screenList.value = []
+})
+
+export { ANIMATION_DELAY, currentSlide, slideUp, pushScreen, locked, screenList }
