@@ -3,7 +3,7 @@
         <Screen>
             <Superheader>Superheader</Superheader>
         </Screen>
-        <Screen>
+        <Screen scroll>
             <div>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, laboriosam recusandae est expedita
                 ipsa natus corrupti aspernatur quaerat nobis dolor alias quasi sunt, assumenda voluptatum, atque quam
