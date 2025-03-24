@@ -1,4 +1,4 @@
-import { ref, computed } from 'vue';
+import { ref, watch } from 'vue';
 import { isMobile } from './break';
 
 const ANIMATION_DELAY = 700;
