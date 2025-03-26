@@ -32,6 +32,6 @@ const slideUp = (up) => {
 
 watch(() => isMobile.value, () => {
     screenList.value = []
-})
+});
 
 export { ANIMATION_DELAY, currentSlide, slideUp, pushScreen, locked, screenList }

@@ -1,5 +1,5 @@
 <template>
-    <div class="relative">
+    <div class="relative group" :class="classByScreenPosition">
         <transition appear @enter="onInit">
             <div v-if="!isMobile && exist && !scroll" @wheel="onWheel"
                 :style="[transformStylesPerCurrentSlide, transDuration, bgStyle]" :class="!full ? 'pt-bar' : ''"
@@ -57,19 +57,37 @@ const exist = ref(false);
 const inst = ref();
 const slideIndex = computed(() => screenList.value.indexOf(inst.value))
 
+
+const isActiveScreen = computed(() => slideIndex.value === currentSlide.value);
+const isPrevScreen = computed(() => slideIndex.value < currentSlide.value);
+const isNextScreen = computed(() => slideIndex.value > currentSlide.value);
+
+const classByScreenPosition = computed(() => {
+    if (isActiveScreen.value) {
+        return 'is-active'
+    }
+    if (isPrevScreen.value) {
+        return 'is-prev'
+    }
+    if (isNextScreen.value) {
+        return 'is-next'
+    }
+})
+
 const transformStylesPerCurrentSlide = computed(() => {
     let val;
-    if (slideIndex.value === currentSlide.value) {
+    if (isActiveScreen.value) {
         val = '0';
     }
-    if (slideIndex.value < currentSlide.value) {
+    if (isPrevScreen.value) {
         val = '-100%';
     }
-    if (slideIndex.value > currentSlide.value) {
+    if (isNextScreen.value) {
         val = '100%';
     }
     return `transform: translateY(${val})`
 });
+
 
 const transDuration = computed(() => `transition-duration:${ANIMATION_DELAY}ms`);
 

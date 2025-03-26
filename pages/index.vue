@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Screen bg="#E8E4D9">
+        <Screen bg="#E8E4D9" class="z-30">
             <StartScreen />
         </Screen>
         <Screen full>

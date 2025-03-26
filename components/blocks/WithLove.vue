@@ -1,6 +1,7 @@
 <template>
-    <div v-stack>
-        <Superheader :size="[50, 110]" class="absolute z-50 text-white inset-0 grid place-items-center text-center">
+    <div>
+        <Superheader :size="[50, 110]"
+            class="absolute transition transition-transform duration-700 z-50 text-white inset-0 grid place-items-center text-center translate-y-0 group-[.is-prev]:translate-y-1/4 group-[.is-next]:-translate-y-1/4">
             with love<br />
             by heart<br />
             for love
