@@ -1,23 +1,27 @@
 <template>
-    <div class="relative z-3">
+    <div class="relative">
         <transition appear @enter="onInit">
             <div v-if="!isMobile && exist && !scroll" @wheel="onWheel"
-                :style="[transformStylesPerCurrentSlide, transDuration]"
-                class="bg-yellow-300 w-full h-dvh fixed top-0 left-0 transition">
-                <slot />
+                :style="[transformStylesPerCurrentSlide, transDuration, bgStyle]" :class="!full ? 'pt-bar' : ''"
+                class="w-full h-dvh fixed top-0 left-0 transition">
+                <Container :full="full">
+                    <slot />
+                </Container>
             </div>
         </transition>
         <transition appear @enter="onInit">
             <div v-if="!isMobile && exist && scroll" :style="[transformStylesPerCurrentSlide, transDuration]"
                 @wheel="onWheelWithScroll" @scroll="onScroll"
-                class="bg-blue-300 h-dvh fixed top-0 left-0 transition overflow-auto" style="padding: 40%;">
-                isScrollerInTop - {{ isScrollerInTop }}
-                <slot />
-                isScrollerInBottom - {{ isScrollerInBottom }}
+                class="bg-blue-300 h-dvh fixed top-0 left-0 transition overflow-auto pt-bar" style="padding: 40%;">
+                <Container :full="full">
+                    <slot />
+                </Container>
             </div>
         </transition>
-        <div v-if="isMobile" class="w-full relative">
-            <slot />
+        <div v-if="isMobile" class="w-full relative pt-bar">
+            <Container :full="full">
+                <slot />
+            </Container>
         </div>
     </div>
 </template>
@@ -27,10 +31,20 @@ import { isMobile } from '~/helpers/break';
 
 import { pushScreen, currentSlide, screenList, slideUp, locked, ANIMATION_DELAY } from '~/helpers/scroll';
 
+import Container from './Container.vue';
+
 const props = defineProps({
     scroll: {
         type: Boolean,
-        default: false
+        default: false,
+    },
+    full: {
+        type: Boolean,
+        default: false,
+    },
+    bg: {
+        type: String,
+        default: 'white',
     }
 });
 
@@ -58,6 +72,8 @@ const transformStylesPerCurrentSlide = computed(() => {
 });
 
 const transDuration = computed(() => `transition-duration:${ANIMATION_DELAY}ms`);
+
+const bgStyle = computed(() => `background:${props.bg}`);
 
 const onWheel = (e) => {
     if (!locked.value) {

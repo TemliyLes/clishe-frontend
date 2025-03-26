@@ -1,7 +1,10 @@
 <template>
     <div>
-        <Screen>
-            <Superheader>Superheader</Superheader>
+        <Screen bg="#E8E4D9">
+            <StartScreen />
+        </Screen>
+        <Screen full>
+            <WithLove />
         </Screen>
         <Screen scroll>
             <div>
@@ -19,23 +22,17 @@
                 laborum libero tempore quide
             </div>
         </Screen>
-        <Screen>m iure a repudiandae accusamus odio possimus molestiae quaerat voluptates!
-            Deleniti ratione, at error vero repudiandae soluta dolore quis doloremque aliquid praesentium quo rerum,
-            quas ipsa ullam similique cupiditate! Fugiat eum blanditiis, sunt non porro placeat asperiores incidunt
-            error? Ipsum labore et cum eligendi possimus tempore necessitatibus ad esse debitis ab in earum ea
-            quisquam
-            assumenda non, soluta corporis! Cumque sed deleniti eveniet dolorum necessitatibus id quis, ipsam beatae
-            labore magnam vero veritatis ipsum ex autem quas excepturi, ducimus minima tempora reprehenderit est
-            libero
-            mollitia exercitationem sequi? Inventore sunt quisquam maiores consequuntur ab iure veniam expedita a
-            incidunt nemo obcaecati vitae nostrum aut autem facere soluta commodi pariatur enim delectus nisi iste,
-            harum magni. Voluptas, iure debitis? Deserunt harum, aliquid totam consectetur corrupti suscipit quaerat
-            reprehenderit
+        <Screen>
+            WithLove
         </Screen>
     </div>
 </template>
 
 <script setup>
-import Superheader from '~/components/text/superheader.vue';
+
 import Screen from '~/components/basic/Screen.vue';
+import StartScreen from '~/components/blocks/StartScreen.vue';
+
+import WithLove from '~/components/blocks/WithLove.vue';
+
 </script>
