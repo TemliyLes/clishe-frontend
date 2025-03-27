@@ -1,5 +1,5 @@
 <template>
-    <div class="grid place-items-center monster h-button rounded-button cursor-pointer border border-px w-[157px]"
+    <div class="grid place-items-center monster h-button rounded-button cursor-pointer border border-px border-main w-[157px]"
         :class="colorClasses">
         {{ title }}
     </div>
@@ -17,5 +17,5 @@ const props = defineProps({
     }
 })
 
-const colorClasses = computed(() => !props.white ? 'bg-main border-main text-white' : 'bg-white bg-border text-main')
+const colorClasses = computed(() => !props.white ? 'bg-main text-white' : 'bg-white text-main')
 </script>
