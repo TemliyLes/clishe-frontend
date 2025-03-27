@@ -4,9 +4,11 @@ export default {
             aspectRatio: {
                 'mainscreen': '342/201',
                 'mainscreen-d': '1320/382',
+                'method': '325/388'
             },
             colors: {
                 'main': '#3B3938',
+                'grey': '#707070',
                 'beige': '#E8E4D9',
             },
             margin: {
@@ -15,6 +17,7 @@ export default {
             },
             height: {
                 'bar': '56px',
+                'button': '44px',
             },
             padding: {
                 'container': '16px',
@@ -24,6 +27,13 @@ export default {
             maxWidth: {
                 'container': '1740px',
             },
+            lineHeight: {
+                'method': '130%',
+                'method-big': '140%'
+            },
+            borderRadius: {
+                'button': '60px'
+            }
         }
     }
 }

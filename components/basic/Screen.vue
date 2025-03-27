@@ -3,7 +3,7 @@
         <transition appear @enter="onInit">
             <div v-if="!isMobile && exist && !scroll" @wheel="onWheel"
                 :style="[transformStylesPerCurrentSlide, transDuration, bgStyle]" :class="!full ? 'pt-bar' : ''"
-                class="w-full h-dvh fixed top-0 left-0 transition">
+                class="w-full h-screen fixed top-0 left-0 transition">
                 <Container :full="full">
                     <slot />
                 </Container>
@@ -12,7 +12,7 @@
         <transition appear @enter="onInit">
             <div v-if="!isMobile && exist && scroll" :style="[transformStylesPerCurrentSlide, transDuration]"
                 @wheel="onWheelWithScroll" @scroll="onScroll"
-                class="bg-blue-300 h-dvh fixed top-0 left-0 transition overflow-auto pt-bar" style="padding: 40%;">
+                class="bg-blue-300 h-screen fixed top-0 left-0 transition overflow-auto pt-bar" style="padding: 40%;">
                 <Container :full="full">
                     <slot />
                 </Container>

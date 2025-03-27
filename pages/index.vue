@@ -1,5 +1,8 @@
 <template>
     <div>
+        <Screen>
+            <Methodic></Methodic>
+        </Screen>
         <Screen bg="#E8E4D9" class="z-30">
             <StartScreen />
         </Screen>
@@ -31,8 +34,9 @@
 <script setup>
 
 import Screen from '~/components/basic/Screen.vue';
-import StartScreen from '~/components/blocks/StartScreen.vue';
 
+import StartScreen from '~/components/blocks/StartScreen.vue';
 import WithLove from '~/components/blocks/WithLove.vue';
+import Methodic from '~/components/blocks/Methodic.vue';
 
 </script>
