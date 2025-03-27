@@ -1,16 +1,12 @@
 <template>
     <div>
-        <Screen>
-            <Methodic></Methodic>
-        </Screen>
         <Screen bg="#E8E4D9" class="z-30">
             <StartScreen />
         </Screen>
-        <Screen full>
-            <WithLove />
-        </Screen>
         <Screen scroll>
             <div>
+                Это пока вместо блока с горизонтальным скроллом
+                <br /><br />
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, laboriosam recusandae est expedita
                 ipsa natus corrupti aspernatur quaerat nobis dolor alias quasi sunt, assumenda voluptatum, atque quam
                 repellendus veritatis at rerum asperiores. Officiis quasi et, nostrum dolorum, ipsa, dolor inventore
@@ -25,6 +21,13 @@
                 laborum libero tempore quide
             </div>
         </Screen>
+        <Screen full>
+            <WithLove />
+        </Screen>
+        <Screen>
+            <Methodic></Methodic>
+        </Screen>
+
         <Screen>
             WithLove
         </Screen>

@@ -33,6 +33,9 @@ export default {
             },
             borderRadius: {
                 'button': '60px'
+            },
+            zIndex: {
+                'minus': '-1'
             }
         }
     }
