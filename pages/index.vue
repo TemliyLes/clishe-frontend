@@ -3,7 +3,7 @@
         <Screen bg="#E8E4D9" class="z-30">
             <StartScreen />
         </Screen>
-        <Screen scroll>
+        <Screen blured scroll>
             <div>
                 Это пока вместо блока с горизонтальным скроллом
                 <br /><br />
@@ -21,7 +21,7 @@
                 laborum libero tempore quide
             </div>
         </Screen>
-        <Screen full>
+        <Screen white blured full>
             <WithLove />
         </Screen>
         <Screen>

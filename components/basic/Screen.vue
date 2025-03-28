@@ -3,7 +3,7 @@
         <transition appear @enter="onInit">
             <div v-if="!isMobile && exist && !scroll" @wheel="onWheel"
                 :style="[transformStylesPerCurrentSlide, transDuration, bgStyle]" :class="!full ? 'pt-bar' : ''"
-                class="w-full h-screen fixed top-0 left-0 transition overflow-hidden">
+                class="w-full h-screen fixed top-0 left-0 transition overflow-hidden" :blured="blured" :white="white">
                 <Container :full="full">
                     <slot />
                 </Container>
@@ -12,13 +12,14 @@
         <transition appear @enter="onInit">
             <div v-if="!isMobile && exist && scroll" :style="[transformStylesPerCurrentSlide, transDuration]"
                 @wheel="onWheelWithScroll" @scroll="onScroll"
-                class="bg-blue-300 h-screen fixed top-0 left-0 transition overflow-auto pt-bar" style="padding: 40%;">
+                class="bg-blue-300 h-screen fixed top-0 left-0 transition overflow-auto pt-bar" style="padding: 40%;"
+                :white="white" :blured="blured">
                 <Container :full="full">
                     <slot />
                 </Container>
             </div>
         </transition>
-        <div v-if="isMobile" class="w-full relative pt-bar">
+        <div v-if="isMobile" class="w-full relative pt-bar" :blured="blured" :white="white">
             <Container :full="full">
                 <slot />
             </Container>
@@ -45,6 +46,14 @@ const props = defineProps({
     bg: {
         type: String,
         default: 'white',
+    },
+    blured: {
+        type: Boolean,
+        default: false,
+    },
+    white: {
+        type: Boolean,
+        default: false,
     }
 });
 

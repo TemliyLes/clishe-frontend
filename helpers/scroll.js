@@ -34,4 +34,6 @@ watch(() => isMobile.value, () => {
     screenList.value = []
 });
 
-export { ANIMATION_DELAY, currentSlide, slideUp, pushScreen, locked, screenList }
+const currentSlideElement = computed(() => screenList.value[currentSlide.value]);
+
+export { ANIMATION_DELAY, currentSlide, slideUp, pushScreen, locked, screenList, currentSlideElement }
