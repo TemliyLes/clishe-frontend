@@ -2,8 +2,9 @@
     <div class="fixed h-bar z-50 w-full">
         <Container class="z-30">
             <div class="flex justify-between w-full pt-4">
-                <Logo class="h-6 -ml-12 transition-all transition duration-700" :white="whitePower"></Logo>
-                <div :class="whitePower ? 'text-white' : 'text-main'">MENU</div>
+                <Logo class="h-6 -ml-12" :white="whitePower"></Logo>
+                <div class="transition-all transition duration-700" :class="whitePower ? 'text-white' : 'text-main'">
+                    MENU</div>
             </div>
         </Container>
         <div class="absolute bottom-0 left-0 w-full h-full backdrop-blur-sm transition z-minus transition transition-opacity"
