@@ -1,7 +1,12 @@
 <template>
     <div v-if="flag">
+        <Teleport to="body">
+            <div v-if="dragMode" class="fixed w-full h-full top-0 left-0 cursor-grabbing" @mouseup="stopDrag"
+                @mousemove="onMove"></div>
+        </Teleport>
         <div v-declare class="relative aspect-befafter w-full my-8">
-            <div ref="shifter" class="h-full w-px z-50 relative cursor-grab" :style="shifterX">
+            <div ref="shifter" class="h-full w-px z-50 relative cursor-grab" :style="shifterX" @mousedown="startDrag">
+                <div class="absolute w-12 h-full top-0 -ml-6"></div>
                 <div
                     class="will-change-transform absolute w-px bg-white bottom-0 h-full origin-top transition-transform">
                 </div>
@@ -19,7 +24,8 @@
                         :src="data.original" />
                 </div>
             </div>
-            <Image class="absolute w-full h-full absolute top-0 left-0 object-cover pointer-events-none grayscale"
+            <Image
+                class="absolute w-full h-full absolute top-0 left-0 object-cover pointer-events-none grayscale select-none"
                 :src="data.edited" />
         </div>
     </div>
@@ -37,12 +43,38 @@ defineProps({
 });
 
 const flag = ref(true);
+const dragMode = ref(false);
+
+const startDrag = () => dragMode.value = true;
+const stopDrag = () => dragMode.value = false;
+
+
 
 const canvas = ref();
 
 const canvasWidth = computed(() => `width: ${canvas.value?.offsetWidth}px`);
+const minX = computed(() => canvas.value?.getBoundingClientRect().left);
+const maxX = computed(() => minX.value + canvas.value?.getBoundingClientRect().width);
 
 const dragX = ref(0);
+
+const onMove = (e) => {
+    if (dragMode.value) {
+        requestAnimationFrame(() => {
+            let x;
+            x = e.clientX;
+            if (x > maxX.value) {
+                x = maxX.value;
+            }
+            if (x < minX.value) {
+                x = minX.value;
+            }
+            dragX.value = x - minX.value;
+        });
+    }
+};
+
+
 
 const shifterX = computed(() => `transform: translateX(${dragX.value}px)`);
 

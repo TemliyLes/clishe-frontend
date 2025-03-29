@@ -7,7 +7,7 @@
             <StartScreen />
         </Screen>
         <Screen blured scroll>
-            <div>
+            <div class="w-56">
                 Это пока вместо блока с горизонтальным скроллом
                 <br /><br />
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, laboriosam recusandae est expedita
@@ -22,6 +22,7 @@
                 assumenda perferendis omnis, impedit rem corporis fuga beatae ipsam quidem sint expedita quod ducimus
                 asperiores voluptatem saepe. Corrupti assumenda laudantium vel saepe modi molestias, pariatur ratione
                 laborum libero tempore quide
+                lorem120
             </div>
         </Screen>
         <Screen white blured full>
@@ -30,7 +31,6 @@
         <Screen blured>
             <Methodic></Methodic>
         </Screen>
-
         <Screen>
             WithLove
         </Screen>
