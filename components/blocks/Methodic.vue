@@ -6,7 +6,7 @@
                 <Image class="aspect-method object-cover" :src="imgSrc" alt="method" />
             </div>
             <div class="basis-2/3">
-                <Header class="sm:!mb-16 mb-4 sm:-ml-1" :style="fontSize(24, 56)">Методическое пособие</Header>
+                <Header class="sm:!mb-16 mb-4 sm:-ml-1">Методическое пособие</Header>
                 <div class="sm:flex justify-between">
                     <div class="basis-[56.25%]">
                         <div v-for="(p, index) in paragraphs" :key="index">

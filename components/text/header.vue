@@ -1,5 +1,5 @@
 <template>
-    <h2 class="monster text-grey" :style="fontSize(14, 96)">
+    <h2 class="monster text-main -ml-1" :style="fontSize(24, 42)">
         <slot />
     </h2>
 </template>

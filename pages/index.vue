@@ -1,5 +1,8 @@
 <template>
     <div>
+        <Screen scroll blured>
+            <PresetsDemo />
+        </Screen>
         <Screen bg="#E8E4D9" class="z-30">
             <StartScreen />
         </Screen>
@@ -24,7 +27,7 @@
         <Screen white blured full>
             <WithLove />
         </Screen>
-        <Screen>
+        <Screen blured>
             <Methodic></Methodic>
         </Screen>
 
@@ -41,5 +44,6 @@ import Screen from '~/components/basic/Screen.vue';
 import StartScreen from '~/components/blocks/StartScreen.vue';
 import WithLove from '~/components/blocks/WithLove.vue';
 import Methodic from '~/components/blocks/Methodic.vue';
+import PresetsDemo from '~/components/blocks/PresetsDemo.vue';
 
 </script>

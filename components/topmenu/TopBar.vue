@@ -3,8 +3,12 @@
         <Container class="z-30">
             <div class="flex justify-between w-full pt-4">
                 <Logo class="h-6 -ml-12" :white="whitePower"></Logo>
-                <div class="transition-all transition duration-700" :class="whitePower ? 'text-white' : 'text-main'">
-                    MENU</div>
+                <div class="transition-all transition duration-700 flex"
+                    :class="whitePower ? 'text-white' : 'text-main'">
+                    <div class="flex gap-8">
+                        <p class="monster cursor-pointer" v-for="nav in navs" :key="nav.title">{{ nav.title }}</p>
+                    </div>
+                </div>
             </div>
         </Container>
         <div class="absolute bottom-0 left-0 w-full h-full backdrop-blur-sm transition z-minus transition transition-opacity"
@@ -26,6 +30,8 @@ import Logo from '~/assets/icons/Logo.vue';
 import { isMobile } from '~/helpers/break';
 import { currentSlideElement } from '~/helpers/scroll';
 
+import SimpleText from '../text/SimpleText.vue';
+
 const whitePower = computed(() => currentSlideElement.value?.getAttribute('white') === 'true');
 const blurPower = computed(() => currentSlideElement.value?.getAttribute('blured') === 'true');
 
@@ -35,17 +41,10 @@ const navs = [
         url: '#',
     },
     {
-        title: 'Адвент',
-        url: '#',
-    }, {
         title: 'Presets | Color collections',
-        url: '#',
-    }, {
-        title: 'Обучение',
         url: '#',
     },
 ];
-
 
 
 watch(() => currentSlideElement.value, () => {

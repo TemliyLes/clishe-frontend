@@ -12,8 +12,8 @@
         <transition appear @enter="onInit">
             <div v-if="!isMobile && exist && scroll" :style="[transformStylesPerCurrentSlide, transDuration]"
                 @wheel="onWheelWithScroll" @scroll="onScroll"
-                class="bg-blue-300 h-screen fixed top-0 left-0 transition overflow-auto pt-bar" style="padding: 40%;"
-                :white="white" :blured="blured">
+                class="h-screen w-full fixed top-0 left-0 transition overflow-auto pt-bar" :white="white"
+                :blured="blured">
                 <Container :full="full">
                     <slot />
                 </Container>
