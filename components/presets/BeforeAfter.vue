@@ -48,10 +48,7 @@ const dragMode = ref(false);
 const startDrag = () => dragMode.value = true;
 const stopDrag = () => dragMode.value = false;
 
-
-
 const canvas = ref();
-
 const canvasWidth = computed(() => `width: ${canvas.value?.offsetWidth}px`);
 const minX = computed(() => canvas.value?.getBoundingClientRect().left);
 const maxX = computed(() => minX.value + canvas.value?.getBoundingClientRect().width);
@@ -74,8 +71,6 @@ const onMove = (e) => {
     }
 };
 
-
-
 const shifterX = computed(() => `transform: translateX(${dragX.value}px)`);
 
 const vDeclare = {
@@ -95,6 +90,5 @@ onMounted(() => {
         })
     })
 })
-
 
 </script>
