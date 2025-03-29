@@ -4,7 +4,7 @@
             <div v-if="dragMode" class="fixed w-full h-full top-0 left-0 cursor-grabbing" @mouseup="stopDrag"
                 @mousemove="onMove"></div>
         </Teleport>
-        <div v-declare class="relative aspect-befafter w-full my-8">
+        <div v-declare class="relative aspect-befafter w-full">
             <div ref="shifter" class="h-full w-px z-50 relative cursor-grab" :style="shifterX" @mousedown="startDrag">
                 <div class="absolute w-12 h-full top-0 -ml-6"></div>
                 <div

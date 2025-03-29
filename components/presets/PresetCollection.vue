@@ -4,7 +4,7 @@
         <div>{{ description }}</div>
 
         <div v-for="(preset, index) in presets" :key="index">
-            <Preset :data="preset"></Preset>
+            <Preset :data="preset" :index="index + 1"></Preset>
         </div>
 
     </div>
