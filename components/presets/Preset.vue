@@ -1,12 +1,15 @@
 <template>
-    <div class="sm:flex justify-between my-12">
-        <div class="basis-5/12">
-            <BeforeAfter :data="data.slides[0]" />
+    <div class="sm:flex justify-between">
+        <div class="basis-5/12 relative">
+            <div class="absolute inset-0 transition duration-700" v-for="(double, dIndex) in data.slides" :key="dIndex"
+                :class="[dIndex ? 'absolute inset-0' : 'relative', testActive(dIndex) ? 'opacity-100' : 'opacity-0']">
+                <BeforeAfter :data="double" />
+            </div>
         </div>
         <div class="basis-1/2 flex flex-col justify-between ">
             <div>
                 <Title class="!mt-0">0{{ index }} {{ data.title }}</Title>
-                <SimpleText>{{ data.description }}</SimpleText>
+                <SimpleText big>{{ data.description }}</SimpleText>
             </div>
             <div>
                 <div class="flex gap-6">

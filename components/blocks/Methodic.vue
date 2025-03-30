@@ -17,7 +17,7 @@
                         <SimpleText class="leading-method" :style="fontSize(10, 16)">{{ another }}</SimpleText>
                     </div>
                 </div>
-                <Button class="mt-16" />
+                <Button class="mt-16 w-[157px]" />
             </div>
         </div>
     </div>

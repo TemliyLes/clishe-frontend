@@ -1,9 +1,9 @@
 <template>
-    <DesktopController v-if="!isMobile" class="bg-red-100">
-        <slot/>
+    <DesktopController v-if="!isMobile">
+        <slot />
     </DesktopController>
-    <div v-else class="bg-red-500">
-        <slot/>
+    <div v-else>
+        <slot />
     </div>
 </template>
 

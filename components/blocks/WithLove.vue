@@ -1,7 +1,7 @@
 <template>
     <div>
         <Superheader :size="[50, 110]"
-            class="absolute transition transition-transform duration-700 z-50 text-white inset-0 grid place-items-center text-center translate-y-0 group-[.is-prev]:translate-y-full group-[.is-next]:-translate-y-full">
+            class="absolute transition transition-transform duration-700 z-50 text-white inset-0 grid place-items-center text-center translate-y-0 group-[.is-prev]:translate-y-1/2 group-[.is-next]:-translate-y-1/2">
             with love<br />
             by heart<br />
             for love

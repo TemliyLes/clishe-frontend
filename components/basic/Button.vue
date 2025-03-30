@@ -1,5 +1,5 @@
 <template>
-    <div class="grid place-items-center monster h-button rounded-button cursor-pointer border border-px border-main w-[157px]"
+    <div class="grid place-items-center monster h-button rounded-button cursor-pointer border border-px border-main px-6"
         :class="colorClasses">
         {{ title }}
     </div>

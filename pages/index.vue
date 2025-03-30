@@ -1,13 +1,10 @@
 <template>
-    <div>
-        <Screen scroll blured>
-            <PresetsDemo />
-        </Screen>
+    <div class="bg-white">
         <Screen bg="#E8E4D9" class="z-30">
             <StartScreen />
         </Screen>
         <Screen blured scroll>
-            <div class="w-56">
+            <div class="w-12">
                 Это пока вместо блока с горизонтальным скроллом
                 <br /><br />
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, laboriosam recusandae est expedita
@@ -31,8 +28,8 @@
         <Screen blured>
             <Methodic></Methodic>
         </Screen>
-        <Screen>
-            WithLove
+        <Screen scroll blured>
+            <PresetsDemo />
         </Screen>
     </div>
 </template>
