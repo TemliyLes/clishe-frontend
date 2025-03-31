@@ -2,6 +2,7 @@ import { ref, watch } from 'vue';
 import { isMobile } from './break';
 
 const ANIMATION_DELAY = 700;
+const DELAY_AFTER_SWAP = 300;
 
 const locked = ref(false);
 
@@ -15,19 +16,20 @@ const pushScreen = (screen) => {
 
 const slideUp = (up) => {
     locked.value = true;
-    if (up) {
-        if (currentSlide.value) {
-            currentSlide.value--
+    requestAnimationFrame(() => {
+        if (up) {
+            if (currentSlide.value) {
+                currentSlide.value--
+            }
+        } else {
+            if (currentSlide.value < screenList.value.length - 1) {
+                currentSlide.value++;
+            }
         }
-
-    } else {
-        if (currentSlide.value < screenList.value.length - 1) {
-            currentSlide.value++;
-        }
-    }
+    });
     setTimeout(() => {
         locked.value = false;
-    }, ANIMATION_DELAY)
+    }, ANIMATION_DELAY + DELAY_AFTER_SWAP);
 }
 
 watch(() => isMobile.value, () => {

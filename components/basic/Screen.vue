@@ -3,7 +3,8 @@
         <transition appear @enter="onInit">
             <div v-if="!isMobile && exist && !scroll" @wheel="onWheel"
                 :style="[transformStylesPerCurrentSlide, transDuration, bgStyle]" :class="!full ? 'pt-bar' : ''"
-                class="w-full h-screen fixed top-0 left-0 transition overflow-hidden" :blured="blured" :white="white">
+                class="w-full h-screen fixed top-0 left-0 transition overflow-hidden group-[.is-prev]:pointer-events-none group-[.is-next]:pointer-events-none"
+                :blured="blured" :white="white">
                 <Container :full="full">
                     <slot />
                 </Container>
@@ -12,8 +13,8 @@
         <transition appear @enter="onInit">
             <div v-if="!isMobile && exist && scroll" :style="[transformStylesPerCurrentSlide, transDuration]"
                 @wheel="onWheelWithScroll" @scroll="onScroll"
-                class="h-screen w-full fixed top-0 left-0 transition overflow-auto pt-bar" :white="white"
-                :blured="blured">
+                class="h-screen w-full fixed top-0 left-0 transition overflow-auto pt-bar group-[.is-prev]:pointer-events-none group-[.is-next]:pointer-events-none"
+                :white="white" :blured="blured">
                 <Container :full="full">
                     <slot />
                 </Container>
@@ -96,7 +97,6 @@ const transformStylesPerCurrentSlide = computed(() => {
     }
     return `transform: translateY(${val})`
 });
-
 
 const transDuration = computed(() => `transition-duration:${ANIMATION_DELAY}ms`);
 
