@@ -31,6 +31,9 @@
         <Screen scroll blured>
             <PresetsDemo />
         </Screen>
+        <Screen bg="#3B3938" blured>
+            <Footer></Footer>
+        </Screen>
     </div>
 </template>
 
@@ -42,5 +45,6 @@ import StartScreen from '~/components/blocks/StartScreen.vue';
 import WithLove from '~/components/blocks/WithLove.vue';
 import Methodic from '~/components/blocks/Methodic.vue';
 import PresetsDemo from '~/components/blocks/PresetsDemo.vue';
+import Footer from '~/components/footer/Footer.vue';
 
 </script>

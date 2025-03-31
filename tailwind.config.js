@@ -10,6 +10,7 @@ export default {
             colors: {
                 'main': '#3B3938',
                 'grey': '#707070',
+                'light': '#B1B0AF',
                 'beige': '#E8E4D9',
             },
             margin: {
