@@ -26,10 +26,11 @@ const slideUp = (up) => {
                 currentSlide.value++;
             }
         }
+        setTimeout(() => {
+            locked.value = false;
+        }, ANIMATION_DELAY + DELAY_AFTER_SWAP);
     });
-    setTimeout(() => {
-        locked.value = false;
-    }, ANIMATION_DELAY + DELAY_AFTER_SWAP);
+
 }
 
 watch(() => isMobile.value, () => {
