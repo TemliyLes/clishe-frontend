@@ -1,6 +1,6 @@
 <template>
-    <div class="relative">
-        <Screen>
+    <div class="overflow-hidden">
+        <Screen full white>
             <MethScreen />
         </Screen>
     </div>

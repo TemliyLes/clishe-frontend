@@ -2,7 +2,9 @@
     <div class="fixed h-bar z-50 w-full">
         <Container class="z-30">
             <div class="flex justify-between w-full pt-4">
-                <Logo class="h-6 -ml-12" :white="whitePower"></Logo>
+                <NuxtLink to="/">
+                    <Logo class="h-6 -ml-12" :white="whitePower" />
+                </NuxtLink>
                 <div class="transition-all transition duration-700 flex"
                     :class="whitePower ? 'text-white' : 'text-main'">
                     <div class="flex gap-8">

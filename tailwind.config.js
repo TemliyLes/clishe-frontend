@@ -29,6 +29,9 @@ export default {
             maxWidth: {
                 'container': '1740px',
             },
+            width: {
+                'overfull': 'calc(100% + 2px)',
+            },
             lineHeight: {
                 'method': '130%',
                 'method-big': '140%'
