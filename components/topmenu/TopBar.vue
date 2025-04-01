@@ -46,9 +46,4 @@ const navs = [
     },
 ];
 
-
-watch(() => currentSlideElement.value, () => {
-    console.log(currentSlideElement.value?.getAttribute('white'));
-})
-
 </script>

@@ -1,9 +1,9 @@
 <template>
-    <div class="bg-white">
+    <div class="bg-white relative">
         <!-- <Screen bg="#E8E4D9" class="z-30">
             <StartScreen />
         </Screen> -->
-        <Screen blured>
+        <Screen over blured id="about_screen">
             <About />
         </Screen>
         <Screen scroll>
