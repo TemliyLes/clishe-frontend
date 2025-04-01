@@ -1,5 +1,5 @@
 <template>
-    <h2 class="monster text-main -ml-0.5" :style="fontSize(24, 56)">
+    <h2 class="monster text-main -ml-0.5 leading-[120%]" :style="fontSize(24, 56)">
         <slot />
     </h2>
 </template>

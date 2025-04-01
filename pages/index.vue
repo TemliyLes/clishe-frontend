@@ -18,9 +18,9 @@
         <Screen scroll blured>
             <PresetsDemo />
         </Screen>
-        <Screen bg="#3B3938" blured>
-            <Footer></Footer>
-        </Screen>
+
+        <Footer></Footer>
+
     </div>
 </template>
 

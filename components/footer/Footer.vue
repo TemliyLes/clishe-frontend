@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <Screen bg="#3B3938" blured>
         <footer>
             <div class="flex justify-between">
                 <div class="basis-5/12">
@@ -16,10 +16,11 @@
             class="absolute px-container sm:px-container-d bottom-0 delay-500 left-0 w-full transition duration-700 translate-y-0 group-[.is-next]:translate-y-full">
             <FooterLogo />
         </div>
-    </div>
+    </Screen>
 </template>
 
 <script setup>
+import Screen from '../basic/Screen.vue';
 import { fontSize } from '~/helpers/freeze';
 
 import FooterMenu from './FooterMenu.vue';

@@ -40,7 +40,8 @@ watch(() => isMobile.value, () => {
 const currentSlideElement = computed(() => screenList.value[currentSlide.value]);
 
 const clear = () => {
-    screenList.value = []
+    screenList.value = [];
+    currentSlide.value = 0;
 }
 
 export { ANIMATION_DELAY, currentSlide, slideUp, pushScreen, locked, screenList, currentSlideElement, clear }
