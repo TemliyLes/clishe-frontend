@@ -6,7 +6,7 @@
         <Screen over blured id="about_screen">
             <About />
         </Screen>
-        <Screen scroll>
+        <Screen blured scroll>
             <Horizontal />
         </Screen>
         <Screen white blured full>
@@ -18,9 +18,7 @@
         <Screen scroll blured>
             <PresetsDemo />
         </Screen>
-
         <Footer></Footer>
-
     </div>
 </template>
 

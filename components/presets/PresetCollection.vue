@@ -21,7 +21,9 @@
 
         <div class="flex gap-4 my-12">
             <Button title="Купить"></Button>
-            <Button white></Button>
+            <NuxtLink :to="`preset-${trimmed}`">
+                <Button white></Button>
+            </NuxtLink>
         </div>
     </div>
 </template>
@@ -126,5 +128,7 @@ const changePreset = (bool) => {
         activeIndex.value = props.presets.length - 1;
     }
 }
+
+const trimmed = computed(() => props.title.replaceAll(' ', '-').toLowerCase())
 
 </script>

@@ -33,10 +33,9 @@
 <script setup>
 import Container from '../basic/Container.vue';
 import Logo from '~/assets/icons/Logo.vue';
-import { isMobile } from '~/helpers/break';
+
 import { currentSlideElement } from '~/helpers/scroll';
 
-import SimpleText from '../text/SimpleText.vue';
 
 const whitePower = computed(() => currentSlideElement.value?.getAttribute('white') === 'true');
 const blurPower = computed(() => currentSlideElement.value?.getAttribute('blured') === 'true');
@@ -48,7 +47,7 @@ const navs = [
     },
     {
         title: 'Presets | Color collections',
-        to: '#',
+        to: 'presets',
     },
 ];
 

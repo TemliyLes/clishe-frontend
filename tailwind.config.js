@@ -15,7 +15,9 @@ export default {
             },
             margin: {
                 'h1': '2%',
-                'superheader': '2%'
+                'superheader': '2%',
+                'container': '16px',
+                'container-d': '4%',
             },
             height: {
                 'bar': '56px',
