@@ -6,7 +6,11 @@
                 <div class="transition-all transition duration-700 flex"
                     :class="whitePower ? 'text-white' : 'text-main'">
                     <div class="flex gap-8">
-                        <p class="monster cursor-pointer" v-for="nav in navs" :key="nav.title">{{ nav.title }}</p>
+                        <p v-for="nav in navs" :key="nav.title">
+                            <NuxtLink class="monster cursor-pointer" :to="nav.to">
+                                {{ nav.title }}
+                            </NuxtLink>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -38,11 +42,11 @@ const blurPower = computed(() => currentSlideElement.value?.getAttribute('blured
 const navs = [
     {
         title: 'Методическое пособие',
-        url: '#',
+        to: 'methodic',
     },
     {
         title: 'Presets | Color collections',
-        url: '#',
+        to: '#',
     },
 ];
 
