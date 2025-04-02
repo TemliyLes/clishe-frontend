@@ -1,12 +1,72 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 @font-face {
-    font-family: "BebasNeue";
-    src: url("/assets/fonts/BebasNeue-Regular.ttf");
-  }
-* {
-    font-family: BebasNeue;
+  font-family: "BebasNeue";
+  src: url("/assets/fonts/BebasNeue-Regular.ttf");
 }
+
+* {
+  font-family: BebasNeue;
+}
+
 .monster {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
+}
+
+.router-link-active {
+  text-decoration: underline;
+  pointer-events: none;
+}
+
+.svg-logo {
+  background-color: #E8E4D9;
+  background-image: url(~/assets/logo.svg);
+  background-size: auto 72px;
+}
+
+.logo-elem {
+  transition: transform 0.3s ease-in-out;
+  background-color: #E8E4D9;
+  will-change: transform;
+}
+
+.logo-elem1 {
+  background-position-x: 88px;
+  background-repeat: no-repeat;
+  z-index: 88;
+  transform: translateX(76px);
+}
+
+.logo-elem2 {
+  background-position-x: -50px;
+  background-repeat: no-repeat;
+  width: 144px;
+  left: 139px;
+  z-index: 86;
+  transform: translateX(-12px);
+}
+
+.logo-elem3 {
+  background-position-x: -194px;
+  background-repeat: no-repeat;
+  width: 75px;
+  left: 283px;
+  z-index: 84;
+  transform: translateX(-88px);
+}
+
+.logo-group {
+  margin-top: -40px;
+  margin-left: -140px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  will-change: transform;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(-77px);
+}
+
+.logo-group.active .logo-elem {
+  transform: translateX(0);
 }

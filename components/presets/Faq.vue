@@ -16,8 +16,8 @@
 
 <script setup>
 import SimpleText from '../text/SimpleText.vue';
-import Cross from '../ui/Cross.vue';
-import Collapsed from '../ui/Collapsed.vue';
+import Cross from '../other/Cross.vue';
+import Collapsed from '../other/Collapsed.vue';
 
 const currentIndex = ref(0);
 const setActive = (index) => currentIndex.value = index;

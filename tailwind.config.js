@@ -42,7 +42,9 @@ export default {
                 'button': '60px'
             },
             zIndex: {
-                'minus': '-1'
+                'minus': '-1',
+                'preloader': '7779',
+                'corner': '120'
             }
         }
     }
