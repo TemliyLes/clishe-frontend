@@ -68,7 +68,7 @@ const classPerSlideIndex = computed(() => {
 
 const scalePerSlideIndex = computed(() => {
     if (isNext.value) {
-        return `transform: scale(0.6) translateY(200px);  transition-duration: 0.7s;`
+        return `transform: scale(0.6) translateY(300px);  transition-duration: 0.7s;`
     } else {
         return `transform: scale(1) translateY(0);  transition-duration: 1s;`
     }
