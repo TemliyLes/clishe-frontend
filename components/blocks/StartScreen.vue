@@ -4,12 +4,12 @@
             фото — это не щелк<br />
             это миллисекунда жизни
         </Superheader>
-        <Image class="aspect-mainscreen sm:aspect-mainscreen-d object-cover w-full"
-            src="https://newneuro.ru/wp-content/uploads/2021/11/u-zhenshhiny-bolit-golova-vecherom.jpg" />
+        <img class="aspect-mainscreen sm:aspect-mainscreen-d object-cover object-[0, 75%] w-full"
+            src="/public/alinabg.jpg" />
     </div>
 </template>
 
 <script setup>
 import Superheader from '../text/Superheader.vue';
-import Image from '../basic/Image.vue';
+
 </script>
