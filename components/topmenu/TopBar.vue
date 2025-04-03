@@ -1,5 +1,5 @@
 <template>
-    <div class="fixed h-bar z-50 w-full">
+    <div class="fixed h-bar z-50 w-full topmenu">
         <Container class="z-30">
             <div class="flex justify-between w-full pt-4">
                 <NuxtLink to="/">

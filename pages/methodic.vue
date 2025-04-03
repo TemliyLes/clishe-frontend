@@ -11,7 +11,7 @@
                 </Header>
                 <div class="flex my-12">
                     <div class="basis-1/4 pr-4">
-                        <img src="/public/alinacliche.png" />
+                        <img class="sticky top-5" src="/public/alinacliche.png" />
                     </div>
                     <div class="basis-3/4">
                         <SimpleText big>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="flex pt-12">
                     <div class="basis-1/4">
-                        <Title class="!mt-0">Темы</Title>
+                        <Title class="!mt-0 sticky top-5">Темы</Title>
                     </div>
                     <div class="basis-3/4">
                         <div class="flex gap-12" v-for="(theme, themeIndex) in themes" :key="themeIndex">
