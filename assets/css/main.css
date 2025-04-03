@@ -5,6 +5,10 @@
   src: url("/assets/fonts/BebasNeue-Regular.ttf");
 }
 
+body {
+  overflow: hidden;
+}
+
 * {
   font-family: BebasNeue;
 }

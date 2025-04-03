@@ -1,17 +1,17 @@
 <template>
     <div class="bg-white relative">
-        <Screen blured scroll>
+        <!-- <Screen blured scroll>
             <Horizontal />
-        </Screen>
+        </Screen> -->
         <Screen bg="#E8E4D9" class="z-30">
             <StartScreen />
         </Screen>
         <Screen over blured id="about_screen">
             <About />
         </Screen>
-        <!-- <Screen blured scroll>
+        <Screen blured scroll class="opacity-0">
             <Horizontal />
-        </Screen> -->
+        </Screen>
         <Screen white blured full>
             <WithLove />
         </Screen>
