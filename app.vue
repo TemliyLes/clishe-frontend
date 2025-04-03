@@ -1,6 +1,6 @@
 <template>
   <DesktopOrMobile>
-    <!-- <Preloader /> -->
+    <Preloader />
     <TopBar />
     <NuxtPage />
   </DesktopOrMobile>
