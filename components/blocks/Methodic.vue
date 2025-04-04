@@ -3,7 +3,7 @@
         <Title>Products</Title>
         <div class="sm:flex justify-between">
             <div class="sm:flex basis-1/4 bg-grey">
-                <Image class="aspect-method object-cover" :src="imgSrc" alt="method" />
+                <img class="aspect-method object-cover" src="/public/alinacliche.png" alt="method" />
             </div>
             <div class="basis-2/3">
                 <Header class="sm:!mb-16 mb-4 sm:-ml-1">Методическое пособие</Header>

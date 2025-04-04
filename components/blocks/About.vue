@@ -1,7 +1,7 @@
 <template>
     <div>
         <Title>About</Title>
-        <Header>
+        <Header restructed>
             Cliche academy — это академия мобильной фотографии без рамок для творчества. И именно этот факт позволяет
             академии носить имя Cliche.
         </Header>
