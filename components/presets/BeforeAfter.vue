@@ -5,7 +5,8 @@
                 @mousemove="onMove"></div>
         </Teleport>
         <div v-declare class="relative aspect-befafter w-full">
-            <div ref="shifter" class="h-full w-px z-50 relative cursor-grab" :style="shifterX" @mousedown="startDrag">
+            <div ref="shifter" class="h-full w-px z-50 relative cursor-grab" :style="shifterX" @touchstart="startDrag"
+                @mousedown="startDrag" @touchmove="onMove" @touchend="stopDrag">
                 <div class="absolute w-12 h-full top-0 -ml-6"></div>
                 <div
                     class="will-change-transform absolute w-px bg-white bottom-0 h-full origin-top transition-transform">
@@ -45,8 +46,14 @@ defineProps({
 const flag = ref(true);
 const dragMode = ref(false);
 
-const startDrag = () => dragMode.value = true;
-const stopDrag = () => dragMode.value = false;
+const startDrag = () => {
+    console.log('start')
+    dragMode.value = true;
+}
+const stopDrag = () => {
+    console.log('stop')
+    dragMode.value = false;
+};
 
 const canvas = ref();
 const canvasWidth = computed(() => `width: ${canvas.value?.offsetWidth}px`);
@@ -55,11 +62,16 @@ const maxX = computed(() => minX.value + canvas.value?.getBoundingClientRect().w
 
 const dragX = ref(0);
 
+const onTouchMove = (e) => {
+    console.log(e);
+}
+
 const onMove = (e) => {
+    console.log(e)
     if (dragMode.value) {
         requestAnimationFrame(() => {
             let x;
-            x = e.clientX;
+            x = e.touches ? e.touches[0].clientX : e.clientX;
             if (x > maxX.value) {
                 x = maxX.value;
             }

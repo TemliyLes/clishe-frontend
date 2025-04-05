@@ -5,8 +5,8 @@
             Cliche academy — это академия мобильной фотографии без рамок для творчества. И именно этот факт позволяет
             академии носить имя Cliche.
         </Header>
-        <div class="flex">
-            <div class="basis-1/4"></div>
+        <div class="block sm:flex">
+            <div class="hidden sm:block basis-1/4"></div>
             <div class="basis-3/4">
                 <SimpleText class="mt-12" :size="[18, 30]">Наши ученики не знают границ в мире мобильной фотографии,
                     благодаря

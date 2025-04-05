@@ -7,7 +7,7 @@
                 </NuxtLink>
                 <div class="transition-all transition duration-700 flex"
                     :class="whitePower ? 'text-white' : 'text-main'">
-                    <div class="flex gap-8">
+                    <div class="flex gap-8" v-if="!isMobile">
                         <p v-for="nav in navs" :key="nav.title">
                             <NuxtLink class="monster cursor-pointer" :to="nav.to">
                                 {{ nav.title }}
@@ -33,6 +33,7 @@
 <script setup>
 import Container from '../basic/Container.vue';
 import Logo from '~/assets/icons/Logo.vue';
+import { isMobile } from '~/helpers/break';
 
 import { currentSlideElement } from '~/helpers/scroll';
 
