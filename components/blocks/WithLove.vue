@@ -6,10 +6,7 @@
             by heart<br />
             for love
         </Superheader>
-        <div class="h-full w-full absolute top-0 left-0 z-10 bg-cover bg-fixed" :style="getBg">
-            <!-- <img class="object-cover h-full w-full absolute top-0 z-10"
-                src="https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_66c48ac43a3e486506e0a2bc_66c48b7545efb841da9331ed/scale_1200" /> -->
-        </div>
+        <div class="h-full w-full absolute top-0 left-0 z-10 bg-cover bg-fixed" :style="getBg"></div>
     </div>
 </template>
 

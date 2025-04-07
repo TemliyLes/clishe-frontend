@@ -10,11 +10,11 @@
                 <div class="sm:flex justify-between">
                     <div class="basis-[56.25%]">
                         <div v-for="(p, index) in paragraphs" :key="index">
-                            <SimpleText class="leading-method-big" :style="fontSize(12, 18)">{{ p }}</SimpleText>
+                            <SimpleText class="leading-method-big" :style="fontSize(16, 18)">{{ p }}</SimpleText>
                         </div>
                     </div>
                     <div class="basis-[37.5%] mt-1">
-                        <SimpleText class="leading-method" :style="fontSize(10, 16)">{{ another }}</SimpleText>
+                        <SimpleText class="leading-method" :style="fontSize(14, 16)">{{ another }}</SimpleText>
                     </div>
                 </div>
                 <NuxtLink to="/methodic"><Button class="mt-16 w-[157px]" /></NuxtLink>

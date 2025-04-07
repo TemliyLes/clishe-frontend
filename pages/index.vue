@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div class="bg-white relative overflow-hidden pt-6 sm:pt-0">
+        <div class="bg-white relative overflow-hidden">
             <Screen bg="#E8E4D9" class="z-30">
-                <StartScreen />
+                <StartScreen class=" pt-16 pb-4 sm:py-0" />
             </Screen>
             <Screen over blured id="about_screen">
                 <About />
