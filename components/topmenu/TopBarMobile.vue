@@ -1,12 +1,12 @@
 <template>
     <div class="fixed top-0 h-bar z-50 w-full topmenu bg-white">
         <Teleport to="#teleports">
-            <div class="fixed w-full h-screen bg-main top-0 left-0 z-menu pt-24 mobile-menu transition duration-700 ease"
+            <div class="fixed w-full h-screen bg-main top-0 left-0 z-menu pt-24 mobile-menu transition duration-500 ease"
                 :class="active ? 'translate-x-0' : '-translate-x-full'">
-                <CloseButton class="absolute right-6 top-4" @click="deactivate"></CloseButton>
+                <CloseButton class="absolute right-6 top-4" @click="deactivate(false)"></CloseButton>
                 <Container>
                     <p v-for="nav in navs" :key="nav.title">
-                        <NuxtLink class="text-white text-[34px]" :to="nav.to">
+                        <NuxtLink class="text-white text-[34px]" :to="nav.to" @click="deactivate(true)">
                             {{ nav.title }}
                         </NuxtLink>
                     </p>
@@ -43,5 +43,12 @@ defineProps({
 const active = ref(false);
 
 const activate = () => active.value = true;
-const deactivate = () => active.value = false;
+const deactivate = (delay) => {
+    const delayVal = delay ? 1400 : 0;
+    setTimeout(() => {
+        active.value = false;
+    }, delayVal)
+};
+
+
 </script>

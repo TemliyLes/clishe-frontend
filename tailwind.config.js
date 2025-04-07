@@ -45,7 +45,8 @@ export default {
                 'minus': '-1',
                 'preloader': '7779',
                 'corner': '120',
-                'menu': '665'
+                'menu': '665',
+                'pager': '2222',
             }
         }
     }

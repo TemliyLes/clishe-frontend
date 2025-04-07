@@ -1,14 +1,15 @@
 <template>
-  <DesktopOrMobile>
+  <div>
+    <PageOverlay />
     <Preloader />
     <TopBar />
     <NuxtPage />
-  </DesktopOrMobile>
+  </div>
 </template>
 <script setup>
 import '~/assets/css/main.css'
 
-import DesktopOrMobile from '~/components/layout/DesktopOrMobile.vue'
+import PageOverlay from '~/components/layout/PageOverlay.vue'
 import TopBar from './components/topmenu/TopBar.vue';
 import Preloader from './components/other/Preloader.vue';
 
