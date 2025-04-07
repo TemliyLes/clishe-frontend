@@ -6,7 +6,7 @@
             </Title>
         </Container>
 
-        <div class="w-full aspect-square bg-red-300 relative">
+        <div class="w-full aspect-square relative" @touchstart="onTouchstart" @touchend="onTouchend">
             <img v-for="(img, index) in imgs" :key="index" :class="testActive(index) ? 'opacity-100' : 'opacity-0'"
                 :src="img" :alt="'slide_' + index"
                 class="absolute w-full h-full object-cover transition duration-700" />
@@ -27,14 +27,39 @@
 import Container from '../basic/Container.vue';
 import Title from '../text/Title.vue';
 
-defineProps({
+const props = defineProps({
     imgs: Array,
     default: () => []
 });
 
 const activeIndex = ref(0);
 
+const startPoint = ref(null)
+
 const testActive = (index) => index === activeIndex.value;
 const setActive = (index) => activeIndex.value = index;
 
+const slideLeft = (left) => {
+    if (left) {
+        activeIndex.value--;
+        if (activeIndex.value < 0) {
+            activeIndex.value = props.imgs.length - 1;
+        }
+    }
+    if (!left) {
+        activeIndex.value++;
+        if (activeIndex.value > props.imgs.length - 1) {
+            activeIndex.value = 0
+        }
+    }
+}
+
+const onTouchstart = (e) => {
+    startPoint.value = e.touches[0].clientX;
+}
+
+const onTouchend = (e) => {
+    const left = e.changedTouches[0].clientX < startPoint.value ? true : false;
+    slideLeft(left);
+}
 </script>
