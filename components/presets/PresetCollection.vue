@@ -1,13 +1,13 @@
 <template>
-    <div class="my-16">
-        <SimpleText big class="mb-6">{{ title }}</SimpleText>
+    <div class="mt-12 sm:my-16">
+        <SimpleText big class="mb-4 sm:mb-6">{{ title }}</SimpleText>
         <SimpleText>{{ description }}</SimpleText>
-        <div class="relative my-12">
+        <div class="relative mt-12 mb-4 sm:my-12">
             <div v-for="(preset, index) in presets" :key="index" class="transition duration-700"
                 :class="[index ? 'absolute top-0 inset-0' : 'relative', testActive(index) ? 'opacity-100 z-40' : 'opacity-0 z-20']">
                 <Preset :data="preset" :index="index + 1"></Preset>
             </div>
-            <div class="absolute -top-1.5 right-0 flex gap-4 z-40">
+            <div class="absolute -top-1.5 right-0 flex gap-4 z-40 sm:scale-100 scale-75 origin-top-right">
                 <div @click="changePreset(true)" class="cursor-pointer">
                     <SliderArrow />
                 </div>
@@ -19,9 +19,9 @@
         <SimpleText>Количество цветов: {{ colorCount }}</SimpleText>
         <SimpleText>Стоимость: {{ cost }}</SimpleText>
 
-        <div class="flex gap-4 my-12">
-            <Button title="Купить"></Button>
-            <NuxtLink :to="`preset-${trimmed}`">
+        <div class="flex gap-4 my-3 sm:my-12">
+            <Button :class="basisMobile" title="Купить"></Button>
+            <NuxtLink :class="basisMobile" :to="`preset-${trimmed}`">
                 <Button white></Button>
             </NuxtLink>
         </div>
@@ -33,6 +33,7 @@ import Preset from './Preset.vue';
 import SliderArrow from '~/assets/icons/SliderArrow.vue';
 import SimpleText from '../text/SimpleText.vue';
 import Button from '../basic/Button.vue';
+import { isMobile } from '~/helpers/break';
 
 const props = defineProps({
     title: {
@@ -129,6 +130,8 @@ const changePreset = (bool) => {
     }
 }
 
-const trimmed = computed(() => props.title.replaceAll(' ', '-').toLowerCase())
+const trimmed = computed(() => props.title.replaceAll(' ', '-').toLowerCase());
+
+const basisMobile = computed(() => isMobile.value ? 'basis-1/2' : '')
 
 </script>
