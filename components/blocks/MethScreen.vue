@@ -15,17 +15,19 @@
                         </SimpleText>
                     </div>
                 </div>
-                <div class="flex" :style="paddingByHeight">
-                    <div class="basis-5/12">
-                        <Button class="w-36" white title="Купить" />
+                <ClientOnly>
+                    <div class="flex" :style="paddingByHeight">
+                        <div class="basis-5/12">
+                            <Button class="w-36" white title="Купить" />
+                        </div>
+                        <div class="basis-7/12 relative">
+                            <Superheader :size="[50, 140]" class="absolute bottom-0 text-white -ml-[1%] !mb-[-2%]">With
+                                love. By
+                                heart.<br />For you.
+                            </Superheader>
+                        </div>
                     </div>
-                    <div class="basis-7/12 relative">
-                        <Superheader :size="[50, 140]" class="absolute bottom-0 text-white -ml-[1%] !mb-[-2%]">With
-                            love. By
-                            heart.<br />For you.
-                        </Superheader>
-                    </div>
-                </div>
+                </ClientOnly>
             </div>
         </Container>
     </div>
