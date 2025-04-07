@@ -44,7 +44,8 @@ export default {
             zIndex: {
                 'minus': '-1',
                 'preloader': '7779',
-                'corner': '120'
+                'corner': '120',
+                'menu': '665'
             }
         }
     }

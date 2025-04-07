@@ -16,5 +16,7 @@ import { init } from './helpers/break';
 
 onMounted(() => {
   init();
-})
+});
+
+
 </script>

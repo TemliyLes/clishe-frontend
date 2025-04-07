@@ -27,7 +27,7 @@
             :class="whitePower ? 'bg-white' : 'bg-grey'">
         </div>
     </div>
-
+    <TopBarMobile :navs="navsWithMain" v-else />
 </template>
 
 <script setup>
@@ -36,7 +36,7 @@ import Logo from '~/assets/icons/Logo.vue';
 import { isMobile } from '~/helpers/break';
 
 import { currentSlideElement } from '~/helpers/scroll';
-
+import TopBarMobile from './TopBarMobile.vue';
 
 const whitePower = computed(() => currentSlideElement.value?.getAttribute('white') === 'true');
 const blurPower = computed(() => currentSlideElement.value?.getAttribute('blured') === 'true');
@@ -51,5 +51,11 @@ const navs = [
         to: 'presets',
     },
 ];
+const main = {
+    title: 'Главная',
+    to: '/'
+}
+
+const navsWithMain = computed(() => [main, ...navs])
 
 </script>
