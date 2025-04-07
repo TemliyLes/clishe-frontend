@@ -1,9 +1,9 @@
 <template>
     <div>
         <Title>Products</Title>
-        <div class="sm:flex justify-between">
+        <div class="flex sm:flex-row justify-between flex-col-reverse">
             <div class="sm:flex basis-1/4 bg-grey">
-                <img class="aspect-method object-cover" src="/public/alinacliche.png" alt="method" />
+                <img class="aspect-method object-cover w-full" src="/public/alinacliche.png" alt="method" />
             </div>
             <div class="basis-2/3">
                 <Header class="sm:!mb-16 mb-4 sm:-ml-1">Методическое пособие</Header>
@@ -17,7 +17,7 @@
                         <SimpleText class="leading-method" :style="fontSize(14, 16)">{{ another }}</SimpleText>
                     </div>
                 </div>
-                <NuxtLink to="/methodic"><Button class="mt-16 w-[157px]" /></NuxtLink>
+                <NuxtLink to="/methodic"><Button class="my-7 sm:mt-16 w-[157px]" /></NuxtLink>
             </div>
         </div>
     </div>
