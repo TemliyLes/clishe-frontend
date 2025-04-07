@@ -46,14 +46,8 @@ defineProps({
 const flag = ref(true);
 const dragMode = ref(false);
 
-const startDrag = () => {
-    console.log('start')
-    dragMode.value = true;
-}
-const stopDrag = () => {
-    console.log('stop')
-    dragMode.value = false;
-};
+const startDrag = () => dragMode.value = true;
+const stopDrag = () => dragMode.value = false;
 
 const canvas = ref();
 const canvasWidth = computed(() => `width: ${canvas.value?.offsetWidth}px`);

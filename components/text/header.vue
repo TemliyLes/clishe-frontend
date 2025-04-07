@@ -28,7 +28,7 @@ const props = defineProps({
 const flag = ref(false);
 const DELAY_BASIC = 200;
 
-const classList = 'monster -ml-0.5 leading-[120%]';
+const classList = 'monster sm:-ml-0.5 leading-[120%]';
 const restructedArr = ref([]);
 
 const delayByIndex = (index) => `transition-delay: ${index * DELAY_BASIC}ms`;

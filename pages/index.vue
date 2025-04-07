@@ -1,15 +1,15 @@
 <template>
     <div>
-        <div class="bg-white relative overflow-hidden">
+        <div class="bg-white relative overflow-hidden pt-6 sm:pt-0">
             <Screen bg="#E8E4D9" class="z-30">
                 <StartScreen />
             </Screen>
             <Screen over blured id="about_screen">
                 <About />
             </Screen>
-            <Screen blured scroll class="opacity-0">
-                <Horizontal v-if="!isMobile" />
-                <HorizontalMobile v-else />
+            <Screen blured scroll :full="isMobile">
+                <Horizontal :imgs="imgs" v-if="!isMobile" />
+                <HorizontalMobile :imgs="imgs" v-if="isMobile" />
             </Screen>
             <Screen white blured full>
                 <WithLove />
@@ -43,5 +43,15 @@ import { clear } from '~/helpers/scroll';
 
 onBeforeMount(() => {
     clear()
-})
+});
+
+
+const imgs = [
+    'https://www.ukorona.ru/upload/adwex.minified/webp/97e/85/97e3e16efe3b1427aea69b8fa1c9c929.webp',
+    'https://img.freepik.com/free-photo/side-view-geese-grass_23-2148580043.jpg?semt=ais_hybrid&w=740',
+    'https://cdn.botanichka.ru/wp-content/uploads/2021/02/domashnie-gusi-luchshie-porodyi-i-osobennosti-soderzhaniya-01.jpg',
+    'https://ciplenok.com/content/uploads/images/domashnie-gusi.jpg',
+    'https://house-animals.ru/sites/default/files/media/user-1/gusi-dvor.jpg'
+];
+
 </script>

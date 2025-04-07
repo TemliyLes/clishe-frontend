@@ -1,5 +1,5 @@
 <template>
-    <div class="fixed h-bar z-50 w-full topmenu">
+    <div class="fixed h-bar z-50 w-full topmenu" v-if="!isMobile">
         <Container class="z-30">
             <div class="flex justify-between w-full pt-4">
                 <NuxtLink to="/">
@@ -7,7 +7,7 @@
                 </NuxtLink>
                 <div class="transition-all transition duration-700 flex"
                     :class="whitePower ? 'text-white' : 'text-main'">
-                    <div class="flex gap-8" v-if="!isMobile">
+                    <div class="flex gap-8">
                         <p v-for="nav in navs" :key="nav.title">
                             <NuxtLink class="monster cursor-pointer" :to="nav.to">
                                 {{ nav.title }}

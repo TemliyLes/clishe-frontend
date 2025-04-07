@@ -31,13 +31,12 @@ import Title from '../text/Title.vue';
 const BASIC_WIDTH = 500;
 const screenHeight = window?.innerHeight;
 
-const imgs = [
-    'https://www.ukorona.ru/upload/adwex.minified/webp/97e/85/97e3e16efe3b1427aea69b8fa1c9c929.webp',
-    'https://img.freepik.com/free-photo/side-view-geese-grass_23-2148580043.jpg?semt=ais_hybrid&w=740',
-    'https://cdn.botanichka.ru/wp-content/uploads/2021/02/domashnie-gusi-luchshie-porodyi-i-osobennosti-soderzhaniya-01.jpg',
-    'https://ciplenok.com/content/uploads/images/domashnie-gusi.jpg',
-    'https://house-animals.ru/sites/default/files/media/user-1/gusi-dvor.jpg'
-];
+const props = defineProps({
+    imgs: {
+        type: Array,
+        default: () => [],
+    }
+})
 
 const flag = ref(false)
 const instanse = ref();
@@ -76,13 +75,14 @@ const scalePerSlideIndex = computed(() => {
 
 
 
-const calculatedHeight = computed(() => `height: ${imgs.length * (BASIC_WIDTH - 40)}px`)
+const calculatedHeight = computed(() => `height: ${props.imgs.length * (BASIC_WIDTH - 40)}px`)
 
 onMounted(() => {
     requestAnimationFrame(() => {
         flag.value = true;
+        instanse.value.addEventListener('scroll', onScrollEvent);
     })
 
-    instanse.value.addEventListener('scroll', onScrollEvent);
+
 })
 </script>

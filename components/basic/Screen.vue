@@ -20,7 +20,7 @@
                 </Container>
             </div>
         </transition>
-        <div v-if="isMobile" class="w-full relative pt-bar" :blured="blured" :white="white">
+        <div v-if="isMobile" class="w-full relative" :blured="blured" :white="white">
             <Container :full="full">
                 <slot />
             </Container>
