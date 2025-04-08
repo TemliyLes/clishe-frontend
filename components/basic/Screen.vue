@@ -104,7 +104,7 @@ const transformStylesPerCurrentSlide = computed(() => {
 
 const transDuration = computed(() => `transition-duration:${ANIMATION_DELAY}ms`);
 
-const bgStyle = computed(() => `background:${props.bg}`);
+const bgStyle = computed(() => props.bg ? `background-color:${props.bg}` : '');
 
 const overStyle = computed(() => props.over ? 'overflow-visible' : 'overflow-hidden')
 

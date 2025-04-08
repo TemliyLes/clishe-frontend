@@ -56,12 +56,7 @@ const maxX = computed(() => minX.value + canvas.value?.getBoundingClientRect().w
 
 const dragX = ref(0);
 
-const onTouchMove = (e) => {
-    console.log(e);
-}
-
 const onMove = (e) => {
-    console.log(e)
     if (dragMode.value) {
         requestAnimationFrame(() => {
             let x;

@@ -13,8 +13,6 @@ const elementClasses = ref('origin-left scale-x-0')
 const app = useNuxtApp();
 const router = useRouter();
 
-console.log(app)
-
 router.beforeEach((from, to, next) => {
     requestAnimationFrame(() => {
         elementClasses.value = 'origin-left scale-x-1';

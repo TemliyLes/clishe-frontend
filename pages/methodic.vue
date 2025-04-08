@@ -1,17 +1,17 @@
 <template>
     <div class="overflow-hidden">
-        <Screen full white>
+        <Screen full white bg="none">
             <MethScreen />
         </Screen>
         <Screen scroll blured>
-            <div class="pt-12 pb-24">
+            <div class="py-12 sm:pb-24">
                 <Header restructed>
                     Хочется назвать его маленьким подручным в мире эстетики мобильной фотографии, но это описание такое
                     скромное, что аж грустно. На деле методичка — это кладезь теории.
                 </Header>
-                <div class="flex my-12">
+                <div class="sm:flex sm:my-12 gap-6">
                     <div class="basis-1/4 pr-4">
-                        <img class="sticky top-5" src="/public/alinacliche.png" />
+                        <img class="sticky w-full sm:top-5 my-9 sm:my-0" src="/public/alinacliche.png" />
                     </div>
                     <div class="basis-3/4">
                         <SimpleText big>
@@ -34,17 +34,22 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex pt-12">
+                <div class="sm:flex sm:pt-12 pt-9">
                     <div class="basis-1/4">
                         <Title class="!mt-0 sticky top-5">Темы</Title>
                     </div>
                     <div class="basis-3/4">
-                        <div class="flex gap-12" v-for="(theme, themeIndex) in themes" :key="themeIndex">
+                        <div class="flex gap-2 sm:gap-12" v-for="(theme, themeIndex) in themes" :key="themeIndex">
                             <SimpleText class="w-4 mb-6">{{ themeIndex + 1 }}</SimpleText>
                             <SimpleText>{{ theme }}</SimpleText>
                         </div>
                     </div>
                 </div>
+                <div class="flex flex-col gap-6 sm:flex-row sm:justify-between">
+                    <Button class="w-36">Купить</Button>
+                    <SimpleText>Стоимость: {{ cost }}</SimpleText>
+                </div>
+
             </div>
         </Screen>
         <Footer></Footer>
@@ -58,6 +63,7 @@ import Header from '~/components/text/Header.vue';
 import SimpleText from '~/components/text/SimpleText.vue';
 import Title from '~/components/text/Title.vue';
 import Footer from '~/components/footer/Footer.vue';
+import Button from '~/components/basic/Button.vue';
 
 import MethScreen from '~/components/blocks/MethScreen.vue';
 import { clear } from '~/helpers/scroll';
@@ -76,7 +82,7 @@ const methodicData = [
         description: 'Любому человеку, который хочет получить знания по мобильной фотографии'
     }
 ];
-
+const cost = 5000;
 const themes = ['Основы мобильной съемки', 'Сэлфи', 'Композиция', 'Ракурсы', 'Свет', 'Тьма', 'Фото себя на унитазе', 'Узи почек', 'Основы промышленного шпионажа', 'Визуальная концепция', 'Аудиальная контрацепция', 'Перцептивная апперцепция']
 
 onBeforeMount(() => {
