@@ -14,7 +14,7 @@
                 </div>
             </footer>
             <div
-                class="sm:absolute pb-5 sm:pb-0 mt-9 sm:mt-0 px-container sm:px-container-d bottom-0 delay-500 left-0 w-full transition duration-700 translate-y-0 group-[.is-next]:translate-y-full">
+                class="sm:absolute sm:pb-0 mt-9 sm:mt-0 px-container sm:px-container-d bottom-0 delay-500 left-0 w-full transition duration-700 translate-y-0 group-[.is-next]:translate-y-full">
                 <FooterLogo />
             </div>
         </div>

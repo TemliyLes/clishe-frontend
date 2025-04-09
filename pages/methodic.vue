@@ -43,11 +43,12 @@
                             <SimpleText class="w-4 mb-6">{{ themeIndex + 1 }}</SimpleText>
                             <SimpleText>{{ theme }}</SimpleText>
                         </div>
+                        <div class="flex flex-col gap-6 sm:flex-row sm:justify-left sm:mt-9">
+                            <Button title="Купить" class="w-36" />
+                            <SimpleText class="sm:mt-1">Стоимость: {{ cost }}</SimpleText>
+                        </div>
                     </div>
-                </div>
-                <div class="flex flex-col gap-6 sm:flex-row sm:justify-between">
-                    <Button class="w-36">Купить</Button>
-                    <SimpleText>Стоимость: {{ cost }}</SimpleText>
+
                 </div>
 
             </div>

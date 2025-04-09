@@ -29,7 +29,7 @@ import { currentSlide, screenList } from '~/helpers/scroll';
 import Title from '../text/Title.vue';
 
 const BASIC_WIDTH = 500;
-const screenHeight = window?.innerHeight;
+const screenHeight = ref(0);
 
 const props = defineProps({
     imgs: {
@@ -57,10 +57,10 @@ const isActive = computed(() => slideIndex.value === currentSlide.value);
 
 const classPerSlideIndex = computed(() => {
     if (isPrev.value) {
-        return `transform: translateY(-${screenHeight}px); transition-duration: 0.7s;`
+        return `transform: translateY(-${screenHeight.value}px); transition-duration: 0.7s;`
     }
     if (isNext.value) {
-        return `transform: translateY(${screenHeight}px); transition-duration: 1s;`
+        return `transform: translateY(${screenHeight.value}px); transition-duration: 1s;`
     }
     return 'transform: translateY(0); transition-duration: 1s;'
 })
@@ -73,14 +73,15 @@ const scalePerSlideIndex = computed(() => {
     }
 })
 
-
-
+const getInnerHeight = () => screenHeight.value = window?.innerHeight * 1.3;
 const calculatedHeight = computed(() => `height: ${props.imgs.length * (BASIC_WIDTH - 40)}px`)
 
 onMounted(() => {
     requestAnimationFrame(() => {
+        getInnerHeight();
         flag.value = true;
         instanse.value.addEventListener('scroll', onScrollEvent);
+        addEventListener('resize', getInnerHeight)
     })
 
 
