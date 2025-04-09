@@ -20,7 +20,8 @@
                 </Container>
             </div>
         </transition>
-        <div v-if="isMobile" class="w-full relative" :blured="blured" :white="white" :bg="bg" :style="bgStyle">
+        <div v-if="isMobile" class="w-full relative" :blured="blured" :white="white" :bg="bg" :mbg="mbg"
+            :style="bgStyle">
             <div v-observe></div>
             <Container :full="full">
                 <slot />
@@ -47,6 +48,10 @@ const props = defineProps({
         default: false,
     },
     bg: {
+        type: String,
+        default: '',
+    },
+    mbg: {
         type: String,
         default: '',
     },

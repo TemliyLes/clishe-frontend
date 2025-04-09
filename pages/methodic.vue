@@ -1,6 +1,6 @@
 <template>
     <div class="overflow-hidden">
-        <Screen full white bg="none">
+        <Screen full blured white bg="none">
             <MethScreen />
         </Screen>
         <Screen scroll blured>

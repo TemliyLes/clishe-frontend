@@ -16,6 +16,7 @@ import Preloader from './components/other/Preloader.vue';
 import { init, isMobile } from './helpers/break';
 import { mobileScreensList } from './helpers/scroll';
 
+const route = useRoute();
 const app = useNuxtApp();
 
 const mobileBlured = ref();
@@ -29,13 +30,21 @@ const scrollHandler = e => {
       if (e.target.scrollTop <= elem.top) {
         mobileBlured.value = elem.element.getAttribute('blured');
         mobileWhite.value = elem.element.getAttribute('white');
-        mobileStyle.value = elem.element.getAttribute('bg');
+        mobileStyle.value = elem.element.getAttribute('mbg');
         break;
       }
     }
   });
 }
 
+const clearScrollHandler = () => scrollHandler({ target: { scrollTop: 0 } });
+
+watch(() => route.fullPath, () => {
+  requestAnimationFrame(() => {
+    clearScrollHandler();
+  })
+
+});
 
 onMounted(() => {
   init();
@@ -44,6 +53,7 @@ onMounted(() => {
     requestAnimationFrame(() => {
       const scrollContainer = app.vueApp._container;
       scrollContainer.addEventListener('scroll', scrollHandler);
+      clearScrollHandler();
     })
   }
 

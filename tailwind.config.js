@@ -47,7 +47,7 @@ export default {
                 'corner': '120',
                 'menu': '665',
                 'pager': '2222',
-                'bar': '777'
+                'bar': '577'
             }
         }
     }
