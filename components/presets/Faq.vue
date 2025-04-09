@@ -2,7 +2,7 @@
     <div>
         <div class="cursor-pointer" v-for="(item, index) in faq" :key="index" @click="setActive(index)">
             <div class="flex justify-between">
-                <SimpleText big>{{ item.question }}</SimpleText>
+                <SimpleText class="pr-6" big>{{ item.question }}</SimpleText>
                 <Cross :opened="testActive(index)" />
             </div>
 
@@ -33,7 +33,7 @@ const faq = [
         answer: 'Ходят слухи, что выполнив это, можно стать бессмертным.'
     },
     {
-        question: 'Можно выйти',
+        question: 'Можно выйти?',
         answer: 'Только в окно'
     },
     {
