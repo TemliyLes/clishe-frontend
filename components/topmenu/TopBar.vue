@@ -68,7 +68,7 @@ const navs = [
 ];
 const main = {
     title: 'Главная',
-    to: ''
+    to: '/'
 }
 
 const navsWithMain = computed(() => [main, ...navs])

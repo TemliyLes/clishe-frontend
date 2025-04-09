@@ -42,7 +42,7 @@ import { isMobile } from '~/helpers/break';
 import { clear } from '~/helpers/scroll';
 
 onBeforeMount(() => {
-    clear()
+    clear();
 });
 
 
