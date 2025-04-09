@@ -2,7 +2,7 @@
     <div class="fixed h-bar z-bar w-full topmenu" v-if="!isMobile">
         <Container class="z-30">
             <div class="flex justify-between w-full pt-4">
-                <NuxtLink to="/home">
+                <NuxtLink to="/">
                     <Logo class="h-6 -ml-12" :white="whitePower" />
                 </NuxtLink>
                 <div class="transition-all transition duration-700 flex"

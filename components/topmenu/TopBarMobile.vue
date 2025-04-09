@@ -1,7 +1,7 @@
 <template>
     <div class="fixed top-0 h-bar z-bar w-full topmenu transition duration-700" :style="{ 'background-color': ms }">
         <Teleport to="#teleports">
-            <div class="fixed w-full h-screen bg-main top-0 left-0 z-menu pt-24 mobile-menu transition duration-500 ease"
+            <div class="fixed w-full h-dvh bg-main top-0 left-0 z-menu pt-24 mobile-menu transition duration-500 ease"
                 :class="active ? 'translate-x-0' : '-translate-x-full'">
                 <CloseButton class="absolute right-6 top-4" @click="deactivate(false)"></CloseButton>
                 <Container>
@@ -15,7 +15,7 @@
         </Teleport>
         <Container class="z-30">
             <div class="flex justify-between w-full pt-4">
-                <NuxtLink to="/home">
+                <NuxtLink to="/">
                     <Logo class="h-6 -ml-12" :white="whitePower" />
                 </NuxtLink>
                 <div class="transition-all transition duration-700 flex">

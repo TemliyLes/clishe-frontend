@@ -1,11 +1,11 @@
 <template>
-    <div :class="elementClasses" class="fixed z-pager bg-beige top-0 left-0 w-full h-screen transition duration-500">
+    <div :class="elementClasses" class="fixed z-pager bg-beige top-0 left-0 w-full h-dvh transition duration-500">
     </div>
 </template>
 
 <script setup>
 import { useNuxtApp } from '#app';
-import { isMobile } from '~/helpers/break';
+
 
 const ANIMATION_STEP_DURATION = 700;
 

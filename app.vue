@@ -16,7 +16,7 @@ import Preloader from './components/other/Preloader.vue';
 import { init, isMobile } from './helpers/break';
 import { mobileScreensList } from './helpers/scroll';
 
-const route = useRoute();
+// const route = useRoute();
 const app = useNuxtApp();
 
 const mobileBlured = ref();
@@ -39,12 +39,12 @@ const scrollHandler = e => {
 
 const clearScrollHandler = () => scrollHandler({ target: { scrollTop: 0 } });
 
-watch(() => route.fullPath, () => {
-  requestAnimationFrame(() => {
-    clearScrollHandler();
-  })
+// watch(() => route.fullPath, () => {
+//   requestAnimationFrame(() => {
+//     clearScrollHandler();
+//   })
 
-});
+// });
 
 onMounted(() => {
   init();
