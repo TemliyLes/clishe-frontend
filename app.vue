@@ -1,7 +1,7 @@
 <template>
   <div>
     <PageOverlay />
-    <Preloader />
+    <Preloader v-if="!isMobile" />
     <TopBar :mb="mobileBlured" :mw="mobileWhite" :ms="mobileStyle" />
     <NuxtPage />
   </div>

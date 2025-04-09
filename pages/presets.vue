@@ -1,6 +1,6 @@
 <template>
     <div class="relative">
-        <Screen scroll blured>
+        <Screen scroll blured class="sm:pb-0 pb-12">
             <Superheader class="sm:!mt-16 !mt-24">Presets | Color collections</Superheader>
             <PresetCollection />
             <PresetCollection />

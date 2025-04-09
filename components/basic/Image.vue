@@ -5,7 +5,7 @@
 defineProps({
     src: {
         type: String,
-        default: '/'
+        default: ''
     },
     alt: {
         type: String,
