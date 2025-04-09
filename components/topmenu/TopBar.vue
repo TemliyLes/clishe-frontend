@@ -1,5 +1,5 @@
 <template>
-    <div class="fixed h-bar z-50 w-full topmenu" v-if="!isMobile">
+    <div class="fixed h-bar z-bar w-full topmenu" v-if="!isMobile">
         <Container class="z-30">
             <div class="flex justify-between w-full pt-4">
                 <NuxtLink to="/">
@@ -27,7 +27,7 @@
             :class="whitePower ? 'bg-white' : 'bg-grey'">
         </div>
     </div>
-    <TopBarMobile :navs="navsWithMain" v-else />
+    <TopBarMobile :mb="mb" :mw="mw" :ms="ms" :navs="navsWithMain" v-else />
 </template>
 
 <script setup>
@@ -37,6 +37,21 @@ import { isMobile } from '~/helpers/break';
 
 import { currentSlideElement } from '~/helpers/scroll';
 import TopBarMobile from './TopBarMobile.vue';
+
+const props = defineProps({
+    mb: {
+        type: String,
+        default: false,
+    },
+    mw: {
+        type: String,
+        default: false,
+    },
+    ms: {
+        type: String,
+        default: '',
+    },
+})
 
 const whitePower = computed(() => currentSlideElement.value?.getAttribute('white') === 'true');
 const blurPower = computed(() => currentSlideElement.value?.getAttribute('blured') === 'true');

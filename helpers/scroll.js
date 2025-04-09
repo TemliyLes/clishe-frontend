@@ -10,6 +10,8 @@ const currentSlide = ref(0);
 
 const screenList = ref([]);
 
+const mobileScreensList = ref([]);
+
 const pushScreen = (screen) => {
     screenList.value.push(screen);
 }
@@ -41,7 +43,9 @@ const currentSlideElement = computed(() => screenList.value[currentSlide.value])
 
 const clear = () => {
     screenList.value = [];
+    mobileScreensList.value = [];
     currentSlide.value = 0;
 }
 
-export { ANIMATION_DELAY, currentSlide, slideUp, pushScreen, locked, screenList, currentSlideElement, clear }
+
+export { ANIMATION_DELAY, currentSlide, slideUp, pushScreen, locked, screenList, currentSlideElement, clear, mobileScreensList }

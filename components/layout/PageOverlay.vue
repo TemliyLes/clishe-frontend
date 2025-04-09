@@ -5,6 +5,7 @@
 
 <script setup>
 import { useNuxtApp } from '#app';
+import { isMobile } from '~/helpers/break';
 
 const ANIMATION_STEP_DURATION = 700;
 

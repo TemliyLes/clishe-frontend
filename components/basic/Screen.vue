@@ -20,7 +20,8 @@
                 </Container>
             </div>
         </transition>
-        <div v-if="isMobile" class="w-full relative" :blured="blured" :white="white" :style="bgStyle">
+        <div v-if="isMobile" class="w-full relative" :blured="blured" :white="white" :bg="bg" :style="bgStyle">
+            <div v-observe></div>
             <Container :full="full">
                 <slot />
             </Container>
@@ -29,9 +30,10 @@
 </template>
 
 <script setup>
+import { useNuxtApp } from '#app';
 import { isMobile } from '~/helpers/break';
 
-import { pushScreen, currentSlide, screenList, slideUp, locked, ANIMATION_DELAY } from '~/helpers/scroll';
+import { pushScreen, currentSlide, screenList, mobileScreensList, slideUp, locked, ANIMATION_DELAY } from '~/helpers/scroll';
 
 import Container from './Container.vue';
 
@@ -46,7 +48,7 @@ const props = defineProps({
     },
     bg: {
         type: String,
-        default: 'white',
+        default: '',
     },
     blured: {
         type: Boolean,
@@ -147,6 +149,18 @@ const onInit = (e) => {
     inst.value = e;
     pushScreen(e);
 }
+
+const vObserve = {
+    mounted: (e) => {
+        requestAnimationFrame(() => {
+            mobileScreensList.value.push({
+                element: e.parentElement,
+                top: e.parentElement.getBoundingClientRect().bottom,
+            })
+        })
+
+    }
+};
 
 
 </script>
