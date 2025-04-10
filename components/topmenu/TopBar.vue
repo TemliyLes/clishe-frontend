@@ -41,11 +41,11 @@ import TopBarMobile from './TopBarMobile.vue';
 const props = defineProps({
     mb: {
         type: String,
-        default: false,
+        default: '',
     },
     mw: {
         type: String,
-        default: false,
+        default: '',
     },
     ms: {
         type: String,
