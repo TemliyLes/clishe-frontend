@@ -22,6 +22,7 @@ export default {
             height: {
                 'bar': '56px',
                 'button': '44px',
+                'methodics': 'calc(100dvh - 140px)',
             },
             padding: {
                 'container': '16px',

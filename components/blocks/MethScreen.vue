@@ -3,7 +3,7 @@
         <NuxtImg class="absolute -left-px bottom-0 h-screen w-overfull z-minus pointer-events-none"
             src="/bg/methodic-bg.png" alt="Методическое пособие" />
         <Container>
-            <div class="flex justify-between flex-col relative" v-if="flag" :style="heightByScreenHeight">
+            <div class="flex justify-between flex-col relative h-methodics" v-if="flag">
                 <div class="sm:flex">
                     <div class="basis-5/12">
                         <SimpleText :size="[16, 30]" class="text-white">методическое<br />пособие</SimpleText>
@@ -47,7 +47,6 @@ import SimpleText from '../text/SimpleText.vue';
 import Container from '../basic/Container.vue';
 import Superheader from '../text/Superheader.vue';
 const flag = ref(true);
-const heightByScreenHeight = computed(() => `height:${window?.innerHeight - 140}px`);
 
 onMounted(() => {
     addEventListener('resize', () => {
