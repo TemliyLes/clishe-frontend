@@ -1,6 +1,6 @@
 <template>
     <div class="w-full h-screen pt-24">
-        <NuxtImg class="absolute -left-px bottom-0 h-screen w-overfull z-minus pointer-events-none"
+        <NuxtImg class="absolute left-0 bottom-0 h-screen w-overfull z-minus pointer-events-none"
             src="/bg/methodic-bg.png" alt="Методическое пособие" />
         <Container>
             <div class="flex justify-between flex-col relative h-methodics" v-if="flag">
