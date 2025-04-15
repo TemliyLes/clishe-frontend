@@ -51,7 +51,7 @@ watch(() => route.fullPath, () => {
 });
 
 onBeforeMount(async () => {
-  await fetchCollections('preset-collections?populate[presets][populate][0]=BeforeAfterPhotos');
+  await fetchCollections('preset-collections?populate[presets][populate][beforeAfterPhotos][populate][0]=beforePhoto&populate[presets][populate][beforeAfterPhotos][populate][1]=afterPhoto');
 })
 
 onMounted(() => {
@@ -63,9 +63,7 @@ onMounted(() => {
       scrollContainer.addEventListener('scroll', scrollHandler);
       clearScrollHandler();
     })
-  }
-
-  // await getData('preset-collections?populate[presets][populate][0]=BeforeAfterPhotos');
+  };
 });
 
 

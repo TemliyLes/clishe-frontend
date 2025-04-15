@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Title class="!mt-0 mb-6">0{{ index }} {{ data.title }}</Title>
+        <Title class="!mt-0 mb-6">0{{ index }} {{ data.name }}</Title>
         <SimpleText big>{{ data.description }}</SimpleText>
     </div>
 </template>

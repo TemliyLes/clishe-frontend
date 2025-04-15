@@ -38,19 +38,19 @@ import { isMobile } from '~/helpers/break';
 const props = defineProps({
     title: {
         type: String,
-        default: 'Classic color collection',
+        default: 'Название не заполнено',
     },
     description: {
         type: String,
-        default: 'Зимняя коллекция цветов, которая собрала в себе и уют, и спокойствие, и ощущение приближающейся праздничной ночи. тем не менее, каждый из цветов прекрасно впишется в ваш привычный контент и добавит ему нотку киношности.Так просто, но так чарующе. Познакомимся с ними поближе?',
+        default: 'Не заполнено описание',
     },
     colorCount: {
         type: Number,
-        default: 5,
+        default: 0,
     },
     cost: {
         type: Number,
-        default: 1499,
+        default: 0,
     },
     presets: {
         type: Array,

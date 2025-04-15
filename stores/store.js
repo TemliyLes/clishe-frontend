@@ -11,14 +11,15 @@ export const usePresetsStore = defineStore('presetsStore', {
         async fetchCollections(url) {
             const finalURL = HOST + 'api/' + url;
             const { data } = await useFetch(finalURL, headers);
-            if (data.value) {
-                this._presetCollections = data.value;
+            if (data) {
+                this._presetCollections = data;
+                console.log(data);
             }
-            console.log(data);
+
         }
     },
     getters: {
-        presetCollections: () => this._presetCollections
+        presetCollections: (state) => state._presetCollections
     }
 });
 
