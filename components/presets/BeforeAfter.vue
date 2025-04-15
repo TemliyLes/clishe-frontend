@@ -22,12 +22,12 @@
             <div class="absolute h-full top-0 left-0 z-30 overflow-hidden" :style="{ width: `${dragX}px` }">
                 <div class="h-full absolute w-full select-none" :style="canvasWidth">
                     <Image class="pointer-events-none object-cover absolute select-none" :style="canvasWidth"
-                        :src="data.original" />
+                        :src="imgURL(data.beforePhoto.url)" />
                 </div>
             </div>
             <Image
                 class="absolute w-full h-full absolute top-0 left-0 object-cover pointer-events-none grayscale select-none"
-                :src="data.edited" />
+                :src="imgURL(data.afterPhoto.url)" />
         </div>
     </div>
 </template>
@@ -35,6 +35,7 @@
 <script setup>
 import Image from '../basic/Image.vue';
 import Ambydexter from '~/assets/icons/Ambydexter.vue';
+import { imgURL } from '~/helpers/api';
 
 defineProps({
     data: {
