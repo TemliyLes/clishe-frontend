@@ -16,7 +16,9 @@ import Preloader from './components/other/Preloader.vue';
 import { init, isMobile } from './helpers/break';
 import { mobileScreensList } from './helpers/scroll';
 
-import { getData } from './helpers/api';
+import { usePresetsStore } from '~/stores/store';
+const store = usePresetsStore();
+const { fetchCollections } = store;
 
 const route = useRoute();
 const app = useNuxtApp();
@@ -48,6 +50,10 @@ watch(() => route.fullPath, () => {
 
 });
 
+onBeforeMount(async () => {
+  await fetchCollections('preset-collections?populate[presets][populate][0]=BeforeAfterPhotos');
+})
+
 onMounted(() => {
   init();
 
@@ -59,7 +65,7 @@ onMounted(() => {
     })
   }
 
-  getData('preset-collections?populate[presets][populate][0]=BeforeAfterPhotos');
+  // await getData('preset-collections?populate[presets][populate][0]=BeforeAfterPhotos');
 });
 
 
