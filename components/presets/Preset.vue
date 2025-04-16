@@ -12,11 +12,12 @@
             <PresetTitleBlock v-if="!isMobile" :data="data" :index="index" />
             <div>
                 <div class="flex gap-1 mt-1 sm-mt-0 sm:gap-6">
-                    <div v-for="(img, index) in data.slides" :key="index" class="basis-1/3 cursor-pointer relative">
+                    <div v-for="(img, index) in data.beforeAfterPhotos" :key="index"
+                        class="basis-1/3 cursor-pointer relative">
                         <div @click="setActive(index)" class="absolute inset-0 bg-white transition"
                             :class="testActive(index) ? 'opacity-40' : 'opacity-0'">
                         </div>
-                        <Image class="aspect-square object-cover" :src="img.original" />
+                        <Image class="aspect-square object-cover" :src="imgURL(img.beforePhoto.url)" />
                     </div>
                 </div>
             </div>
@@ -29,6 +30,8 @@ import BeforeAfter from './BeforeAfter.vue';
 import PresetTitleBlock from './PresetTitleBlock.vue';
 import Image from '../basic/Image.vue';
 import { isMobile } from '~/helpers/break';
+
+import { imgURL } from '~/helpers/api';
 
 defineProps({
     data: {
