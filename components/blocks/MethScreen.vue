@@ -15,7 +15,7 @@
                         </SimpleText>
                         <div>
                             <SimpleText class="text-white mt-6">
-                                200 страниц чистой пользы<br />
+                                {{ count }} страниц чистой пользы<br />
                                 PDF файл в tg-канале
                             </SimpleText>
                         </div>
@@ -47,7 +47,12 @@ import SimpleText from '../text/SimpleText.vue';
 import Container from '../basic/Container.vue';
 import Superheader from '../text/Superheader.vue';
 const flag = ref(true);
-
+defineProps({
+    count: {
+        type: Number,
+        default: 0
+    }
+})
 onMounted(() => {
     addEventListener('resize', () => {
         flag.value = false;

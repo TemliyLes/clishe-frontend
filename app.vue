@@ -18,7 +18,7 @@ import { mobileScreensList } from './helpers/scroll';
 
 import { usePresetsStore } from '~/stores/store';
 const store = usePresetsStore();
-const { fetchCollections, fetchAboutBlock, fetchWithLove, fetchFAQ } = store;
+const { fetchCollections, fetchAboutBlock, fetchWithLove, fetchFAQ, fetchThemes, fetchMethodic } = store;
 
 const route = useRoute();
 const app = useNuxtApp();
@@ -55,6 +55,8 @@ onBeforeMount(async () => {
   await fetchWithLove();
   await fetchCollections();
   await fetchFAQ();
+  await fetchThemes();
+  await fetchMethodic();
 })
 
 onMounted(() => {

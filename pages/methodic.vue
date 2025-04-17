@@ -1,13 +1,12 @@
 <template>
-    <div class="overflow-hidden">
+    <div class="overflow-hidden" v-if="store.methodic">
         <Screen full blured white bg="none">
-            <MethScreen />
+            <MethScreen :count="count" />
         </Screen>
         <Screen scroll blured>
             <div class="py-12 sm:pb-24">
                 <Header restructed>
-                    Хочется назвать его маленьким подручным в мире эстетики мобильной фотографии, но это описание такое
-                    скромное, что аж грустно. На деле методичка — это кладезь теории.
+                    {{ title }}
                 </Header>
                 <div class="sm:flex sm:my-12 gap-6">
                     <div class="basis-1/4 pr-4">
@@ -15,18 +14,12 @@
                     </div>
                     <div class="basis-3/4">
                         <SimpleText big>
-                            Представьте себе год работы и 200 страниц именно моих знаний — масштабно, правда?
+                            {{ description }}
                         </SimpleText>
-                        <SimpleText class="!my-4">
-                            Она действительно зародилась больше года назад. В марте 2023-го — в день, когда я взялась
-                            за обучение своей первой ученицы. И потому данный труд не может называться скромно: каждая
-                            страничка — частичка меня и моей любви к фото.
+                        <SimpleText v-for="(p, pIndex) in body" :key="pIndex" class="!my-4">
+                            {{ p.children[0]?.text }}
                         </SimpleText>
-                        <SimpleText>
-                            И знаете… так приятно осознавать, что с ней соприкоснулось такое количество людей. with
-                            love. by heart. for you.
-                        </SimpleText>
-                        <div>
+                        <div class="mt-6 sm:mt-12">
                             <div v-for="(item, index) in methodicData" :key="index">
                                 <Title class="!mb-3">{{ item.title }}</Title>
                                 <SimpleText>{{ item.description }}</SimpleText>
@@ -34,13 +27,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="sm:flex sm:pt-12 pt-9">
+                <div class="sm:flex sm:pt-12 pt-9 gap-6">
                     <div class="basis-1/4">
                         <Title class="!mt-0 sticky top-5">Темы</Title>
                     </div>
                     <div class="basis-3/4">
                         <div class="flex gap-2 sm:gap-12" v-for="(theme, themeIndex) in themes" :key="themeIndex">
-                            <SimpleText class="w-4 mb-6">{{ themeIndex + 1 }}</SimpleText>
+                            <SimpleText class="basis-4 shrink-0 mb-6">{{ themeIndex + 1 }}</SimpleText>
                             <SimpleText>{{ theme }}</SimpleText>
                         </div>
                         <div class="flex flex-col gap-6 sm:flex-row sm:justify-left sm:mt-9">
@@ -69,6 +62,9 @@ import Button from '~/components/basic/Button.vue';
 import MethScreen from '~/components/blocks/MethScreen.vue';
 import { clear } from '~/helpers/scroll';
 
+import { usePresetsStore } from '~/stores/store';
+const store = usePresetsStore();
+
 const methodicData = [
     {
         title: 'Что это?',
@@ -84,7 +80,13 @@ const methodicData = [
     }
 ];
 const cost = 5000;
-const themes = ['Основы мобильной съемки', 'Сэлфи', 'Композиция', 'Ракурсы', 'Свет', 'Тьма', 'Фото себя на унитазе', 'Узи почек', 'Основы промышленного шпионажа', 'Визуальная концепция', 'Аудиальная контрацепция', 'Перцептивная апперцепция']
+const themes = store?.themes?.data.map(el => el.theme);
+const title = computed(() => store?.methodic?.data?.title);
+const count = computed(() => store?.methodic?.data?.pageCount);
+const description = computed(() => store?.methodic?.data?.description);
+
+const body = computed(() => store?.methodic?.data?.body);
+
 
 onBeforeMount(() => {
     clear()

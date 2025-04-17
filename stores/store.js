@@ -8,6 +8,8 @@ export const usePresetsStore = defineStore('presetsStore', {
             _aboutWorks: null,
             _withLove: null,
             _faq: null,
+            _themes: null,
+            _methodic: null
         }
     },
     actions: {
@@ -42,6 +44,22 @@ export const usePresetsStore = defineStore('presetsStore', {
             const { data } = await useFetch(finalURL, headers);
             if (data) {
                 this._faq = data;
+            }
+        },
+        async fetchThemes() {
+            const URL = 'themes'
+            const finalURL = HOST + '/api/' + URL;
+            const { data } = await useFetch(finalURL, headers);
+            if (data) {
+                this._themes = data;
+            }
+        },
+        async fetchMethodic() {
+            const URL = 'methodic-page'
+            const finalURL = HOST + '/api/' + URL;
+            const { data } = await useFetch(finalURL, headers);
+            if (data) {
+                this._methodic = data;
                 console.log(data)
             }
         },
@@ -51,6 +69,8 @@ export const usePresetsStore = defineStore('presetsStore', {
         aboutWorks: (state) => state._aboutWorks,
         withLove: (state) => state._withLove,
         faq: (state) => state._faq,
+        themes: (state) => state._themes,
+        methodic: (state) => state._methodic,
     }
 });
 

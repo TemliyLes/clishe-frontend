@@ -7,7 +7,7 @@
             <Screen over blured id="about_screen">
                 <About />
             </Screen>
-            <Screen v-if="aboutImgs" blured scroll :full="isMobile">
+            <Screen blured scroll :full="isMobile">
                 <Horizontal :imgs="aboutImgs" v-if="!isMobile" />
                 <HorizontalMobile :imgs="aboutImgs" v-if="isMobile" />
             </Screen>
