@@ -7,6 +7,7 @@ export const usePresetsStore = defineStore('presetsStore', {
             _presetCollections: null,
             _aboutWorks: null,
             _withLove: null,
+            _faq: null,
         }
     },
     actions: {
@@ -33,7 +34,15 @@ export const usePresetsStore = defineStore('presetsStore', {
             const { data } = await useFetch(finalURL, headers);
             if (data) {
                 this._withLove = data;
-                // console.log(data)
+            }
+        },
+        async fetchFAQ() {
+            const URL = 'question-answers'
+            const finalURL = HOST + '/api/' + URL;
+            const { data } = await useFetch(finalURL, headers);
+            if (data) {
+                this._faq = data;
+                console.log(data)
             }
         },
     },
@@ -41,6 +50,7 @@ export const usePresetsStore = defineStore('presetsStore', {
         presetCollections: (state) => state._presetCollections,
         aboutWorks: (state) => state._aboutWorks,
         withLove: (state) => state._withLove,
+        faq: (state) => state._faq,
     }
 });
 
