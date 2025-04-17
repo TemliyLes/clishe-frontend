@@ -3,7 +3,6 @@ export default {
         extend: {
             aspectRatio: {
                 'mainscreen': '342/201',
-                'mainscreen-d': '1320/382',
                 'method': '325/388',
                 'befafter': '538/606',
             },
@@ -22,6 +21,7 @@ export default {
             height: {
                 'bar': '56px',
                 'button': '44px',
+                'mainscreen': 'calc(100dvh - 300px)',
                 'methodics': 'calc(100dvh - 140px)',
             },
             padding: {
