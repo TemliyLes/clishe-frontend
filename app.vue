@@ -18,7 +18,7 @@ import { mobileScreensList } from './helpers/scroll';
 
 import { usePresetsStore } from '~/stores/store';
 const store = usePresetsStore();
-const { fetchCollections } = store;
+const { fetchCollections, fetchAboutBlock, fetchWithLove } = store;
 
 const route = useRoute();
 const app = useNuxtApp();
@@ -51,7 +51,9 @@ watch(() => route.fullPath, () => {
 });
 
 onBeforeMount(async () => {
-  await fetchCollections('preset-collections?populate[presets][populate][beforeAfterPhotos][populate][0]=beforePhoto&populate[presets][populate][beforeAfterPhotos][populate][1]=afterPhoto');
+  await fetchAboutBlock();
+  await fetchWithLove();
+  await fetchCollections();
 })
 
 onMounted(() => {

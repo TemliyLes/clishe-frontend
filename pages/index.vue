@@ -1,22 +1,22 @@
 <template>
     <div>
         <div class="bg-white relative overflow-hidden">
-            <!-- <Screen bg="#E8E4D9" mbg="#E8E4D9" class="z-30">
+            <Screen bg="#E8E4D9" mbg="#E8E4D9" class="z-30">
                 <StartScreen class=" pt-16 pb-4 sm:py-0" />
             </Screen>
             <Screen over blured id="about_screen">
                 <About />
             </Screen>
-            <Screen blured scroll :full="isMobile">
-                <Horizontal :imgs="imgs" v-if="!isMobile" />
-                <HorizontalMobile :imgs="imgs" v-if="isMobile" />
+            <Screen v-if="aboutImgs" blured scroll :full="isMobile">
+                <Horizontal :imgs="aboutImgs" v-if="!isMobile" />
+                <HorizontalMobile :imgs="aboutImgs" v-if="isMobile" />
             </Screen>
             <Screen white blured full>
                 <WithLove />
             </Screen>
             <Screen blured>
                 <Methodic />
-            </Screen> -->
+            </Screen>
             <Screen scroll blured>
                 <PresetsDemo />
             </Screen>
@@ -40,18 +40,15 @@ import Footer from '~/components/footer/Footer.vue';
 
 import { isMobile } from '~/helpers/break';
 import { clear } from '~/helpers/scroll';
+import { imgURL } from '~/helpers/api';
 
 onBeforeMount(() => {
     clear();
 });
+import { usePresetsStore } from '~/stores/store';
+const store = usePresetsStore();
 
-
-const imgs = [
-    'https://www.ukorona.ru/upload/adwex.minified/webp/97e/85/97e3e16efe3b1427aea69b8fa1c9c929.webp',
-    'https://img.freepik.com/free-photo/side-view-geese-grass_23-2148580043.jpg?semt=ais_hybrid&w=740',
-    'https://cdn.botanichka.ru/wp-content/uploads/2021/02/domashnie-gusi-luchshie-porodyi-i-osobennosti-soderzhaniya-01.jpg',
-    'https://ciplenok.com/content/uploads/images/domashnie-gusi.jpg',
-    'https://house-animals.ru/sites/default/files/media/user-1/gusi-dvor.jpg'
-];
+const aboutMedia = store.aboutWorks?.data?.works;
+const aboutImgs = aboutMedia?.map(el => imgURL(el.url));
 
 </script>
