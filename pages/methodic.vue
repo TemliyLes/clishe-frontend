@@ -27,7 +27,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="sm:flex sm:pt-12 pt-9 gap-6">
+                <div class="sm:flex sm:pt-12 pt-9 gap-6" v-if="themes">
                     <div class="basis-1/4">
                         <Title class="!mt-0 sticky top-5">Темы</Title>
                     </div>
@@ -38,7 +38,7 @@
                         </div>
                         <div class="flex flex-col gap-6 sm:flex-row sm:justify-left sm:mt-9">
                             <Button title="Купить" class="w-36" />
-                            <SimpleText class="sm:mt-1">Стоимость: {{ cost }}</SimpleText>
+                            <SimpleText class="sm:mt-1">Стоимость: {{ cost }} ₽</SimpleText>
                         </div>
                     </div>
 
@@ -65,28 +65,27 @@ import { clear } from '~/helpers/scroll';
 import { usePresetsStore } from '~/stores/store';
 const store = usePresetsStore();
 
-const methodicData = [
-    {
-        title: 'Что это?',
-        description: 'PDF файл в tg-канале'
-    },
-    {
-        title: 'Сколько информации?',
-        description: '200 страниц чистой пользы (и текст, и картинки)'
-    },
-    {
-        title: 'Кому подойдет?',
-        description: 'Любому человеку, который хочет получить знания по мобильной фотографии'
-    }
-];
-const cost = 5000;
-const themes = store?.themes?.data.map(el => el.theme);
+const themes = store?.themes?.data?.map(el => el.theme);
 const title = computed(() => store?.methodic?.data?.title);
 const count = computed(() => store?.methodic?.data?.pageCount);
 const description = computed(() => store?.methodic?.data?.description);
-
+const cost = computed(() => store?.methodic?.data?.price);
 const body = computed(() => store?.methodic?.data?.body);
 
+const methodicData = computed(() => [
+    {
+        title: 'Что это?',
+        description: store?.methodic?.data?.what
+    },
+    {
+        title: 'Сколько информации?',
+        description: store?.methodic?.data?.how
+    },
+    {
+        title: 'Кому подойдет?',
+        description: store?.methodic?.data?.whom
+    }
+]);
 
 onBeforeMount(() => {
     clear()
