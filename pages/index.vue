@@ -8,8 +8,8 @@
                 <About />
             </Screen>
             <Screen blured scroll :full="isMobile">
-                <Horizontal :imgs="aboutImgs" v-if="!isMobile" />
-                <HorizontalMobile :imgs="aboutImgs" v-if="isMobile" />
+                <Horizontal :imgs="aboutMedia" v-if="!isMobile" />
+                <HorizontalMobile :imgs="aboutMedia" v-if="isMobile" />
             </Screen>
             <Screen white blured full>
                 <WithLove />
@@ -26,7 +26,7 @@
 </template>
 
 <script setup>
-
+import { computed } from 'vue';
 import Screen from '~/components/basic/Screen.vue';
 
 import StartScreen from '~/components/blocks/StartScreen.vue';
@@ -48,7 +48,9 @@ onBeforeMount(() => {
 import { usePresetsStore } from '~/stores/store';
 const store = usePresetsStore();
 
-const aboutMedia = store.aboutWorks?.data?.works;
-const aboutImgs = aboutMedia?.map(el => imgURL(el.url));
+const aboutMedia = computed(() => store?.aboutWorks?.data?.works?.map(el => imgURL(el.url)));
+console.log(aboutMedia, 'aboutMedia');
+// const aboutImgs = computed(() => aboutMedia.value);
 
+// console.log(aboutImgs, 'aboutImgs');
 </script>

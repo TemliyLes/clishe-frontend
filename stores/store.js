@@ -26,6 +26,7 @@ export const usePresetsStore = defineStore('presetsStore', {
             const URL = 'works-in-about-block?populate[0]=works'
             const finalURL = HOST + '/api/' + URL;
             const { data } = await useFetch(finalURL, headers);
+            console.log(data, 'works in about');
             if (data) {
                 this._aboutWorks = data;
             }
