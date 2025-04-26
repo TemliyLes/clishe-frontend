@@ -1,5 +1,7 @@
 import { ref, watch } from 'vue';
 import { isMobile } from './break';
+import { useNuxtApp } from '#app';
+
 
 const ANIMATION_DELAY = 700;
 const DELAY_AFTER_SWAP = 300;
@@ -9,6 +11,8 @@ const locked = ref(false);
 const currentSlide = ref(0);
 
 const scrollY = ref(0);
+
+
 
 const screenList = ref([]);
 
@@ -49,5 +53,12 @@ const clear = () => {
     currentSlide.value = 0;
 }
 
+const scrollToElement = (elem) => {
+    const app = useNuxtApp();
+    const scrolledBlock = isMobile.value ? app.vueApp._container : currentSlideElement.value;
+    scrolledBlock.style.scrollBehavior = 'smooth';
+    const shift = isMobile.value ? -20 : 80;
+    scrolledBlock.scrollTop = elem?.offsetTop - shift;
+}
 
-export { ANIMATION_DELAY, currentSlide, slideUp, pushScreen, locked, screenList, currentSlideElement, clear, mobileScreensList, scrollY }
+export { ANIMATION_DELAY, currentSlide, slideUp, pushScreen, locked, screenList, currentSlideElement, clear, mobileScreensList, scrollY, scrollToElement }
