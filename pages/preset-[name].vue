@@ -2,9 +2,12 @@
     <div>
         <Screen blured scroll>
             <Superheader class="sm:!mt-16 !mt-24">{{ name }}</Superheader>
-            <Header class="!mt-12" v-if="data">
-                {{ data.detailPageTitle }}
-            </Header>
+            <div v-if="data">
+                <Header restructed static :static-active="activeHeader" class="!mt-12">
+                    {{ data?.detailPageTitle }}
+                </Header>
+            </div>
+
             <PresetCollection v-if="data" :has-more-btn="false" :title="data.name" :description="data.description"
                 :presets="data.presets" :color-count="data.colorsCount" :cost="data.cost" />
             <div
@@ -41,7 +44,7 @@ import { imgURL } from '~/helpers/api';
 import { usePresetsStore } from '#imports';
 const store = usePresetsStore();
 
-
+const activeHeader = ref(false);
 
 const route = useRoute();
 const name = route.params.name;
@@ -56,6 +59,12 @@ onBeforeMount(() => {
         store.fetchCollections();
     }
 });
+
+onMounted(() => {
+    setTimeout(() => {
+        activeHeader.value = true;
+    }, 2500)
+})
 
 const data = computed(() => store?.presetCollections?.data?.find(el => el.name.toLowerCase().replace(" ", "-") === name));
 const imgSrc = computed(() => data.value?.detailPageImage?.[0]?.url)
