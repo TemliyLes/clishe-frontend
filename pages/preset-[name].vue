@@ -8,12 +8,12 @@
             <PresetCollection v-if="data" :has-more-btn="false" :title="data.name" :description="data.description"
                 :presets="data.presets" :color-count="data.colorsCount" :cost="data.cost" />
             <div
-                class="w-full mt-9 sm:mt-0   sm:h-screen h-96 absolute overflow-hidden -ml-container sm:-ml-container-d pt-screen">
-                <img v-if="data" class="object-cover h-full w-full" :src="imgURL(imgSrc)" />
+                class="w-full mt-9 sm:mt-0 sm:h-screen h-96 absolute overflow-hidden -ml-container sm:-ml-container-d pt-screen">
+                <img class="object-cover h-full w-full" :src="imgURL(imgSrc)" />
             </div>
             <div class="h-96 sm:h-screen"></div>
             <div class="pt-16 sm:min-h-[650px] sm:pb-72">
-                <div class="sm:flex gap-4">
+                <div class="block sm:flex gap-4">
                     <div class="basis-1/3">
                         <Title class="!mt-1">часто задаваемые вопросы</Title>
                     </div>

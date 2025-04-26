@@ -9,10 +9,14 @@
                 <Header class="sm:!mb-16 mb-4 sm:-ml-1">Методическое пособие</Header>
                 <div class="sm:flex justify-between">
                     <div class="basis-[56.25%]">
-                        <SimpleText class="leading-method-big" :style="fontSize(16, 18)">{{ paragraphs }}</SimpleText>
+                        <SimpleText class="leading-method-big" :style="fontSize(16, 18)"
+                            v-for="(p, pIndex) in paragraphs" :key="pIndex">{{ p.children[0]?.text }}
+                        </SimpleText>
                     </div>
                     <div class="basis-[37.5%] mt-1">
-                        <SimpleText class="leading-method" :style="fontSize(14, 16)">{{ another }}</SimpleText>
+                        <SimpleText class="leading-method-big" :style="fontSize(14, 16)" v-for="(s, sIndex) in another"
+                            :key="sIndex">{{ s.children[0]?.text }}
+                        </SimpleText>
                     </div>
                 </div>
                 <NuxtLink to="/methodic"><Button class="my-7 sm:mt-16 w-[157px]" /></NuxtLink>
@@ -32,14 +36,8 @@ import { fontSize } from '~/helpers/freeze';
 import { usePresetsStore } from '~/stores/store';
 const store = usePresetsStore();
 
-const paragraphs = computed(() => store?.methodic?.data?.title);
+const paragraphs = computed(() => store?.methodic?.data?.shortBlockTitle);
 
-const another = computed(() => store?.methodic?.data?.description);
-
-// const paragraphs = [
-//     'Хочется назвать его маленьким подручным в мире эстетики мобильной фотографии, но это описание такое скромное, что аж грустно.',
-//     'На деле методичка — это кладезь теории. Представьте себе год работы и 200 страниц именно моих знаний — масштабно, правда?',
-// ];
-// const another = 'Она действительно зародилась больше года назад. В марте 2023-го — в день, когда я взялась за обучение своей первой ученицы. И потому данный труд не может называться скромно: каждая страничка — частичка меня и моей любви к фото.';
+const another = computed(() => store?.methodic?.data?.shortBlockDescription);
 
 </script>
