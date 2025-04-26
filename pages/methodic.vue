@@ -5,7 +5,7 @@
         </Screen>
         <Screen scroll blured>
             <div class="py-12 sm:pb-24">
-                <Header restructed>
+                <Header restructed :static="isMobile" :static-active="isActiveHeader">
                     {{ title }}
                 </Header>
                 <div class="sm:flex sm:my-12 gap-6">
@@ -60,10 +60,14 @@ import Footer from '~/components/footer/Footer.vue';
 import Button from '~/components/basic/Button.vue';
 
 import MethScreen from '~/components/blocks/MethScreen.vue';
-import { clear } from '~/helpers/scroll';
+import { clear, scrollY } from '~/helpers/scroll';
 
 import { usePresetsStore } from '~/stores/store';
+import { isMobile } from '~/helpers/break';
+
 const store = usePresetsStore();
+
+const isActiveHeader = computed(() => scrollY.value > window?.innerHeight / 2);
 
 const themes = computed(() => store?.themes?.data?.map(el => el.theme));
 const title = computed(() => store?.methodic?.data?.title);

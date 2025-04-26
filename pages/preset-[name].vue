@@ -63,7 +63,7 @@ onBeforeMount(() => {
 onMounted(() => {
     setTimeout(() => {
         activeHeader.value = true;
-    }, 2500)
+    }, 1500)
 })
 
 const data = computed(() => store?.presetCollections?.data?.find(el => el.name.toLowerCase().replace(" ", "-") === name));

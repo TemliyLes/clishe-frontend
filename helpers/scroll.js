@@ -8,6 +8,8 @@ const locked = ref(false);
 
 const currentSlide = ref(0);
 
+const scrollY = ref(0);
+
 const screenList = ref([]);
 
 const mobileScreensList = ref([]);
@@ -48,4 +50,4 @@ const clear = () => {
 }
 
 
-export { ANIMATION_DELAY, currentSlide, slideUp, pushScreen, locked, screenList, currentSlideElement, clear, mobileScreensList }
+export { ANIMATION_DELAY, currentSlide, slideUp, pushScreen, locked, screenList, currentSlideElement, clear, mobileScreensList, scrollY }

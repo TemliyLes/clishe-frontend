@@ -1,11 +1,10 @@
 <template>
-    <div v-if="flag" :class="staticActive ? 'group static-active' : ''">
+    <div v-if="flag" class="group" :class="staticActive ? 'static-active' : 'static-out'">
         <h2 v-restruct class="text-main -ml-0.5" :class="classList" :style="[fontSize(24, 56)]">
             <slot />
         </h2>
         <h2 :class="classList" :style="fontSize(24, 56)" v-if="restructed">
-            <span
-                class="transition duration-700 transition-all text-light group-[.is-next]:!delay-300 group-[.is-prev]:!delay-300"
+            <span class="transition duration-700 transition-all text-light"
                 :style="[fontSize(24, 56), delayByIndex(index)]" :class="[classList, classByStatic]"
                 v-for="(item, index) in restructedArr" :key="index">
                 {{ item }}&nbsp;
@@ -41,7 +40,7 @@ const restructedArr = ref([]);
 
 const delayByIndex = (index) => `transition-delay: ${index * DELAY_BASIC}ms`;
 
-const classByStatic = computed(() => !props.static ? 'group-[.is-active]:text-main' : 'group-[.static-active]:text-main')
+const classByStatic = computed(() => !props.static ? 'group-[.is-active]:text-main  group-[.is-next]:!delay-300 group-[.is-prev]:!delay-300' : 'group-[.static-active]:text-main group-[.static-out]:!delay-300')
 
 const vRestruct = {
     mounted: e => {
