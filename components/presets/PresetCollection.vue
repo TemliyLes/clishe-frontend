@@ -2,7 +2,7 @@
     <div class="mt-12 sm:my-16">
         <SimpleText big class="mb-4 sm:mb-6">{{ title }}</SimpleText>
         <SimpleText>{{ description }}</SimpleText>
-        <div class="relative mt-12 mb-4 sm:my-12">
+        <div class="relative mt-12 mb-4 sm:my-12 transition transition-all" ref="slideContainer">
             <div v-for="(preset, index) in presets" :key="index" class="transition duration-700"
                 :class="[index ? 'absolute top-0 inset-0' : 'relative', testActive(index) ? 'opacity-100 z-40' : 'opacity-0 z-20']">
                 <Preset :data="preset" :index="index + 1"></Preset>
@@ -113,6 +113,8 @@ const props = defineProps({
     },
 });
 
+const slideContainer = ref(null);
+
 const activeIndex = ref(0);
 
 const testActive = (index) => index === activeIndex.value;
@@ -134,4 +136,13 @@ const trimmed = computed(() => props.title.replaceAll(' ', '-').toLowerCase());
 
 const basisMobile = computed(() => isMobile.value ? 'basis-1/2' : '')
 
+
+watch(() => activeIndex.value, val => {
+    if (isMobile.value) {
+        const childs = slideContainer.value?.children;
+        const innerContainer = childs[val]?.children[0];
+        const realHeight = innerContainer.offsetHeight;
+        slideContainer.value.style.height = realHeight + 'px'
+    }
+});
 </script>

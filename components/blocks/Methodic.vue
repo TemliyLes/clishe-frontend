@@ -9,9 +9,7 @@
                 <Header class="sm:!mb-16 mb-4 sm:-ml-1">Методическое пособие</Header>
                 <div class="sm:flex justify-between">
                     <div class="basis-[56.25%]">
-                        <div v-for="(p, index) in paragraphs" :key="index">
-                            <SimpleText class="leading-method-big" :style="fontSize(16, 18)">{{ p }}</SimpleText>
-                        </div>
+                        <SimpleText class="leading-method-big" :style="fontSize(16, 18)">{{ paragraphs }}</SimpleText>
                     </div>
                     <div class="basis-[37.5%] mt-1">
                         <SimpleText class="leading-method" :style="fontSize(14, 16)">{{ another }}</SimpleText>
@@ -31,10 +29,17 @@ import Button from '../basic/Button.vue';
 
 import { fontSize } from '~/helpers/freeze';
 
-const paragraphs = [
-    'Хочется назвать его маленьким подручным в мире эстетики мобильной фотографии, но это описание такое скромное, что аж грустно.',
-    'На деле методичка — это кладезь теории. Представьте себе год работы и 200 страниц именно моих знаний — масштабно, правда?',
-];
-const another = 'Она действительно зародилась больше года назад. В марте 2023-го — в день, когда я взялась за обучение своей первой ученицы. И потому данный труд не может называться скромно: каждая страничка — частичка меня и моей любви к фото.';
+import { usePresetsStore } from '~/stores/store';
+const store = usePresetsStore();
+
+const paragraphs = computed(() => store?.methodic?.data?.title);
+
+const another = computed(() => store?.methodic?.data?.description);
+
+// const paragraphs = [
+//     'Хочется назвать его маленьким подручным в мире эстетики мобильной фотографии, но это описание такое скромное, что аж грустно.',
+//     'На деле методичка — это кладезь теории. Представьте себе год работы и 200 страниц именно моих знаний — масштабно, правда?',
+// ];
+// const another = 'Она действительно зародилась больше года назад. В марте 2023-го — в день, когда я взялась за обучение своей первой ученицы. И потому данный труд не может называться скромно: каждая страничка — частичка меня и моей любви к фото.';
 
 </script>

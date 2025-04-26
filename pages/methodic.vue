@@ -65,7 +65,7 @@ import { clear } from '~/helpers/scroll';
 import { usePresetsStore } from '~/stores/store';
 const store = usePresetsStore();
 
-const themes = store?.themes?.data?.map(el => el.theme);
+const themes = computed(() => store?.themes?.data?.map(el => el.theme));
 const title = computed(() => store?.methodic?.data?.title);
 const count = computed(() => store?.methodic?.data?.pageCount);
 const description = computed(() => store?.methodic?.data?.description);

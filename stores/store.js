@@ -53,6 +53,7 @@ export const usePresetsStore = defineStore('presetsStore', {
             const { data } = await useFetch(finalURL, headers);
             if (data) {
                 this._themes = data;
+                console.log(data)
             }
         },
         async fetchMethodic() {
@@ -61,7 +62,6 @@ export const usePresetsStore = defineStore('presetsStore', {
             const { data } = await useFetch(finalURL, headers);
             if (data) {
                 this._methodic = data;
-                console.log(data)
             }
         },
     },

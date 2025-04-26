@@ -1,10 +1,12 @@
 <template>
     <div class="relative">
         <Screen scroll blured class="sm:pb-0 pb-12">
-            <Superheader class="sm:!mt-16 !mt-24">Presets | Color collections</Superheader>
-            <PresetCollection />
-            <PresetCollection />
-            <PresetCollection />
+            <div v-if="store.presetCollections">
+                <div v-for="(pc, index) in store.presetCollections.data" :key="index">
+                    <PresetCollection :title="pc.name" :description="pc.description" :presets="pc.presets"
+                        :color-count="pc.colorsCount" :cost="pc.cost" />
+                </div>
+            </div>
         </Screen>
         <Footer />
     </div>
@@ -20,5 +22,7 @@ import { clear } from '~/helpers/scroll';
 
 onBeforeMount(() => {
     clear()
-})
+});
+import { usePresetsStore } from '~/stores/store';
+const store = usePresetsStore();
 </script>

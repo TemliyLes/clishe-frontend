@@ -49,8 +49,5 @@ import { usePresetsStore } from '~/stores/store';
 const store = usePresetsStore();
 
 const aboutMedia = computed(() => store?.aboutWorks?.data?.works?.map(el => imgURL(el.url)));
-console.log(aboutMedia, 'aboutMedia');
-// const aboutImgs = computed(() => aboutMedia.value);
 
-// console.log(aboutImgs, 'aboutImgs');
 </script>
