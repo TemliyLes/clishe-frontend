@@ -14,7 +14,7 @@ export const usePresetsStore = defineStore('presetsStore', {
     },
     actions: {
         async fetchCollections() {
-            const URL = 'preset-collections?populate[presets][populate][beforeAfterPhotos][populate][0]=beforePhoto&populate[presets][populate][beforeAfterPhotos][populate][1]=afterPhoto'
+            const URL = 'preset-collections?populate[detailPageImage]=true&populate[presets][populate][beforeAfterPhotos][populate][0]=beforePhoto&populate[presets][populate][beforeAfterPhotos][populate][1]=afterPhoto'
             const finalURL = HOST + '/api/' + URL;
             const { data } = await useFetch(finalURL, headers);
             if (data) {

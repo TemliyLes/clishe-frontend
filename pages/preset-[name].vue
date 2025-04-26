@@ -2,16 +2,14 @@
     <div>
         <Screen blured scroll>
             <Superheader class="sm:!mt-16 !mt-24">{{ name }}</Superheader>
-            <Header class="!mt-12">
-                Коллекция цветов на все времена и сезоны — вечная классика в непостоянном мире
-                творчества.В нее
-                вошли самые лаконичные цветовые решения. Давайте пару слов о каждом.
+            <Header class="!mt-12" v-if="data">
+                {{ data.detailPageTitle }}
             </Header>
-            <PresetCollection />
+            <PresetCollection v-if="data" :has-more-btn="false" :title="data.name" :description="data.description"
+                :presets="data.presets" :color-count="data.colorsCount" :cost="data.cost" />
             <div
                 class="w-full mt-9 sm:mt-0   sm:h-screen h-96 absolute overflow-hidden -ml-container sm:-ml-container-d pt-screen">
-                <img class="object-cover h-full"
-                    src="https://media.istockphoto.com/id/473046084/ru/%D1%84%D0%BE%D1%82%D0%BE/%D0%B3%D0%B5%D1%82%D1%82%D0%BE-%D0%BA%D1%80%D0%B0%D1%81%D0%BE%D1%82%D1%8B.jpg?s=2048x2048&w=is&k=20&c=a1zcNz4erQhX_8A2Y2HzTY6JDfSqtgAT5c4AGwXFy7o=" />
+                <img v-if="data" class="object-cover h-full w-full" :src="imgURL(imgSrc)" />
             </div>
             <div class="h-96 sm:h-screen"></div>
             <div class="pt-16 sm:min-h-[650px] sm:pb-72">
@@ -38,12 +36,27 @@ import Title from '~/components/text/Title.vue';
 import Faq from '~/components/presets/Faq.vue';
 import Footer from '~/components/footer/Footer.vue';
 
+import { imgURL } from '~/helpers/api';
+
+import { usePresetsStore } from '#imports';
+const store = usePresetsStore();
+
+
+
 const route = useRoute();
 const name = route.params.name;
+
+
 
 import { clear } from '~/helpers/scroll';
 
 onBeforeMount(() => {
-    clear()
+    clear();
+    if (!store.presetCollections) {
+        store.fetchCollections();
+    }
 });
+
+const data = computed(() => store?.presetCollections?.data?.find(el => el.name.toLowerCase().replace(" ", "-") === name));
+const imgSrc = computed(() => data.value?.detailPageImage?.[0]?.url)
 </script>

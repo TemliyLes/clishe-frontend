@@ -1,9 +1,6 @@
 <template>
     <div class="pt-16 pb-8 sm:py-12">
         <Header>Presets | Color collections</Header>
-        <!-- <PresetCollection></PresetCollection> -->
-        <!-- <PresetCollection></PresetCollection> -->
-        <!-- {{ store.presetCollections }} -->
         <div v-if="store.presetCollections">
             <div v-for="(pc, index) in store.presetCollections.data" :key="index">
                 <PresetCollection :title="pc.name" :description="pc.description" :presets="pc.presets"

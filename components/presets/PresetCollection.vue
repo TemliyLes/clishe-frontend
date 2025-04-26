@@ -21,7 +21,7 @@
 
         <div class="flex gap-4 my-3 sm:my-12">
             <Button :class="basisMobile" title="Купить"></Button>
-            <NuxtLink :class="basisMobile" :to="`preset-${trimmed}`">
+            <NuxtLink :class="basisMobile" :to="`preset-${trimmed}`" v-if="hasMoreBtn">
                 <Button white></Button>
             </NuxtLink>
         </div>
@@ -51,6 +51,10 @@ const props = defineProps({
     cost: {
         type: Number,
         default: 0,
+    },
+    hasMoreBtn: {
+        type: Boolean,
+        default: true
     },
     presets: {
         type: Array,
