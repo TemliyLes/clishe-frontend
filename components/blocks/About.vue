@@ -1,7 +1,7 @@
 <template>
     <div>
         <Title>About</Title>
-        <Header restructed>
+        <Header restructed :static="isMobile" :static-active="isActiveHeader">
             Cliche academy — это академия мобильной фотографии без рамок для творчества. И именно этот факт позволяет
             академии носить имя Cliche.
         </Header>
@@ -29,4 +29,8 @@
 import Title from '../text/Title.vue';
 import Header from '../text/Header.vue';
 import SimpleText from '../text/SimpleText.vue';
+import { scrollY } from '~/helpers/scroll';
+import { isMobile } from '~/helpers/break';
+
+const isActiveHeader = computed(() => scrollY.value > 80);
 </script>
