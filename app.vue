@@ -55,12 +55,19 @@ watch(() => route.fullPath, () => {
 });
 
 onBeforeMount(async () => {
-  await fetchAboutBlock();
-  await fetchWithLove();
-  await fetchCollections();
-  await fetchFAQ();
-  await fetchThemes();
-  await fetchMethodic();
+  const pass = window.prompt("Введите пароль");
+  if (pass === '322329') {
+    await fetchAboutBlock();
+    await fetchWithLove();
+    await fetchCollections();
+    await fetchFAQ();
+    await fetchThemes();
+    await fetchMethodic();
+  } else {
+    document.body.innerHTML = 'Увы'
+  }
+
+
 })
 
 onMounted(() => {
