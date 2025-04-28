@@ -1,9 +1,9 @@
 <template>
     <div class="mt-12 sm:my-16">
-        <SimpleText big class="mb-4 sm:mb-6">{{ title }}</SimpleText>
-        <SimpleText>{{ description }}</SimpleText>
+        <SimpleText big class="mb-4 sm:mb-6">{{ collection.name }}</SimpleText>
+        <SimpleText>{{ collection.description }}</SimpleText>
         <div class="relative mt-12 mb-4 sm:my-12 transition transition-all" ref="slideContainer">
-            <div v-for="(preset, index) in presets" :key="index" class="transition duration-700"
+            <div v-for="(preset, index) in collection.presets" :key="index" class="transition duration-700"
                 :class="[index ? 'absolute top-0 inset-0' : 'relative', testActive(index) ? 'opacity-100 z-40' : 'opacity-0 z-20']">
                 <Preset :data="preset" :index="index + 1"></Preset>
             </div>
@@ -16,11 +16,11 @@
                 </div>
             </div>
         </div>
-        <SimpleText>Количество цветов: {{ colorCount }}</SimpleText>
-        <SimpleText>Стоимость: {{ cost }}</SimpleText>
+        <SimpleText>Количество цветов: {{ collection.colorCount }}</SimpleText>
+        <SimpleText>Стоимость: {{ collection.cost }}</SimpleText>
 
         <div class="flex gap-4 my-3 sm:my-12">
-            <Button :class="basisMobile" title="Купить"></Button>
+            <Button @click="addToBasket(collection)" :class="basisMobile" title="Купить"></Button>
             <NuxtLink :class="basisMobile" :to="`preset-${trimmed}`" v-if="hasMoreBtn">
                 <Button white></Button>
             </NuxtLink>
@@ -35,86 +35,16 @@ import SimpleText from '../text/SimpleText.vue';
 import Button from '../basic/Button.vue';
 import { isMobile } from '~/helpers/break';
 
+import { addToBasket } from '~/helpers/sail';
 const props = defineProps({
-    title: {
-        type: String,
-        default: 'Название не заполнено',
-    },
-    description: {
-        type: String,
-        default: 'Не заполнено описание',
-    },
-    colorCount: {
-        type: Number,
-        default: 0,
-    },
-    cost: {
-        type: Number,
-        default: 0,
+    collection: {
+        type: Object,
+        default: () => { },
     },
     hasMoreBtn: {
         type: Boolean,
         default: true
-    },
-    presets: {
-        type: Array,
-        default: () => [
-            {
-                title: 'Souffle',
-                description: 'Перед вами soufflé — самый лаконичный, нежный и естественный. Наша маленькая любовь на каждый день.',
-                slides: [
-                    {
-                        original: 'https://storage.yandexcloud.net/storage.yasno.media/nat-geo/images/2020/6/25/0fc978aba29e466e8eb4ffc946532d5e.max-1200x800.jpg',
-                        edited: 'https://storage.yandexcloud.net/storage.yasno.media/nat-geo/images/2020/6/25/0fc978aba29e466e8eb4ffc946532d5e.max-1200x800.jpg',
-                    },
-                    {
-                        original: 'https://cs9.pikabu.ru/post_img/2018/07/27/1/1532645232138489893.jpg',
-                        edited: 'https://cs9.pikabu.ru/post_img/2018/07/27/1/1532645232138489893.jpg',
-                    },
-                    {
-                        original: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Anser_anser_2_%28Piotr_Kuczynski%29.jpg/1200px-Anser_anser_2_%28Piotr_Kuczynski%29.jpg',
-                        edited: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Anser_anser_2_%28Piotr_Kuczynski%29.jpg/1200px-Anser_anser_2_%28Piotr_Kuczynski%29.jpg',
-                    },
-                ]
-            },
-            {
-                title: 'Preffle',
-                description: 'Перед вами Preffle , бывают пресеты и получше, но этот пресет всем пресетам пресет. Присядь, иначе рухнешь.',
-                slides: [
-                    {
-                        original: 'https://stihi.ru/pics/2020/11/13/9150.jpg',
-                        edited: 'https://stihi.ru/pics/2020/11/13/9150.jpg',
-                    },
-                    {
-                        original: 'https://ic.pics.livejournal.com/shadberry_game/69190420/203256/203256_900.jpg',
-                        edited: 'https://ic.pics.livejournal.com/shadberry_game/69190420/203256/203256_900.jpg',
-                    },
-                    {
-                        original: 'https://ic.pics.livejournal.com/annataliya/9442011/18981/18981_800.jpg',
-                        edited: 'https://ic.pics.livejournal.com/annataliya/9442011/18981/18981_800.jpg',
-                    },
-                ]
-            },
-            {
-                title: 'Huyaffle',
-                description: 'Перед вами Huyaffle - самый лаконичный, нежный и естественный Huyaffle из все Хуяфлов, шо ты мог себе помыслить',
-                slides: [
-                    {
-                        original: 'https://gavrishprof.ru/sites/default/files/images/pub/gavrishprof_belokachannaya_kapusta_ot_posadki_do_uborki_rassada.jpg',
-                        edited: 'https://gavrishprof.ru/sites/default/files/images/pub/gavrishprof_belokachannaya_kapusta_ot_posadki_do_uborki_rassada.jpg',
-                    },
-                    {
-                        original: 'https://uraeshka.ru/upload/resize_cache/webp/iblock/eb4/4vl3vvuidg2vo7owdx23gbzi48d0i0ja.webp',
-                        edited: 'https://uraeshka.ru/upload/resize_cache/webp/iblock/eb4/4vl3vvuidg2vo7owdx23gbzi48d0i0ja.webp',
-                    },
-                    {
-                        original: 'https://izagri.ru/wp-content/uploads/2021/09/kapusta-13.jpg',
-                        edited: 'https://izagri.ru/wp-content/uploads/2021/09/kapusta-13.jpg',
-                    },
-                ]
-            },
-        ]
-    },
+    }
 });
 
 const slideContainer = ref(null);
@@ -136,7 +66,7 @@ const changePreset = (bool) => {
     }
 }
 
-const trimmed = computed(() => props.title.replaceAll(' ', '-').toLowerCase());
+const trimmed = computed(() => props?.collection?.name.replaceAll(' ', '-').toLowerCase());
 
 const basisMobile = computed(() => isMobile.value ? 'basis-1/2' : '')
 

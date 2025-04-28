@@ -11,6 +11,8 @@ export default {
                 'grey': '#707070',
                 'light': '#B1B0AF',
                 'beige': '#E8E4D9',
+                'trace': '#3B393833',
+                'yep': '#FFF2CD',
             },
             margin: {
                 'h1': '2%',
@@ -48,7 +50,8 @@ export default {
                 'corner': '120',
                 'menu': '665',
                 'pager': '2222',
-                'bar': '577'
+                'bar': '577',
+                'total': '9999'
             }
         }
     }

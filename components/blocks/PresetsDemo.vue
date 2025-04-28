@@ -3,8 +3,7 @@
         <Header>Presets | Color collections</Header>
         <div v-if="store.presetCollections">
             <div v-for="(pc, index) in store.presetCollections.data" :key="index">
-                <PresetCollection :title="pc.name" :description="pc.description" :presets="pc.presets"
-                    :color-count="pc.colorsCount" :cost="pc.cost" />
+                <PresetCollection :collection="pc" />
             </div>
         </div>
         <div class="cursor-pointer flex gap-4 items-center justify-center relative my-12 sm:mt-0 sm:mb-16">

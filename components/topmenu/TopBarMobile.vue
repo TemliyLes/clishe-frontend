@@ -18,8 +18,11 @@
                 <NuxtLink to="/">
                     <Logo class="h-6 -ml-12" :white="whitePower" />
                 </NuxtLink>
-                <div class="transition-all transition duration-700 flex">
-                    <Burger :bg="whitePower ? '#fff' : 'rgb(59 57 56)'" @click="activate" />
+                <div class="flex">
+                    <Basket :bg="whitePower ? '#ffffff' : '#3B3938'" />
+                    <div class="transition-all transition duration-700 flex">
+                        <Burger :bg="whitePower ? '#fff' : 'rgb(59 57 56)'" @click="activate" />
+                    </div>
                 </div>
             </div>
             <div class="absolute bottom-0 left-0 w-full h-full backdrop-blur-sm transition z-minus transition transition-opacity"
@@ -40,6 +43,7 @@ import Container from '../basic/Container.vue';
 import Logo from '~/assets/icons/Logo.vue';
 import Burger from './Burger.vue';
 import CloseButton from '~/assets/icons/CloseButton.vue';
+import Basket from './Basket.vue';
 const props = defineProps({
     navs: {
         type: Array,

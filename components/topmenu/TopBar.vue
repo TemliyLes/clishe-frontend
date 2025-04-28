@@ -13,6 +13,7 @@
                                 {{ nav.title }}
                             </NuxtLink>
                         </p>
+                        <Basket :bg="whitePower ? '#ffffff' : '#3B3938'" />
                     </div>
                 </div>
             </div>
@@ -34,6 +35,7 @@
 import Container from '../basic/Container.vue';
 import Logo from '~/assets/icons/Logo.vue';
 import { isMobile } from '~/helpers/break';
+import Basket from './Basket.vue';
 
 import { currentSlideElement } from '~/helpers/scroll';
 import TopBarMobile from './TopBarMobile.vue';

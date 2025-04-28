@@ -1,5 +1,6 @@
 <template>
   <div>
+    <SailWindow />
     <PageOverlay />
     <Preloader />
     <TopBar :mb="mobileBlured" :mw="mobileWhite" :ms="mobileStyle" />
@@ -12,6 +13,7 @@ import '~/assets/css/main.css'
 import PageOverlay from '~/components/layout/PageOverlay.vue'
 import TopBar from './components/topmenu/TopBar.vue';
 import Preloader from './components/other/Preloader.vue';
+import SailWindow from './components/basket/SailWindow.vue';
 
 import { init, isMobile } from './helpers/break';
 import { mobileScreensList, scrollY } from './helpers/scroll';

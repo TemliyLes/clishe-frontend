@@ -8,8 +8,7 @@
                 </Header>
             </div>
 
-            <PresetCollection v-if="data" :has-more-btn="false" :title="data.name" :description="data.description"
-                :presets="data.presets" :color-count="data.colorsCount" :cost="data.cost" />
+            <PresetCollection v-if="data" :has-more-btn="false" :collection="data" />
             <div
                 class="w-full mt-9 sm:mt-0 sm:h-screen h-96 absolute overflow-hidden -ml-container sm:-ml-container-d pt-screen">
                 <img class="object-cover h-full w-full" :src="imgURL(imgSrc)" />
