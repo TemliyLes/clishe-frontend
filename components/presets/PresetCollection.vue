@@ -1,7 +1,7 @@
 <template>
     <div class="mt-12 sm:my-16" v-if="collection">
         <SimpleText big class="mb-4 sm:mb-6">{{ collection.name }}</SimpleText>
-        <SimpleText>{{ collection.description }}</SimpleText> isInBasket {{ isInBasket(collection) }}
+        <SimpleText>{{ collection.description }}</SimpleText>
         <div class="relative mt-12 mb-4 sm:my-12 transition transition-all" ref="slideContainer">
             <div v-for="(preset, index) in collection.presets" :key="index" class="transition duration-700"
                 :class="[index ? 'absolute top-0 inset-0' : 'relative', testActive(index) ? 'opacity-100 z-40' : 'opacity-0 z-20']">
@@ -58,11 +58,11 @@ const changePreset = (bool) => {
     } else {
         activeIndex.value--;
     }
-    if (activeIndex.value > props.presets.length - 1) {
+    if (activeIndex.value > props?.collection?.presets?.length - 1) {
         activeIndex.value = 0;
     }
     if (activeIndex.value < 0) {
-        activeIndex.value = props.presets.length - 1;
+        activeIndex.value = props?.collection?.presets?.length - 1;
     }
 }
 

@@ -10,7 +10,7 @@
                 </Header>
                 <div class="sm:flex sm:my-12 gap-6">
                     <div class="basis-1/4 pr-4">
-                        <img class="sticky w-full sm:top-5 my-9 sm:my-0" src="/public/alinacliche.png" />
+                        <img v-loaded class="sticky w-full sm:top-5 my-9 sm:my-0" src="/public/alinacliche.png" />
                     </div>
                     <div class="basis-3/4">
                         <SimpleText big>
@@ -37,7 +37,7 @@
                             <SimpleText>{{ theme }}</SimpleText>
                         </div>
                         <div class="flex flex-col gap-6 sm:flex-row sm:justify-left sm:mt-9">
-                            <Button title="Купить" class="w-36" />
+                            <Button @click="addToBasket(methodicProduct)" title="Купить" class="w-36" />
                             <SimpleText class="sm:mt-1">Стоимость: {{ cost }} ₽</SimpleText>
                         </div>
                     </div>
@@ -64,6 +64,7 @@ import { clear, scrollY } from '~/helpers/scroll';
 
 import { usePresetsStore } from '~/stores/store';
 import { isMobile } from '~/helpers/break';
+import { addToBasket } from '~/helpers/sail';
 
 const store = usePresetsStore();
 
@@ -75,6 +76,24 @@ const count = computed(() => store?.methodic?.data?.pageCount);
 const description = computed(() => store?.methodic?.data?.description);
 const cost = computed(() => store?.methodic?.data?.price);
 const body = computed(() => store?.methodic?.data?.body);
+
+const imSr = ref(null);
+
+const vLoaded = {
+    mounted: e => {
+        imSr.value = e.getAttribute('src')
+    }
+}
+
+
+const methodicProduct = computed(() => {
+    return {
+        special: true,
+        name: 'Методическое пособие',
+        cost: cost.value,
+        url: imSr.value,
+    }
+})
 
 const methodicData = computed(() => [
     {
