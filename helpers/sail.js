@@ -11,10 +11,17 @@ const closeBasket = () => {
 }
 
 const addToBasket = (product) => {
-
     if (!products.value.includes(product)) {
         products.value.push(product);
         openBasket();
     }
 }
-export { isOpenedBasket, products, openBasket, closeBasket, addToBasket }
+
+const removeFromBasket = (product) => {
+    const targetElem = products.value.indexOf(product);
+    products.value.splice(targetElem, 1);
+}
+
+const isInBasket = (product) => products.value.includes(product);
+
+export { isOpenedBasket, products, openBasket, closeBasket, addToBasket, removeFromBasket, isInBasket }

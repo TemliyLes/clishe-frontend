@@ -1,7 +1,7 @@
 <template>
-    <div class="mt-12 sm:my-16">
+    <div class="mt-12 sm:my-16" v-if="collection">
         <SimpleText big class="mb-4 sm:mb-6">{{ collection.name }}</SimpleText>
-        <SimpleText>{{ collection.description }}</SimpleText>
+        <SimpleText>{{ collection.description }}</SimpleText> isInBasket {{ isInBasket(collection) }}
         <div class="relative mt-12 mb-4 sm:my-12 transition transition-all" ref="slideContainer">
             <div v-for="(preset, index) in collection.presets" :key="index" class="transition duration-700"
                 :class="[index ? 'absolute top-0 inset-0' : 'relative', testActive(index) ? 'opacity-100 z-40' : 'opacity-0 z-20']">
@@ -20,7 +20,7 @@
         <SimpleText>Стоимость: {{ collection.cost }}</SimpleText>
 
         <div class="flex gap-4 my-3 sm:my-12">
-            <Button @click="addToBasket(collection)" :class="basisMobile" title="Купить"></Button>
+            <Button @click="addToBasket(collection)" :class="basisMobile" :title="btnTitlePerBasketState"></Button>
             <NuxtLink :class="basisMobile" :to="`preset-${trimmed}`" v-if="hasMoreBtn">
                 <Button white></Button>
             </NuxtLink>
@@ -35,7 +35,7 @@ import SimpleText from '../text/SimpleText.vue';
 import Button from '../basic/Button.vue';
 import { isMobile } from '~/helpers/break';
 
-import { addToBasket } from '~/helpers/sail';
+import { addToBasket, isInBasket } from '~/helpers/sail';
 const props = defineProps({
     collection: {
         type: Object,
@@ -70,6 +70,7 @@ const trimmed = computed(() => props?.collection?.name.replaceAll(' ', '-').toLo
 
 const basisMobile = computed(() => isMobile.value ? 'basis-1/2' : '')
 
+const btnTitlePerBasketState = computed(() => !isInBasket(props.collection) ? 'Купить' : 'В корзине')
 
 watch(() => activeIndex.value, val => {
     if (isMobile.value) {

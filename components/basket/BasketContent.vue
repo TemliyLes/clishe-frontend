@@ -5,12 +5,13 @@
             <Close />
         </div>
         <div>
-            <div class="relative">
+            <div class="relative" v-if="products.length">
+                <div>Состав заказа</div>
                 <div v-for="(product, index) in products" :key="index">
-                    {{ products }}
+                    <MiniProduct :data="product" />
                 </div>
             </div>
-            <div class="bg-yep py-3 pl-2.5 pr-8 mt-4 rounded-xl relative" v-if="alertCanSee">
+            <div class="bg-yep py-3 pl-2.5 pr-8 mt-4 rounded-xl relative" v-if="alertCanSee && products?.length === 1">
                 <SimpleText :style="fontSize([16, 16])">
                     при приобретении двух и более коллекций цветов <span class="font-medium monster">скидка - 10
                         %</span>
@@ -32,6 +33,7 @@ import BasketHeader from '../text/BasketHeader.vue';
 import { fontSize } from '~/helpers/freeze';
 import { closeBasket, products } from '~/helpers/sail';
 import MiniClose from './MiniClose.vue';
+import MiniProduct from './MiniProduct.vue';
 
 const alertCanSee = ref(true);
 const closeAlert = () => {

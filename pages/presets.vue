@@ -5,8 +5,7 @@
             <Tags @navigate="navigate" :tags="collections" />
             <div v-if="collections">
                 <div v-for="(pc, index) in collections" :key="index" :ref="el => { refPresets[pc.id] = el }">
-                    <PresetCollection :title="pc.name" :description="pc.description" :presets="pc.presets"
-                        :color-count="pc.colorsCount" :cost="pc.cost" />
+                    <PresetCollection :collection="pc" />
                 </div>
             </div>
         </Screen>
