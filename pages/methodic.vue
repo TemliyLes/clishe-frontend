@@ -85,7 +85,6 @@ const vLoaded = {
     }
 }
 
-
 const methodicProduct = computed(() => {
     return {
         special: true,

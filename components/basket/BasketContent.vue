@@ -4,8 +4,8 @@
             <BasketHeader>Корзина</BasketHeader>
             <Close />
         </div>
-        <div>
-            <div class="relative mt-6" v-if="products.length">
+        <div v-if="products.length">
+            <div class="relative mt-6">
                 <BasketSimple class="text-[16px]">Состав заказа</BasketSimple>
                 <div v-for="(product, index) in products" :key="product.id">
                     <MiniProduct :noline="index === products.length - 1" :data="product" />
@@ -22,6 +22,9 @@
                 </NuxtLink>
                 <MiniClose @click="closeAlert" class="absolute top-4 right-4 cursor-pointer" />
             </div>
+        </div>
+        <div class="mt-4" v-else>
+            <BasketSimple class="text-[16px]">Корзина пока пуста</BasketSimple>
         </div>
     </div>
 </template>

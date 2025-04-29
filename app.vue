@@ -17,6 +17,7 @@ import SailWindow from './components/basket/SailWindow.vue';
 
 import { init, isMobile } from './helpers/break';
 import { mobileScreensList, scrollY } from './helpers/scroll';
+import { storageContoll } from './helpers/sail';
 
 import { usePresetsStore } from '~/stores/store';
 const store = usePresetsStore();
@@ -55,6 +56,8 @@ watch(() => route.fullPath, () => {
 });
 
 onBeforeMount(async () => {
+
+  storageContoll();
   const pass = window.prompt("Введите пароль");
   if (pass === '322329') {
     await fetchAboutBlock();

@@ -1,4 +1,4 @@
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
 const isOpenedBasket = ref(false);
 const products = ref([]);
@@ -24,4 +24,17 @@ const removeFromBasket = (product) => {
 
 const isInBasket = (product) => products.value.includes(product);
 
-export { isOpenedBasket, products, openBasket, closeBasket, addToBasket, removeFromBasket, isInBasket }
+const storageContoll = () => {
+    const storage = JSON.parse(localStorage.getItem('products'));
+    if (storage) {
+        products.value = storage;
+    }
+}
+
+watch(() => products.value,
+    val => {
+        localStorage.setItem('products', JSON.stringify(val));
+    },
+    { deep: true })
+
+export { isOpenedBasket, products, openBasket, closeBasket, addToBasket, removeFromBasket, isInBasket, storageContoll }
