@@ -11,13 +11,5 @@ export default defineNuxtConfig({
   imports: {
     dirs: ['stores']
   },
-  app: {
-    head: {
-      script: [{
-        src: "https://securepay.tinkoff.ru/html/payForm/js/tinkoff_v2.js",
-        type: "text/javascript",
-        async: true
-      }],
-    },
-  },
+
 })

@@ -3,7 +3,7 @@
         <div class="pt-16 w-full h-dvh">
             <Superheader>Оплата продукта</Superheader>
             <form class="payform-tbank" name="payform-tbank" id="payform-tbank" ref="tbankRef">
-                <input class="payform-tbank-row" type="hidden" name="terminalkey" value="TBankTest">
+                <input class="payform-tbank-row" type="hidden" name="terminalkey" value="1745854311395DEMO">
                 <input class="payform-tbank-row" type="hidden" name="frame" value="false">
                 <input class="payform-tbank-row" type="hidden" name="language" value="ru">
                 <input class="payform-tbank-row" type="hidden" name="receipt" value="">
@@ -23,11 +23,19 @@
 <script setup>
 import Superheader from '~/components/text/Superheader.vue';
 import Container from '~/components/basic/Container.vue';
+useHead({
+    script: [
+        {
+            src: 'https://securepay.tinkoff.ru/html/payForm/js/tinkoff_v2.js',
+            tagPosition: 'head'
+        }
+    ]
+});
 const tbankRef = ref(null);
 onMounted(() => {
 
     const TPF = tbankRef.value;
-    TPF.value?.addEventListener("submit", function (e) {
+    TPF.addEventListener("submit", function (e) {
         e.preventDefault();
         const { description, amount, email, phone, receipt } = TPF;
 
@@ -36,7 +44,7 @@ onMounted(() => {
                 return alert("Поле E-mail или Phone не должно быть пустым");
 
             TPF.receipt.value = JSON.stringify({
-                "EmailCompany": "mail@mail.com",
+                "EmailCompany": "aliiiiiiishaa@mail.ru",
                 "Taxation": "patent",
                 "FfdVersion": "1.2",
                 "Items": [
