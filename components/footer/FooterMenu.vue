@@ -13,9 +13,9 @@
                 <NuxtLink target="_blank" external to="https://www.instagram.com/facepublicenemy/?hl=ru">
                     <IGIL class="cursor-pointer" />
                 </NuxtLink>
-                <NuxtLink target="_blank" external to="https://t.me/ekaterinasugak">
+                <!-- <NuxtLink target="_blank" external to="https://t.me/ekaterinasugak">
                     <Telega class="cursor-pointer" />
-                </NuxtLink>
+                </NuxtLink> -->
             </div>
             <div class="monster leading-6 my-3 text-light" :style="fontSize(14, 16)">
                 * Instagram признан экстремистской организацией и запрещен на территории России

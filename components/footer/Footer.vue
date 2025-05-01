@@ -56,6 +56,11 @@ const footerMenuData = [
                 to: '/confidentiality.docx',
                 external: true
             },
+            {
+                title: 'Публичная оферта',
+                to: '/public.docx',
+                external: true
+            },
         ],
     },
     {
