@@ -15,8 +15,9 @@
                 <input class="payform-tbank-row" type="tel" placeholder="Контактный телефон" name="phone">
                 <input class="payform-tbank-row payform-tbank-btn" type="submit" value="Оплатить">
             </form>
-
+            <div @click="baduba()">BANK ANSWER</div>
         </div>
+
     </Container>
 </template>
 
@@ -64,6 +65,15 @@ onMounted(() => {
         pay(TPF);
     });
 })
+
+
+const baduba = () => {
+    $fetch('http://localhost:1337/api/payment', {
+        method: 'POST',
+        'content-type': 'application/json',
+        body: { hello: 'world ' }
+    })
+}
 
 </script>
 <style>

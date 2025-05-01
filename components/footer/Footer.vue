@@ -28,16 +28,35 @@ import { fontSize } from '~/helpers/freeze';
 
 import FooterMenu from './FooterMenu.vue';
 import FooterLogo from '~/assets/icons/FooterLogo.vue';
-import { isMobile } from '~/helpers/break';
 
 const footerMenuData = [
     {
         title: 'Products',
-        list: ['Методическое пособие', 'Адвент', 'Presets | Color collections', 'Обучение'],
+        list: [
+            {
+                title: 'Методическое пособие',
+                to: 'methodic',
+            },
+            {
+                title: 'Presets | Color collections',
+                to: 'presets',
+            },
+        ],
     },
     {
         title: 'Клиентам',
-        list: ['Согласие', 'Положение'],
+        list: [
+            {
+                title: 'Согласие',
+                to: '/compliance.docx',
+                external: true
+            },
+            {
+                title: 'Положение',
+                to: '/confidentiality.docx',
+                external: true
+            },
+        ],
     },
     {
         title: 'Контакты',

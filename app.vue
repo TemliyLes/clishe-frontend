@@ -8,9 +8,9 @@
   </div>
 </template>
 <script setup>
-import '~/assets/css/main.css'
+import '~/assets/css/main.css';
 
-import PageOverlay from '~/components/layout/PageOverlay.vue'
+import PageOverlay from '~/components/layout/PageOverlay.vue';
 import TopBar from './components/topmenu/TopBar.vue';
 import Preloader from './components/other/Preloader.vue';
 import SailWindow from './components/basket/SailWindow.vue';

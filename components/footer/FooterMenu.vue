@@ -2,15 +2,20 @@
     <div class="basis-1/3">
         <Title class="!mb-4">{{ title }}</Title>
         <div v-if="list">
-            <div v-for="(a, index) in list" :key="index" :style="fontSize(14, 16)"
-                class="monster text-white cursor-pointer mb-3">
-                {{ a }}
-            </div>
+            <NuxtLink v-for="(a, index) in list" :key="index" :style="fontSize(14, 16)" :to="a.to"
+                class="monster text-white cursor-pointer mb-3 block" :external="a.external">
+                {{ a.title }}
+            </NuxtLink>
+
         </div>
         <div v-if="!list.length">
             <div class="flex gap-4">
-                <IGIL class="cursor-pointer" />
-                <Telega class="cursor-pointer" />
+                <NuxtLink target="_blank" external to="https://www.instagram.com/facepublicenemy/?hl=ru">
+                    <IGIL class="cursor-pointer" />
+                </NuxtLink>
+                <NuxtLink target="_blank" external to="https://t.me/ekaterinasugak">
+                    <Telega class="cursor-pointer" />
+                </NuxtLink>
             </div>
             <div class="monster leading-6 my-3 text-light" :style="fontSize(14, 16)">
                 * Instagram признан экстремистской организацией и запрещен на территории России
@@ -19,7 +24,6 @@
                 ИП Урядова Алина Васильевна<br />
                 ИНН: 642102268108<br />
                 ОГРНИП: 324645700053870
-
             </div>
         </div>
     </div>
