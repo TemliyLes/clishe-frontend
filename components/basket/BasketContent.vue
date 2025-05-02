@@ -7,7 +7,7 @@
         <div v-if="products.length">
             <div class="relative mt-6">
                 <BasketSimple class="text-[16px]">Состав заказа</BasketSimple>
-                <div v-for="(product, index) in products" :key="product.id">
+                <div v-for="(product, index) in productsWithSale" :key="product.id">
                     <MiniProduct :noline="index === products.length - 1" :data="product" />
                 </div>
             </div>
@@ -22,6 +22,12 @@
                 </NuxtLink>
                 <MiniClose @click="closeAlert" class="absolute top-4 right-4 cursor-pointer" />
             </div>
+
+            <div class="mt-6">
+                <BasketHeader>Итого {{ total }} ₽</BasketHeader>
+            </div>
+
+            <BasketSimple class="mt-4 text-[16px]">Состав заказа</BasketSimple>
         </div>
         <div class="mt-4" v-else>
             <BasketSimple class="text-[16px]">Корзина пока пуста</BasketSimple>
@@ -45,8 +51,28 @@ const closeAlert = () => {
     alertCanSee.value = false;
 }
 
-const onlyPresets = computed(() => {
-    return products.value.filter((pr) => !pr.special)
+
+const BASIC_SALE = 0.1;
+const sale = computed(() => onlyPresets.value.length >= 2 ? BASIC_SALE : 0);
+
+const onlyPresets = computed(() => products.value.filter((pr) => !pr.special));
+
+const productsWithSale = computed(() => products.value.map((el) => {
+    console.log(el.special)
+    if (!el.special) {
+        el.withSale = sale.value ? el.cost * (1 - sale.value) : 0;
+    } else {
+        el.withSale = null
+    }
+
+    return el;
+}));
+
+const total = computed(() => {
+    return productsWithSale.value.reduce((acc, current) => {
+        const addition = current.withSale ? current.withSale : current.cost;
+        return acc + addition;
+    }, 0)
 })
 
 </script>

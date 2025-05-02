@@ -6,8 +6,10 @@
                 <BasketHeader>{{ data.name }}</BasketHeader>
                 <BasketSimple class="mt-[12px] mb-[8px]">Количество цветов: {{ data.colorsCount }}</BasketSimple>
                 <div class="flex gap-4">
-                    <BasketSimple class="font-medium">Стоимость: {{ data.cost }}</BasketSimple>
-                    <BasketSimple class="line-through !text-light">{{ data.cost }}</BasketSimple>
+                    <BasketSimple class="font-medium">Стоимость: {{ data.withSale ? data.withSale : data.cost }}
+                    </BasketSimple>
+                    <BasketSimple v-if="data.withSale" class="line-through !text-light">{{ data.cost }}
+                    </BasketSimple>
                 </div>
             </div>
             <MiniClose class="cursor-pointer absolute right-0 top-1" @click="removeFromBasket(data)" />
