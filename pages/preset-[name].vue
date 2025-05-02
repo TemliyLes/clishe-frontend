@@ -66,5 +66,5 @@ onMounted(() => {
 })
 
 const data = computed(() => store?.presetCollections?.data?.find(el => el.name.toLowerCase().replace(" ", "-") === name));
-const imgSrc = computed(() => data.value?.detailPageImage?.[0]?.url)
+const imgSrc = computed(() => data.value?.detailPageImage?.url)
 </script>
