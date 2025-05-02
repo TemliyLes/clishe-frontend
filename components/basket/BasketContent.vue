@@ -24,6 +24,9 @@
             </div>
 
             <div class="mt-6">
+                <div>
+                    <Check v-model="present" />
+                </div>
                 <BasketHeader>Итого {{ total }} ₽</BasketHeader>
             </div>
 
@@ -46,11 +49,14 @@ import { closeBasket, products } from '~/helpers/sail';
 import MiniClose from './MiniClose.vue';
 import MiniProduct from './MiniProduct.vue';
 
+import Check from '../basic/Check.vue';
+
 const alertCanSee = ref(true);
 const closeAlert = () => {
     alertCanSee.value = false;
 }
 
+const present = ref(false);
 
 const BASIC_SALE = 0.1;
 const sale = computed(() => onlyPresets.value.length >= 2 ? BASIC_SALE : 0);
