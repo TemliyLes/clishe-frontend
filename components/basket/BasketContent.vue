@@ -1,5 +1,5 @@
 <template>
-    <div class="pb-[170px] overflow-auto h-screen pr-5">
+    <div class="pb-[170px] overflow-auto h-full pr-5">
         <div class="flex justify-between">
             <BasketHeader>Корзина</BasketHeader>
             <Close />
@@ -24,13 +24,27 @@
             </div>
 
             <div class="mt-6">
-                <div>
-                    <Check v-model="present" />
-                </div>
                 <BasketHeader>Итого {{ total }} ₽</BasketHeader>
+                <div class="flex gap-3 mt-4">
+                    <Check class="shrink-0" v-model="present" />
+                    <div>
+                        <BasketSimple>Купить в подарок</BasketSimple>
+                        <BasketSimple class="!text-grey mt-2">вы получите сертификат на оплату выбранных коллекций,
+                            который
+                            можно отправить другому человеку</BasketSimple>
+                    </div>
+                </div>
             </div>
-
-            <BasketSimple class="mt-4 text-[16px]">Состав заказа</BasketSimple>
+            <div>
+                <BasketSimple class="mt-4 text-[16px]">Контактные данные</BasketSimple>
+                <div ref="inputs">
+                    <Input place="Фамилия" v-model="surname" />
+                    <Input place="Имя" v-model="name" />
+                    <Input place="Отчество" v-model="patronymic" />
+                    <Input place="Ваш email" v-model="email" email />
+                </div>
+            </div>
+            <div @click="getFinal()">FINAL</div>
         </div>
         <div class="mt-4" v-else>
             <BasketSimple class="text-[16px]">Корзина пока пуста</BasketSimple>
@@ -50,11 +64,19 @@ import MiniClose from './MiniClose.vue';
 import MiniProduct from './MiniProduct.vue';
 
 import Check from '../basic/Check.vue';
+import Input from '../basic/Input.vue';
 
 const alertCanSee = ref(true);
 const closeAlert = () => {
     alertCanSee.value = false;
 }
+
+const name = ref('');
+const surname = ref('');
+const patronymic = ref('');
+const email = ref('');
+
+const inputs = ref();
 
 const present = ref(false);
 
@@ -64,13 +86,11 @@ const sale = computed(() => onlyPresets.value.length >= 2 ? BASIC_SALE : 0);
 const onlyPresets = computed(() => products.value.filter((pr) => !pr.special));
 
 const productsWithSale = computed(() => products.value.map((el) => {
-    console.log(el.special)
     if (!el.special) {
         el.withSale = sale.value ? el.cost * (1 - sale.value) : 0;
     } else {
         el.withSale = null
     }
-
     return el;
 }));
 
@@ -79,6 +99,44 @@ const total = computed(() => {
         const addition = current.withSale ? current.withSale : current.cost;
         return acc + addition;
     }, 0)
-})
+});
+const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+
+const getFinal = () => {
+    let finalResult = true;
+    let firstErrorElement = null;
+    const elems = inputs.value?.children;
+    for (const elem of elems) {
+        const isEmail = elem.getAttribute('email');
+        const val = elem.getAttribute('value');
+        let result;
+        if (isEmail !== 'true') {
+            result = !!val;
+        } else {
+            result = !!EMAIL_REGEXP.test(val);
+        }
+        // console.log(result);
+        if (!result) {
+            finalResult = false;
+            if (!firstErrorElement) {
+                firstErrorElement = elem;
+            }
+            elem.classList.add('!border-red-500');
+            setTimeout(() => {
+                elem.classList.remove('!border-red-500');
+                if (firstErrorElement) {
+                    firstErrorElement.focus();
+                }
+                requestAnimationFrame(() => {
+                    firstErrorElement = null
+                })
+            }, 2000)
+        }
+        // if (elem?.getAttribute('error')) {
+        //     result = false;
+        // }
+    }
+    alert(finalResult);
+}
 
 </script>

@@ -13,6 +13,7 @@ export default {
                 'beige': '#E8E4D9',
                 'trace': '#3B393833',
                 'yep': '#FFF2CD',
+                'blue': '#108EEA',
             },
             margin: {
                 'h1': '2%',
