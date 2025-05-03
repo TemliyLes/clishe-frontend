@@ -1,6 +1,6 @@
 <template>
     <div class="grid place-items-center monster h-button rounded-button cursor-pointer border border-px border-main px-6"
-        :class="colorClasses">
+        :class="[colorClasses, disabled ? 'opacity-40 pointer-event-none' : '']">
         {{ title }}
     </div>
 </template>
@@ -14,6 +14,10 @@ const props = defineProps({
     title: {
         type: String,
         default: 'Подробнее'
+    },
+    disabled: {
+        type: Boolean,
+        default: false
     }
 })
 

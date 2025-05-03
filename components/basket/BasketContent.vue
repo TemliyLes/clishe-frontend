@@ -1,5 +1,6 @@
 <template>
-    <div class="pb-[170px] overflow-auto h-full pr-5">
+
+    <div class="pb-[170px] overflow-auto h-full pr-5 scroll-smooth">
         <div class="flex justify-between">
             <BasketHeader>Корзина</BasketHeader>
             <Close />
@@ -43,13 +44,32 @@
                     <Input place="Отчество" v-model="patronymic" />
                     <Input place="Ваш email" v-model="email" email />
                 </div>
+                <BasketSimple class="mt-1 !text-grey">мы отправим письмо для подтверждения почты</BasketSimple>
             </div>
-            <div @click="getFinal()">FINAL</div>
+
         </div>
         <div class="mt-4" v-else>
             <BasketSimple class="text-[16px]">Корзина пока пуста</BasketSimple>
         </div>
+
+        <div class="absolute bottom-0 h-[170px] left-0 bg-white w-full p-4 md:p-10">
+            <!-- <div @click="getFinal()">FINAL</div> -->
+            <div class="flex gap-3">
+                <Check class="shrink-0" v-model="confirmCheckbox"></Check>
+                <BasketSimple class="-mt-px !text-[13px]">
+                    Я соглашаюсь с  <NuxtLink class="monster font-bold" to="/confidentiality.docx" external>
+                        политикой
+                        конфиденциальности
+                    </NuxtLink> и даю согласие на <NuxtLink class="monster font-bold" to="/compliance.docx">
+                        обработку
+                        персональных данных
+                    </NuxtLink>
+                </BasketSimple>
+            </div>
+            <Button :disabled="!confirmCheckbox" class="mt-3 md:mt-5" title="Продолжить" @click="nextStep()"></Button>
+        </div>
     </div>
+
 </template>
 
 
@@ -63,6 +83,7 @@ import { closeBasket, products } from '~/helpers/sail';
 import MiniClose from './MiniClose.vue';
 import MiniProduct from './MiniProduct.vue';
 
+import Button from '../basic/Button.vue';
 import Check from '../basic/Check.vue';
 import Input from '../basic/Input.vue';
 
@@ -71,10 +92,14 @@ const closeAlert = () => {
     alertCanSee.value = false;
 }
 
+const confirmEmailWindow = ref(false);
+
 const name = ref('');
 const surname = ref('');
 const patronymic = ref('');
 const email = ref('');
+
+const confirmCheckbox = ref(false);
 
 const inputs = ref();
 
@@ -102,7 +127,7 @@ const total = computed(() => {
 });
 const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
 
-const getFinal = () => {
+const nextStep = () => {
     let finalResult = true;
     let firstErrorElement = null;
     const elems = inputs.value?.children;
@@ -115,7 +140,6 @@ const getFinal = () => {
         } else {
             result = !!EMAIL_REGEXP.test(val);
         }
-        // console.log(result);
         if (!result) {
             finalResult = false;
             if (!firstErrorElement) {
@@ -132,11 +156,10 @@ const getFinal = () => {
                 })
             }, 2000)
         }
-        // if (elem?.getAttribute('error')) {
-        //     result = false;
-        // }
     }
-    alert(finalResult);
+    if (finalResult) {
+        confirmEmailWindow.value = true;
+    }
 }
 
 </script>

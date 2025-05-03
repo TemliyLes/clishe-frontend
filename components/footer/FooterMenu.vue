@@ -13,9 +13,6 @@
                 <NuxtLink target="_blank" external to="https://www.instagram.com/facepublicenemy/?hl=ru">
                     <IGIL class="cursor-pointer" />
                 </NuxtLink>
-                <!-- <NuxtLink target="_blank" external to="https://t.me/ekaterinasugak">
-                    <Telega class="cursor-pointer" />
-                </NuxtLink> -->
             </div>
             <div class="monster leading-6 my-3 text-light" :style="fontSize(14, 16)">
                 * Instagram признан экстремистской организацией и запрещен на территории России
@@ -34,7 +31,7 @@ import Title from '../text/Title.vue';
 import { fontSize } from '~/helpers/freeze';
 
 import IGIL from '~/assets/icons/social/IGIL.vue';
-import Telega from '~/assets/icons/social/Telega.vue';
+
 defineProps({
     title: {
         type: String,
