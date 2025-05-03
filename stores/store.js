@@ -86,7 +86,7 @@ export const usePresetsStore = defineStore('presetsStore', {
             };
             const data = await $fetch(finalURL, objSend);
             if (data) {
-                console.log(data, 'data sale')
+                this.fetchSales();
             }
         },
     },
