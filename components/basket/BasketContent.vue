@@ -87,6 +87,9 @@ import Button from '../basic/Button.vue';
 import Check from '../basic/Check.vue';
 import Input from '../basic/Input.vue';
 
+import { usePresetsStore } from '~/stores/store';
+const store = usePresetsStore();
+
 const alertCanSee = ref(true);
 const closeAlert = () => {
     alertCanSee.value = false;
@@ -94,10 +97,12 @@ const closeAlert = () => {
 
 const confirmEmailWindow = ref(false);
 
-const name = ref('');
-const surname = ref('');
-const patronymic = ref('');
-const email = ref('');
+const name = ref('Витя');
+const surname = ref('Максимович');
+const patronymic = ref('Борщ');
+const email = ref('borsh@coedfr.ua');
+
+const fullname = computed(() => `${surname.value} ${name.value} ${patronymic.value}`);
 
 const confirmCheckbox = ref(false);
 
@@ -109,6 +114,7 @@ const BASIC_SALE = 0.1;
 const sale = computed(() => onlyPresets.value.length >= 2 ? BASIC_SALE : 0);
 
 const onlyPresets = computed(() => products.value.filter((pr) => !pr.special));
+const withSpecial = computed(() => !!products.value.filter((pr) => pr.special).length);
 
 const productsWithSale = computed(() => products.value.map((el) => {
     if (!el.special) {
@@ -159,6 +165,19 @@ const nextStep = () => {
     }
     if (finalResult) {
         confirmEmailWindow.value = true;
+        const presetsIds = onlyPresets.value.map((el) => {
+            return { documentId: el.documentId }
+        });
+        const postData = {
+            name: fullname.value,
+            email: email.value,
+            with_methodic: withSpecial.value,
+            preset_collections: {
+                set: presetsIds
+            }
+        }
+
+        store.createSale(postData);
     }
 }
 

@@ -9,7 +9,8 @@ export const usePresetsStore = defineStore('presetsStore', {
             _withLove: null,
             _faq: null,
             _themes: null,
-            _methodic: null
+            _methodic: null,
+            _sales: null,
         }
     },
     actions: {
@@ -62,6 +63,32 @@ export const usePresetsStore = defineStore('presetsStore', {
                 this._methodic = data;
             }
         },
+        async fetchSales() {
+            const URL = 'sales'
+            const finalURL = HOST + '/api/' + URL;
+            const { data } = await useFetch(finalURL, headers);
+            if (data) {
+                this._sales = data;
+            }
+        },
+        async createSale(postData) {
+            const URL = 'sales'
+            const findMailer = this._sales?.data.find((el) => el.email === postData.email);
+            const id = findMailer ? findMailer.documentId : null;
+            const additionId = id ? `/${id}` : '';
+            const finalURL = HOST + '/api/' + URL + additionId;
+            const objSend = {
+                method: id ? 'PUT' : 'POST',
+                body: {
+                    headers,
+                    data: postData
+                }
+            };
+            const data = await $fetch(finalURL, objSend);
+            if (data) {
+                console.log(data, 'data sale')
+            }
+        },
     },
     getters: {
         presetCollections: (state) => state._presetCollections,
@@ -70,6 +97,7 @@ export const usePresetsStore = defineStore('presetsStore', {
         faq: (state) => state._faq,
         themes: (state) => state._themes,
         methodic: (state) => state._methodic,
+        sales: (state) => state._sales
     }
 });
 

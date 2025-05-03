@@ -21,7 +21,7 @@ import { storageContoll } from './helpers/sail';
 
 import { usePresetsStore } from '~/stores/store';
 const store = usePresetsStore();
-const { fetchCollections, fetchAboutBlock, fetchWithLove, fetchFAQ, fetchThemes, fetchMethodic } = store;
+const { fetchCollections, fetchAboutBlock, fetchWithLove, fetchFAQ, fetchThemes, fetchMethodic, fetchSales } = store;
 
 const route = useRoute();
 const app = useNuxtApp();
@@ -58,17 +58,18 @@ watch(() => route.fullPath, () => {
 onBeforeMount(async () => {
 
   storageContoll();
-  const pass = window.prompt("Введите пароль");
-  if (pass === '322329') {
-    await fetchAboutBlock();
-    await fetchWithLove();
-    await fetchCollections();
-    await fetchFAQ();
-    await fetchThemes();
-    await fetchMethodic();
-  } else {
-    document.body.innerHTML = 'Увы'
-  }
+  // const pass = window.prompt("Введите пароль");
+  // if (pass === '322329') {
+  await fetchAboutBlock();
+  await fetchWithLove();
+  await fetchCollections();
+  await fetchFAQ();
+  await fetchThemes();
+  await fetchMethodic();
+  await fetchSales();
+  // } else {
+  //   document.body.innerHTML = 'Увы'
+  // }
 
 
 })
