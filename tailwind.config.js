@@ -14,6 +14,7 @@ export default {
                 'trace': '#3B393833',
                 'yep': '#FFF2CD',
                 'blue': '#108EEA',
+                'error': '#EA3E00',
             },
             margin: {
                 'h1': '2%',

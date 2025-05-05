@@ -1,7 +1,7 @@
 <template>
 
     <div class="pb-[170px] overflow-auto h-full pr-5 scroll-smooth">
-        <EmailConfirm @back="back" :active="confirmEmailWindow" />
+        <EmailConfirm @pay="pay" @again="recode" @back="back" :code="token" :active="confirmEmailWindow" />
         <div class="flex justify-between">
             <BasketHeader>Корзина</BasketHeader>
             <Close />
@@ -161,9 +161,9 @@ const nextStep = () => {
             if (!firstErrorElement) {
                 firstErrorElement = elem;
             }
-            elem.classList.add('!border-red-500');
+            elem.classList.add('!border-error');
             setTimeout(() => {
-                elem.classList.remove('!border-red-500');
+                elem.classList.remove('!border-error');
                 if (firstErrorElement) {
                     firstErrorElement.focus();
                 }
@@ -192,6 +192,15 @@ const nextStep = () => {
         token.value = getRandomInt();
         sendEmail();
     }
+}
+
+const recode = () => {
+    token.value = getRandomInt();
+    sendEmail();
+}
+
+const pay = () => {
+    alert('Оплата')
 }
 
 </script>
