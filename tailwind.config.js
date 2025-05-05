@@ -52,7 +52,8 @@ export default {
                 'menu': '665',
                 'pager': '2222',
                 'bar': '577',
-                'total': '9999'
+                'total': '9999',
+                'email': '220',
             }
         }
     }

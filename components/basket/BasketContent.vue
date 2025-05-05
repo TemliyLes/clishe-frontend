@@ -1,6 +1,7 @@
 <template>
 
     <div class="pb-[170px] overflow-auto h-full pr-5 scroll-smooth">
+        <EmailConfirm @back="back" :active="confirmEmailWindow" />
         <div class="flex justify-between">
             <BasketHeader>Корзина</BasketHeader>
             <Close />
@@ -82,6 +83,7 @@ import { fontSize } from '~/helpers/freeze';
 import { closeBasket, products } from '~/helpers/sail';
 import MiniClose from './MiniClose.vue';
 import MiniProduct from './MiniProduct.vue';
+import EmailConfirm from './EmailConfirm.vue';
 
 import Button from '../basic/Button.vue';
 import Check from '../basic/Check.vue';
@@ -96,6 +98,7 @@ const closeAlert = () => {
 }
 
 const confirmEmailWindow = ref(false);
+const back = () => confirmEmailWindow.value = false
 
 const name = ref('Витя');
 const surname = ref('Максимович');
@@ -132,6 +135,13 @@ const total = computed(() => {
     }, 0)
 });
 const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+const getRandomInt = () => {
+    return Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
+}
+const token = ref();
+const sendEmail = () => {
+    console.log('email emulation' + token.value)
+}
 
 const nextStep = () => {
     let finalResult = true;
@@ -172,12 +182,15 @@ const nextStep = () => {
             name: fullname.value,
             email: email.value,
             with_methodic: withSpecial.value,
+            present: present.value,
             preset_collections: {
                 set: presetsIds
             }
         }
 
         store.createSale(postData);
+        token.value = getRandomInt();
+        sendEmail();
     }
 }
 

@@ -8,7 +8,7 @@ const headers = {
 };
 
 
-// const HOST = 'http://cliche.academy:1337';
+// const HOST = 'https://cliche.academy:1337';
 const HOST = 'http://localhost:1337';
 
 const imgURL = src => HOST + src

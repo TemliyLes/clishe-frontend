@@ -71,7 +71,7 @@ const baduba = () => {
     $fetch('http://localhost:1337/api/payment', {
         method: 'POST',
         'content-type': 'application/json',
-        body: { hello: 'world ' }
+        body: { email: 'borsh@coedfr.ua' }
     })
 }
 
