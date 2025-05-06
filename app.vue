@@ -21,7 +21,7 @@ import { storageContoll } from './helpers/sail';
 
 import { usePresetsStore } from '~/stores/store';
 const store = usePresetsStore();
-const { fetchCollections, fetchAboutBlock, fetchWithLove, fetchFAQ, fetchThemes, fetchMethodic, fetchSales, fetchLearning, fetchLections } = store;
+const { fetchCollections, fetchAboutBlock, fetchWithLove, fetchFAQ, fetchThemes, fetchMethodic, fetchSales, fetchLearning, fetchLections, fetchLearningInfo } = store;
 
 const route = useRoute();
 const app = useNuxtApp();
@@ -69,6 +69,7 @@ onBeforeMount(async () => {
   await fetchLearning();
   await fetchSales();
   await fetchLections();
+  await fetchLearningInfo();
   // } else {
   //   document.body.innerHTML = 'Увы'
   // }

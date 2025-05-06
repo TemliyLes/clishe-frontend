@@ -15,18 +15,7 @@
                             src="/public/learn.jpg" />
                     </div>
                     <div class="basis-3/4">
-                        <SimpleText big>
-                            {{ description }}
-                        </SimpleText>
-                        <SimpleText v-for="(p, pIndex) in body" :key="pIndex" class="!my-4">
-                            {{ p.children[0]?.text }}
-                        </SimpleText>
-                        <div class="mt-6 sm:mt-12">
-                            <div v-for="(item, index) in methodicData" :key="index">
-                                <Title class="!mb-3">{{ item.title }}</Title>
-                                <SimpleText>{{ item.description }}</SimpleText>
-                            </div>
-                        </div>
+                        {{ learningInfo }}
                     </div>
                 </div>
                 <div
@@ -79,6 +68,7 @@ import SimpleText from '~/components/text/SimpleText.vue';
 import Button from '~/components/basic/Button.vue';
 
 const store = usePresetsStore();
+const scrollY = ref();
 const isActiveHeader = computed(() => scrollY.value > window?.innerHeight / 2);
 const imSr = ref(null);
 
@@ -104,7 +94,9 @@ const costWithCurrency = computed(() => cost.value + ' ₽');
 
 const fields = ['Количество лекций', 'Продолжительность записей', 'Дополнительный материал', 'Формат', 'Доступ', 'Стоимость']
 const values = [count, duration, materials, format, access, costWithCurrency];
-const fieldClass = 'mt-1.5'
+const fieldClass = 'mt-1.5';
+
+const learningInfo = computed(() => store?.learning_info?.data);
 
 const basketItem = {}
 

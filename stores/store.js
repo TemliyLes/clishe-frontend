@@ -13,6 +13,7 @@ export const usePresetsStore = defineStore('presetsStore', {
             _sales: null,
             _learning: null,
             _lections: null,
+            _learning_info: null,
         }
     },
     actions: {
@@ -87,7 +88,14 @@ export const usePresetsStore = defineStore('presetsStore', {
             const { data } = await useFetch(finalURL, headers);
             if (data) {
                 this._learning = data;
-                console.log(data)
+            }
+        },
+        async fetchLearningInfo() {
+            const URL = 'learning-infos'
+            const finalURL = HOST + '/api/' + URL;
+            const { data } = await useFetch(finalURL, headers);
+            if (data) {
+                this._learning_info = data;
             }
         },
         async createSale(postData) {
@@ -119,6 +127,7 @@ export const usePresetsStore = defineStore('presetsStore', {
         sales: (state) => state._sales,
         learning: (state) => state._learning,
         lections: (state) => state._lections,
+        learning_info: (state) => state._learning_info,
     }
 });
 
