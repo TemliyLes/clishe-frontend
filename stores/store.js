@@ -11,6 +11,8 @@ export const usePresetsStore = defineStore('presetsStore', {
             _themes: null,
             _methodic: null,
             _sales: null,
+            _learning: null,
+            _lections: null,
         }
     },
     actions: {
@@ -71,6 +73,23 @@ export const usePresetsStore = defineStore('presetsStore', {
                 this._sales = data;
             }
         },
+        async fetchLections() {
+            const URL = 'lections'
+            const finalURL = HOST + '/api/' + URL;
+            const { data } = await useFetch(finalURL, headers);
+            if (data) {
+                this._lections = data;
+            }
+        },
+        async fetchLearning() {
+            const URL = 'learning?populate[0]=bg'
+            const finalURL = HOST + '/api/' + URL;
+            const { data } = await useFetch(finalURL, headers);
+            if (data) {
+                this._learning = data;
+                console.log(data)
+            }
+        },
         async createSale(postData) {
             const URL = 'sales'
             const findMailer = this._sales?.data.find((el) => el.email === postData.email);
@@ -97,7 +116,9 @@ export const usePresetsStore = defineStore('presetsStore', {
         faq: (state) => state._faq,
         themes: (state) => state._themes,
         methodic: (state) => state._methodic,
-        sales: (state) => state._sales
+        sales: (state) => state._sales,
+        learning: (state) => state._learning,
+        lections: (state) => state._lections,
     }
 });
 

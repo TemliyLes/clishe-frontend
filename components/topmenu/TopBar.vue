@@ -64,6 +64,10 @@ const navs = [
         to: 'methodic',
     },
     {
+        title: 'Обучение',
+        to: 'learning',
+    },
+    {
         title: 'Presets | Color collections',
         to: 'presets',
     },
