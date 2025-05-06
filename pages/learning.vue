@@ -15,7 +15,23 @@
                             src="/public/learn.jpg" />
                     </div>
                     <div class="basis-3/4">
-                        {{ learningInfo }}
+                        <div v-for="infoblock in learningInfo" :key="infoblock.number" class="md:flex gap-6">
+                            <div class="text-[77px] text-main basis-[57px] shrink-0 mt-0 md:-mt-6">
+                                {{ infoblock.number }}.</div>
+                            <div class="basis-1/3 shrink-0">
+                                <SimpleText class="font-medium">{{ infoblock.title }}</SimpleText>
+                                <Tag class="my-4" @navigate="navigateToLections" :data="tagData"
+                                    v-if="infoblock.number === 1"></Tag>
+                            </div>
+                            <div>
+                                <SimpleText v-for="(p, pIndex) in infoblock.description" :key="pIndex" class="pb-4">
+                                    <span :class="subp.bold ? 'font-bold' : 'font-normal'" class="monster"
+                                        v-for="(subp, subpIndex) in p?.children" :key="subpIndex">
+                                        {{ subp?.text }}
+                                    </span>
+                                </SimpleText>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div
@@ -27,7 +43,7 @@
                     <div class="basis-1/4">
                         <Title class="!mt-0 sticky top-5">Лекции</Title>
                     </div>
-                    <div class="basis-3/4">
+                    <div class="basis-3/4" ref="lectionsRef">
                         <Faq :content="lections" />
                     </div>
                 </div>
@@ -55,10 +71,11 @@
 import Screen from '~/components/basic/Screen.vue';
 import LearningBlock from '~/components/blocks/LearningBlock.vue';
 import Footer from '~/components/footer/Footer.vue';
-import { clear } from '~/helpers/scroll';
+import { clear, scrollToElement } from '~/helpers/scroll';
 import Header from '~/components/text/Header.vue';
 import Title from '~/components/text/Title.vue';
 import Faq from '~/components/presets/Faq.vue';
+import Tag from '~/components/tags/Tag.vue';
 
 import { usePresetsStore } from '~/stores/store';
 import { isMobile } from '~/helpers/break';
@@ -96,7 +113,18 @@ const fields = ['Количество лекций', 'Продолжительн
 const values = [count, duration, materials, format, access, costWithCurrency];
 const fieldClass = 'mt-1.5';
 
-const learningInfo = computed(() => store?.learning_info?.data);
+const learningInfo = computed(() => store?.learning_info?.data?.sort((a, b) => a.number - b.number));
+
+const tagData = {
+    name: 'Список лекций',
+    id: 'lections'
+};
+
+const lectionsRef = ref();
+const navigateToLections = () => {
+    scrollToElement(lectionsRef.value, 540)
+}
+
 
 const basketItem = {}
 

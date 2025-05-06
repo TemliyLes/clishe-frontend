@@ -53,12 +53,13 @@ const clear = () => {
     currentSlide.value = 0;
 }
 
-const scrollToElement = (elem) => {
+const scrollToElement = (elem, addshift) => {
     const app = useNuxtApp();
     const scrolledBlock = isMobile.value ? app.vueApp._container : currentSlideElement.value;
     scrolledBlock.style.scrollBehavior = 'smooth';
     const shift = isMobile.value ? -20 : 80;
-    scrolledBlock.scrollTop = elem?.offsetTop - shift;
+    const add = isMobile.value ? addshift : 0;
+    scrolledBlock.scrollTop = elem?.offsetTop - shift + add;
 }
 
 export { ANIMATION_DELAY, currentSlide, slideUp, pushScreen, locked, screenList, currentSlideElement, clear, mobileScreensList, scrollY, scrollToElement }
