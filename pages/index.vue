@@ -28,6 +28,7 @@
 <script setup>
 import { computed } from 'vue';
 import Screen from '~/components/basic/Screen.vue';
+import { usePresetsStore } from '~/stores/store';
 
 import StartScreen from '~/components/blocks/StartScreen.vue';
 import About from '~/components/blocks/About.vue';
@@ -45,7 +46,7 @@ import { imgURL } from '~/helpers/api';
 onBeforeMount(() => {
     clear();
 });
-import { usePresetsStore } from '~/stores/store';
+
 const store = usePresetsStore();
 
 const aboutMedia = computed(() => store?.aboutWorks?.data?.works?.map(el => imgURL(el.url)));
