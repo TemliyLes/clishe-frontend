@@ -50,4 +50,5 @@ const store = usePresetsStore();
 
 const aboutMedia = computed(() => store?.aboutWorks?.data?.works?.map(el => imgURL(el.url)));
 
+
 </script>

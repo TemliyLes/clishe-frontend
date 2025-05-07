@@ -12,6 +12,7 @@
             </NuxtLink>
             <NextArrow class="-mt-[7px]" />
         </div>
+        <LearningMini />
         <Faq />
     </div>
 </template>
@@ -22,6 +23,7 @@ import NextArrow from '~/assets/icons/NextArrow.vue';
 import PresetCollection from '../presets/PresetCollection.vue';
 import SimpleText from '../text/SimpleText.vue';
 import Faq from '../presets/Faq.vue';
+import LearningMini from './LearningMini.vue';
 
 import { usePresetsStore } from '~/stores/store';
 const store = usePresetsStore();
