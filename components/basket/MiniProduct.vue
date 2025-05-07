@@ -3,8 +3,9 @@
         <div class="flex gap-5 pr-8 relative">
             <img class="w-[84px] h-[84px] object-cover" :src="url" alt="" />
             <div class="mb-2">
-                <BasketHeader>{{ data.name }}</BasketHeader>
-                <BasketSimple class="mt-[12px] mb-[8px]">Количество цветов: {{ data.colorsCount }}</BasketSimple>
+                <BasketHeader class="mb-[12px] ">{{ data.name }}</BasketHeader>
+                <BasketSimple v-if="!data.special" class="mb-[8px]">Количество цветов: {{
+                    data.colorsCount }}</BasketSimple>
                 <div class="flex gap-4">
                     <BasketSimple class="font-medium">Стоимость: {{ data.withSale ? data.withSale : data.cost }}
                     </BasketSimple>

@@ -24,7 +24,7 @@
                 <ClientOnly>
                     <div class="flex flex-col-reverse sm:flex-row -mt-12 sm:!mt-0">
                         <div class="basis-5/12">
-                            <Button class="w-36 my-6 sm:my-0" white title="Купить" />
+                            <Button @click="emit('buy')" class="w-36 my-6 sm:my-0" white :title="btnTitle" />
                         </div>
                         <div class="basis-7/12 relative">
                             <Superheader :size="[50, 140]"
@@ -51,8 +51,13 @@ defineProps({
     count: {
         type: Number,
         default: 0
+    },
+    btnTitle: {
+        type: String,
+        default: ''
     }
-})
+});
+
 onMounted(() => {
     addEventListener('resize', () => {
         flag.value = false;
@@ -61,5 +66,5 @@ onMounted(() => {
         })
     })
 });
-
+const emit = defineEmits('buy');
 </script>

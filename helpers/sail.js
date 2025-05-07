@@ -11,7 +11,7 @@ const closeBasket = () => {
 }
 
 const addToBasket = (product) => {
-    if (!products.value.includes(product)) {
+    if (!isInBasket(product)) {
         products.value.push(product);
         openBasket();
     }
@@ -22,7 +22,7 @@ const removeFromBasket = (product) => {
     products.value.splice(targetElem, 1);
 }
 
-const isInBasket = (product) => products.value.includes(product);
+const isInBasket = (product) => !!products.value.find((el) => el.id === product.id);
 
 const storageContoll = () => {
     const storage = JSON.parse(localStorage.getItem('products'));

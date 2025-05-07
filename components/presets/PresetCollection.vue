@@ -70,7 +70,7 @@ const trimmed = computed(() => props?.collection?.name.replaceAll(' ', '-').toLo
 
 const basisMobile = computed(() => isMobile.value ? 'basis-1/2' : '')
 
-const btnTitlePerBasketState = computed(() => !isInBasket(props.collection) ? 'Купить' : 'В корзине')
+const btnTitlePerBasketState = computed(() => !isInBasket(props.collection) ? 'Купить' : 'В корзине');
 
 watch(() => activeIndex.value, val => {
     if (isMobile.value) {

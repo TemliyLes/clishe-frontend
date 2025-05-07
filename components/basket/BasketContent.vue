@@ -9,7 +9,7 @@
         <div v-if="products.length">
             <div class="relative mt-6">
                 <BasketSimple class="text-[16px]">Состав заказа</BasketSimple>
-                <div v-for="(product, index) in productsWithSale" :key="product.id">
+                <div v-for="(product, index) in productsWithSale" :key="product">
                     <MiniProduct :noline="index === products.length - 1" :data="product" />
                 </div>
             </div>

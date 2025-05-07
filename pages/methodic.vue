@@ -1,7 +1,7 @@
 <template>
     <div class="overflow-hidden" v-if="store.methodic">
         <Screen full blured white bg="none">
-            <MethScreen :count="count" />
+            <MethScreen :btn-title="btnTitlePerBasketState" @buy="addToBasket(methodicProduct)" :count="count" />
         </Screen>
         <Screen scroll blured>
             <div class="py-12 sm:pb-24">
@@ -37,13 +37,12 @@
                             <SimpleText>{{ theme }}</SimpleText>
                         </div>
                         <div class="flex flex-col gap-6 sm:flex-row sm:justify-left sm:mt-9">
-                            <Button @click="addToBasket(methodicProduct)" title="Купить" class="w-36" />
+                            <Button @click="addToBasket(methodicProduct)" :title="btnTitlePerBasketState"
+                                class="w-36" />
                             <SimpleText class="sm:mt-1">Стоимость: {{ cost }} ₽</SimpleText>
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </Screen>
         <Footer></Footer>
@@ -64,7 +63,7 @@ import { clear, scrollY } from '~/helpers/scroll';
 
 import { usePresetsStore } from '~/stores/store';
 import { isMobile } from '~/helpers/break';
-import { addToBasket } from '~/helpers/sail';
+import { addToBasket, isInBasket } from '~/helpers/sail';
 
 const store = usePresetsStore();
 
@@ -91,9 +90,10 @@ const methodicProduct = computed(() => {
         name: 'Методическое пособие',
         cost: cost.value,
         url: imSr.value,
+        id: 'methodic'
     }
 })
-
+const btnTitlePerBasketState = computed(() => !isInBasket(methodicProduct.value) ? 'Купить' : 'В корзине');
 const methodicData = computed(() => [
     {
         title: 'Что это?',

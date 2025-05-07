@@ -1,7 +1,8 @@
 <template>
     <div>
         <Screen full blured white bg="none">
-            <LearningBlock :access="access" :count="count" />
+            <LearningBlock :btn-title="btnTitlePerBasketState" @buy="addToBasket(basketItem)" :access="access"
+                :count="count" />
         </Screen>
         <Screen scroll blured>
             <div class="py-6 sm:pb-12">
@@ -60,7 +61,8 @@
                         </SimpleText>
                     </div>
                 </div>
-                <Button class="md:w-[120px] my-3 sm:my-12" @click="addToBasket(basketItem)" title="Купить" />
+                <Button class="md:w-[140px] my-3 sm:my-12" @click="addToBasket(basketItem)"
+                    :title="btnTitlePerBasketState" />
             </div>
         </Screen>
         <Footer></Footer>
@@ -79,7 +81,7 @@ import Tag from '~/components/tags/Tag.vue';
 
 import { usePresetsStore } from '~/stores/store';
 import { isMobile } from '~/helpers/break';
-import { addToBasket } from '~/helpers/sail';
+import { addToBasket, isInBasket } from '~/helpers/sail';
 import { imgURL } from '~/helpers/api';
 import SimpleText from '~/components/text/SimpleText.vue';
 import Button from '~/components/basic/Button.vue';
@@ -125,9 +127,16 @@ const navigateToLections = () => {
     scrollToElement(lectionsRef.value, 540)
 }
 
-
-const basketItem = {}
-
+const basketItem = computed(() => {
+    return {
+        special: true,
+        name: 'Обучение',
+        cost: cost.value,
+        url: imSr.value,
+        id: 'learning',
+    }
+});
+const btnTitlePerBasketState = computed(() => !isInBasket(basketItem.value) ? 'Купить' : 'В корзине');
 onBeforeMount(() => {
     clear();
 })

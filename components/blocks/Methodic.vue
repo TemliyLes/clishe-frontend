@@ -19,7 +19,7 @@
                         </SimpleText>
                     </div>
                 </div>
-                <NuxtLink to="/methodic"><Button class="my-7 sm:mt-16 w-[157px]" /></NuxtLink>
+                <NuxtLink to="/methodic"><Button @click="emit('buy')" class="my-7 sm:mt-16 w-[157px]" /></NuxtLink>
             </div>
         </div>
     </div>
@@ -35,9 +35,8 @@ import { fontSize } from '~/helpers/freeze';
 
 import { usePresetsStore } from '~/stores/store';
 const store = usePresetsStore();
-
+const emit = defineEmits('buy');
 const paragraphs = computed(() => store?.methodic?.data?.shortBlockTitle);
-
 const another = computed(() => store?.methodic?.data?.shortBlockDescription);
 
 </script>
