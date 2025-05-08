@@ -1,7 +1,8 @@
 <template>
-
     <div class="pb-[170px] overflow-auto h-full pr-5 scroll-smooth">
         <EmailConfirm @pay="pay" @again="recode" @back="back" :code="token" :active="confirmEmailWindow" />
+        <PayStep :list="finalyList" :total="total" :fullname="fullname" :email="email" :phone="phone"
+            :active="stepPayment" />
         <div class="flex justify-between">
             <BasketHeader>Корзина</BasketHeader>
             <Close />
@@ -44,6 +45,7 @@
                     <Input place="Имя" v-model="name" />
                     <Input place="Отчество" v-model="patronymic" />
                     <Input place="Ваш email" v-model="email" email />
+                    <Input place="Контактный телефон" v-model="phone" />
                 </div>
                 <BasketSimple class="mt-1 !text-grey">мы отправим письмо для подтверждения почты</BasketSimple>
             </div>
@@ -53,7 +55,7 @@
             <BasketSimple class="text-[16px]">Корзина пока пуста</BasketSimple>
         </div>
 
-        <div class="absolute bottom-0 h-[170px] left-0 bg-white w-full p-4 md:p-10">
+        <div class="absolute bottom-0 h-[170px] left-0 bg-white w-full p-4 md:p-10" v-if="products.length">
             <!-- <div @click="getFinal()">FINAL</div> -->
             <div class="flex gap-3">
                 <Check class="shrink-0" v-model="confirmCheckbox"></Check>
@@ -69,6 +71,7 @@
             </div>
             <Button :disabled="!confirmCheckbox" class="mt-3 md:mt-5" title="Продолжить" @click="nextStep()"></Button>
         </div>
+
     </div>
 
 </template>
@@ -88,22 +91,26 @@ import EmailConfirm from './EmailConfirm.vue';
 import Button from '../basic/Button.vue';
 import Check from '../basic/Check.vue';
 import Input from '../basic/Input.vue';
+import PayStep from './PayStep.vue';
 
 import { usePresetsStore } from '~/stores/store';
+
 const store = usePresetsStore();
 
 const alertCanSee = ref(true);
 const closeAlert = () => {
     alertCanSee.value = false;
 }
-
+const stepPayment = ref(true);
 const confirmEmailWindow = ref(false);
 const back = () => confirmEmailWindow.value = false
 
+
+const surname = ref('Борщ');
 const name = ref('Витя');
-const surname = ref('Максимович');
-const patronymic = ref('Борщ');
+const patronymic = ref('Максимович');
 const email = ref('borsh@coedfr.ua');
+const phone = ref('793232323')
 
 const fullname = computed(() => `${surname.value} ${name.value} ${patronymic.value}`);
 
@@ -117,7 +124,17 @@ const BASIC_SALE = 0.1;
 const sale = computed(() => onlyPresets.value.length >= 2 ? BASIC_SALE : 0);
 
 const onlyPresets = computed(() => products.value.filter((pr) => !pr.special));
-const withSpecial = computed(() => !!products.value.filter((pr) => pr.special).length);
+const with_methodic = computed(() => !!products.value.find((pr) => pr.id === 'methodic'));
+const with_learning = computed(() => !!products.value.find((pr) => pr.id === 'learning'));
+
+const finalyList = computed(() => {
+    let result = '';
+    products.value.forEach((el) => {
+        result += el.name + ', ';
+    });
+
+    return result.slice(0, -2);
+})
 
 const productsWithSale = computed(() => products.value.map((el) => {
     if (!el.special) {
@@ -132,7 +149,7 @@ const total = computed(() => {
     return productsWithSale.value.reduce((acc, current) => {
         const addition = current.withSale ? current.withSale : current.cost;
         return acc + addition;
-    }, 0)
+    }, 0).toFixed(2)
 });
 const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
 const getRandomInt = () => {
@@ -140,8 +157,8 @@ const getRandomInt = () => {
 }
 const token = ref();
 const sendEmail = () => {
-    console.log('email emulation' + token.value)
-}
+    console.log('email emulation' + token.value);
+};
 
 const nextStep = () => {
     let finalResult = true;
@@ -181,7 +198,8 @@ const nextStep = () => {
         const postData = {
             name: fullname.value,
             email: email.value,
-            with_methodic: withSpecial.value,
+            with_methodic: with_methodic.value,
+            with_learning: with_learning.value,
             present: present.value,
             preset_collections: {
                 set: presetsIds
@@ -201,6 +219,6 @@ const recode = () => {
 
 const pay = () => {
     alert('Оплата')
-}
+};
 
 </script>

@@ -7,7 +7,8 @@
                 <BasketSimple v-if="!data.special" class="mb-[8px]">Количество цветов: {{
                     data.colorsCount }}</BasketSimple>
                 <div class="flex gap-4">
-                    <BasketSimple class="font-medium">Стоимость: {{ data.withSale ? data.withSale : data.cost }}
+                    <BasketSimple class="font-medium">Стоимость: {{ data.withSale ? data.withSale.toFixed(2) : data.cost
+                        }}
                     </BasketSimple>
                     <BasketSimple v-if="data.withSale" class="line-through !text-light">{{ data.cost }}
                     </BasketSimple>
