@@ -52,17 +52,17 @@ const footerMenuData = [
         list: [
             {
                 title: 'Согласие',
-                to: '/compliance.docx',
+                to: '/compliance.pdf',
                 external: true
             },
             {
                 title: 'Положение',
-                to: '/confidentiality.docx',
+                to: '/confidentiality.pdf',
                 external: true
             },
             {
                 title: 'Публичная оферта',
-                to: '/public.docx',
+                to: '/public.pdf',
                 external: true
             },
         ],

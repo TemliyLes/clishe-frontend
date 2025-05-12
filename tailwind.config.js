@@ -6,6 +6,7 @@ export default {
                 'method': '325/388',
                 'befafter': '538/606',
                 'learn': '315/374',
+                'educ': '275/342'
             },
             colors: {
                 'main': '#3B3938',

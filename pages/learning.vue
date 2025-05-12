@@ -12,7 +12,8 @@
                 </Header>
                 <div class="sm:flex sm:my-12 gap-6">
                     <div class="basis-1/4 pr-4">
-                        <img v-loaded class="sticky w-full sm:top-5 my-9 sm:my-0 h-[388px] md:h-auto"
+
+                        <img v-loaded class="sticky w-full sm:top-5 my-9 sm:my-0 aspect-educ md:h-auto"
                             src="/public/learn.jpg" />
                     </div>
                     <div class="basis-3/4">

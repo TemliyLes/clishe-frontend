@@ -53,7 +53,7 @@
                 </div>
 
             </div>
-            <div class="mt-4 flex" v-else>
+            <div class="mt-4 flex" v-if="!products.length">
                 <BasketSimple class="text-[16px]">Ваша корзина пуста. Для оформления заказа необходимо пополнить
                     корзину.
                 </BasketSimple>
