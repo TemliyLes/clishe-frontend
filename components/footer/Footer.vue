@@ -4,7 +4,7 @@
             <footer>
                 <div class="sm:flex justify-between pt-4 sm:pt-0">
                     <div class="basis-5/12">
-                        <h5 class="leading-none text-white mt-6" :style="fontSize(30, 66.6)">фото — это не щелк<br />
+                        <h5 class="leading-none text-white mt-7" :style="fontSize(30, 60)">фото — это не щелк<br />
                             это миллисекунда жизни</h5>
                     </div>
                     <div class="sm:flex gap-6 basis-7/12">
@@ -38,12 +38,12 @@ const footerMenuData = [
                 to: 'methodic',
             },
             {
-                title: 'Обучение',
-                to: 'learning',
-            },
-            {
                 title: 'Presets | Color collections',
                 to: 'presets',
+            },
+            {
+                title: 'Обучение',
+                to: 'learning',
             },
         ],
     },
