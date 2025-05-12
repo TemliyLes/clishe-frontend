@@ -1,6 +1,7 @@
 <template>
     <div class="pb-[170px] overflow-auto h-full pr-5 scroll-smooth">
-        <EmailConfirm @pay="pay" @again="recode" @back="back" :code="token" :active="confirmEmailWindow" />
+        <EmailConfirm @pay="pay" @again="recode" @back="back" :email="email" :code="token"
+            :active="confirmEmailWindow" />
         <PayStep @close="onClosePayment" :list="finalyList" :total="total" :fullname="fullname" :email="email"
             :phone="phone" :active="stepPayment" />
         <div class="flex justify-between">
@@ -51,8 +52,9 @@
             </div>
 
         </div>
-        <div class="mt-4" v-else>
-            <BasketSimple class="text-[16px]">Корзина пока пуста</BasketSimple>
+        <div class="mt-4 flex" v-else>
+            <BasketSimple class="text-[16px]">Ваша корзина пуста. Для оформления заказа необходимо пополнить корзину.
+            </BasketSimple>
         </div>
 
         <div class="absolute bottom-0 h-[170px] left-0 bg-white w-full p-4 md:p-10" v-if="products.length">
@@ -70,6 +72,9 @@
                 </BasketSimple>
             </div>
             <Button :disabled="!confirmCheckbox" class="mt-3 md:mt-5" title="Продолжить" @click="nextStep()"></Button>
+        </div>
+        <div class="absolute bottom-4 w-full pr-12" v-if="!products.length">
+            <Button @click="closeBasket" title="Вернуться на сайт"></Button>
         </div>
 
     </div>
