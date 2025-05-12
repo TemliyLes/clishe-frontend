@@ -1,5 +1,5 @@
 <template>
-    <h4 :style="fontSize(14, 24)" class="monster uppercase text-grey my-4 sm:my-6 lg:my-10">
+    <h4 class="monster text-[14px] md:text-16px uppercase text-grey my-4 sm:my-6 lg:my-10">
         <slot />
     </h4>
 </template>

@@ -1,6 +1,6 @@
 <template>
     <div class="overflow-hidden" v-if="store.methodic">
-        <Screen full blured white bg="none">
+        <Screen full white bg="none">
             <MethScreen :btn-title="btnTitlePerBasketState" @buy="addToBasket(methodicProduct)" :count="count" />
         </Screen>
         <Screen scroll blured>

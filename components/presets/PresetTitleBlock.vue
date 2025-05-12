@@ -1,7 +1,7 @@
 <template>
     <div>
         <Title class="!mt-0 mb-6">0{{ index }} {{ data.name }}</Title>
-        <SimpleText big>{{ data.description }}</SimpleText>
+        <SimpleText class="text-[24px]">{{ data.description }}</SimpleText>
     </div>
 </template>
 

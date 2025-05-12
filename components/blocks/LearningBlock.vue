@@ -1,5 +1,6 @@
 <template>
-    <div class="w-full h-screen pt-24">
+    <div class="w-full h-screen pt-24 relative">
+        <div inert class="absolute top-0 left-0 w-full h-[50vh]" :style="{ background: bgGradient }"></div>
         <NuxtImg class="absolute left-0 bottom-0 h-screen w-overfull z-minus object-cover pointer-events-none"
             src="/bg/learn-bg.jpg" alt="Обучение" />
         <Container>
@@ -8,8 +9,8 @@
                     <div class="basis-5/12">
                         <SimpleText :size="[16, 30]" class="text-white">обучение</SimpleText>
                     </div>
-                    <div class="basis-7/12 text-right sm:text-left">
-                        <SimpleText class="text-white">
+                    <div class="basis-5/12 text-right sm:text-left">
+                        <SimpleText class="text-white font-medium text-right !text-[18px] md:w-[256px]">
                             — mobile photography<br />
                             is an art that can be learned
                         </SimpleText>
@@ -70,4 +71,5 @@ onMounted(() => {
     })
 });
 
+const bgGradient = 'linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 47.76%)';
 </script>

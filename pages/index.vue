@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="bg-white relative overflow-hidden">
-            <Screen bg="#E8E4D9" mbg="#E8E4D9" class="z-30">
+            <!-- <Screen bg="#E8E4D9" mbg="#E8E4D9" class="z-30">
                 <StartScreen class=" pt-16 pb-4 sm:py-0" />
             </Screen>
             <Screen over blured id="about_screen">
@@ -16,8 +16,8 @@
             </Screen>
             <Screen blured>
                 <Methodic />
-            </Screen>
-            <Screen scroll blured>
+            </Screen> -->
+            <Screen scroll blured full>
                 <PresetsDemo />
             </Screen>
             <Footer></Footer>

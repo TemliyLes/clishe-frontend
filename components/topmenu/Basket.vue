@@ -1,5 +1,5 @@
 <template>
-    <div class="-mt-[4px] -mr-[15px] -ml-4 cursor-pointer relative" @click="openBasket">
+    <div class="-mt-[3px] -mr-[5px] md:-mr-[15px] -ml-4 cursor-pointer relative" @click="openBasket">
         <div v-if="products.length"
             class="absolute top-1 right-2.5 bg-error w-[10px] h-[10px] rounded-full border border-white border-2">
         </div>

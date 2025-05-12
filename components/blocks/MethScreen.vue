@@ -1,5 +1,6 @@
 <template>
-    <div class="w-full h-screen pt-24">
+    <div class="w-full h-screen pt-24 relative">
+        <div inert class="absolute top-0 left-0 w-full h-[50vh]" :style="{ background: bgGradient }"></div>
         <NuxtImg class="absolute left-0 bottom-0 h-screen w-overfull z-minus pointer-events-none"
             src="/bg/methodic-bg.jpg" alt="Методическое пособие" />
         <Container>
@@ -8,13 +9,13 @@
                     <div class="basis-5/12">
                         <SimpleText :size="[16, 30]" class="text-white">методическое<br />пособие</SimpleText>
                     </div>
-                    <div class="basis-7/12 text-right sm:text-left">
-                        <SimpleText class="text-white">
+                    <div class="basis-5/12 text-right sm:text-left">
+                        <SimpleText class="text-white font-medium text-right !text-[18px] md:w-[256px]">
                             — mobile photography<br />
                             is an art that can be learned
                         </SimpleText>
                         <div>
-                            <SimpleText class="text-white mt-6">
+                            <SimpleText class="text-white mt-6 !text-[18px]">
                                 {{ count }} страниц чистой пользы<br />
                                 PDF файл в tg-канале
                             </SimpleText>
@@ -57,6 +58,8 @@ defineProps({
         default: ''
     }
 });
+
+const bgGradient = 'linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 47.76%)';
 
 onMounted(() => {
     addEventListener('resize', () => {
