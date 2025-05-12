@@ -8,55 +8,57 @@
             <BasketHeader>Корзина</BasketHeader>
             <Close @click="closeBasket" />
         </div>
-        <div v-if="products.length">
-            <div class="relative mt-6">
-                <BasketSimple class="text-[16px]">Состав заказа</BasketSimple>
-                <div v-for="(product, index) in productsWithSale" :key="product">
-                    <MiniProduct :noline="index === products.length - 1" :data="product" />
-                </div>
-            </div>
-            <div class="bg-yep py-3 pl-2.5 pr-8 mt-4 rounded-xl relative"
-                v-if="alertCanSee && onlyPresets.length === 1">
-                <SimpleText :style="fontSize([16, 16])">
-                    при приобретении двух и более коллекций цветов <span class="font-medium monster">скидка - 10
-                        %</span>
-                </SimpleText>
-                <NuxtLink to="/presets" @click="closeBasket">
-                    <BasketHeader class="mt-3 cursor-pointer">Купить</BasketHeader>
-                </NuxtLink>
-                <MiniClose @click="closeAlert" class="absolute top-4 right-4 cursor-pointer" />
-            </div>
-
-            <div class="mt-6">
-                <BasketHeader>Итого {{ total }} ₽</BasketHeader>
-                <div class="flex gap-3 mt-4">
-                    <Check class="shrink-0" v-model="present" />
-                    <div>
-                        <BasketSimple>Купить в подарок</BasketSimple>
-                        <BasketSimple class="!text-grey mt-2">вы получите сертификат на оплату выбранных коллекций,
-                            который
-                            можно отправить другому человеку</BasketSimple>
+        <div>
+            <div v-if="products.length">
+                <div class="relative mt-6">
+                    <BasketSimple class="text-[16px]">Состав заказа</BasketSimple>
+                    <div v-for="(product, index) in productsWithSale" :key="product">
+                        <MiniProduct :noline="index === products.length - 1" :data="product" />
                     </div>
                 </div>
-            </div>
-            <div>
-                <BasketSimple class="mt-4 text-[16px]">Контактные данные</BasketSimple>
-                <div ref="inputs">
-                    <Input place="Фамилия" v-model="surname" />
-                    <Input place="Имя" v-model="name" />
-                    <Input place="Отчество" v-model="patronymic" />
-                    <Input place="Ваш email" v-model="email" email />
-                    <Input place="Контактный телефон" v-model="phone" />
+                <div class="bg-yep py-3 pl-2.5 pr-8 mt-4 rounded-xl relative"
+                    v-if="alertCanSee && onlyPresets.length === 1">
+                    <SimpleText :style="fontSize([16, 16])">
+                        при приобретении двух и более коллекций цветов <span class="font-medium monster">скидка - 10
+                            %</span>
+                    </SimpleText>
+                    <NuxtLink to="/presets" @click="closeBasket">
+                        <BasketHeader class="mt-3 cursor-pointer">Купить</BasketHeader>
+                    </NuxtLink>
+                    <MiniClose @click="closeAlert" class="absolute top-4 right-4 cursor-pointer" />
                 </div>
-                <BasketSimple class="mt-1 !text-grey">мы отправим письмо для подтверждения почты</BasketSimple>
+
+                <div class="mt-6">
+                    <BasketHeader>Итого {{ total }} ₽</BasketHeader>
+                    <div class="flex gap-3 mt-4">
+                        <Check class="shrink-0" v-model="present" />
+                        <div>
+                            <BasketSimple>Купить в подарок</BasketSimple>
+                            <BasketSimple class="!text-grey mt-2">вы получите сертификат на оплату выбранных коллекций,
+                                который
+                                можно отправить другому человеку</BasketSimple>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <BasketSimple class="mt-4 text-[16px]">Контактные данные</BasketSimple>
+                    <div ref="inputs">
+                        <Input place="Фамилия" v-model="surname" />
+                        <Input place="Имя" v-model="name" />
+                        <Input place="Отчество" v-model="patronymic" />
+                        <Input place="Ваш email" v-model="email" email />
+                        <Input place="Контактный телефон" v-model="phone" />
+                    </div>
+                    <BasketSimple class="mt-1 !text-grey">мы отправим письмо для подтверждения почты</BasketSimple>
+                </div>
+
             </div>
-
+            <div class="mt-4 flex" v-else>
+                <BasketSimple class="text-[16px]">Ваша корзина пуста. Для оформления заказа необходимо пополнить
+                    корзину.
+                </BasketSimple>
+            </div>
         </div>
-        <div class="mt-4 flex" v-else>
-            <BasketSimple class="text-[16px]">Ваша корзина пуста. Для оформления заказа необходимо пополнить корзину.
-            </BasketSimple>
-        </div>
-
         <div class="absolute bottom-0 h-[170px] left-0 bg-white w-full p-4 md:p-10" v-if="products.length">
             <!-- <div @click="getFinal()">FINAL</div> -->
             <div class="flex gap-3">
