@@ -18,7 +18,13 @@
                     <NextArrow class="-mt-[7px]" />
                 </div>
                 <LearningMini />
-                <Faq />
+                <div class="flex gap-3">
+                    <div class="basis-1/5 shrink-0">
+                        <Title class="!mt-3">часто задаваемые вопросы</Title>
+                    </div>
+                    <Faq />
+                </div>
+
             </div>
         </Container>
     </div>
@@ -32,6 +38,7 @@ import SimpleText from '../text/SimpleText.vue';
 import Faq from '../presets/Faq.vue';
 import LearningMini from './LearningMini.vue';
 import Container from '../basic/Container.vue';
+import Title from '../text/Title.vue';
 
 import { usePresetsStore } from '~/stores/store';
 const store = usePresetsStore();

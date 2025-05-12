@@ -5,6 +5,7 @@ export default {
                 'mainscreen': '342/201',
                 'method': '325/388',
                 'befafter': '538/606',
+                'learn': '315/374',
             },
             colors: {
                 'main': '#3B3938',
