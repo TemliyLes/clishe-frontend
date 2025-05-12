@@ -16,6 +16,8 @@
                 <input class="payform-tbank-row payform-tbank-btn" type="submit" value="Оплатить">
             </form>
             <div @click="baduba()">BANK ANSWER</div>
+
+            <div @click="badubaServer()">BANKbadubaServer ANSWER</div>
         </div>
 
     </Container>
@@ -66,12 +68,54 @@ onMounted(() => {
     });
 })
 
+const tbidi = {
+    "TerminalKey": "1745854311395DEMO",
+    "OrderId": "1746957622940",
+    "Success": true,
+    "Status": "CONFIRMED",
+    "PaymentId": 6344117753,
+    "ErrorCode": "0",
+    "Amount": 520000,
+    "CardId": 559032621,
+    "Pan": "430000******0777",
+    "ExpDate": "1230",
+    "Token": "ae501c0f90fb6613537dece43ec4660bce6e02700fcae315948e34bdfec8a276",
+    "Data": {
+        "screenWidth": "1536",
+        "Email": "seinistdasseinnigcht@gmail.com",
+        "VeAuthRc": "00",
+        "connection_type": "Widget2.0",
+        "screenHeight": "864",
+        "Source": "cards",
+        "Name": "Борщ Витя Максимович",
+        "connection_type_pf": "true",
+        "isMIDSyncEnabled": "true",
+        "accept": "application/json, text/plain, */*",
+        "SEND_EMAIL": "Y",
+        "javaEnabled": "false",
+        "payAction": "3DS",
+        "order_id_unique_processed": "ignored",
+        "guid": "8ff5c22c-fbbd-a3cd-4ea2-7e4e8c9efe95",
+        "colorDepth": "24",
+        "INFO_EMAIL": "seinistdasseinnigcht@gmail.com",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+        "REDIRECT": "false"
+    }
+}
 
 const baduba = () => {
     $fetch('http://localhost:1337/api/payment', {
         method: 'POST',
         'content-type': 'application/json',
-        body: { email: 'borsh@coedfr.ua' }
+        body: JSON.stringify(tbidi)
+    })
+}
+
+const badubaServer = () => {
+    $fetch('https://api.cliche.academy/api/payment', {
+        method: 'POST',
+        'content-type': 'application/json',
+        body: JSON.stringify(tbidi)
     })
 }
 

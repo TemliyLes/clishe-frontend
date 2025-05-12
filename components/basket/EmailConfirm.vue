@@ -7,7 +7,8 @@
             <BasketSimple class="mt-3 font-bold">{{ email }}</BasketSimple>
             <BasketSimple class="mt-3">Пожалуйста, введите его в поле ниже:</BasketSimple>
             <div class="relative h-[44px] mt-6 ">
-                <input ref="hiddenInput" v-model="enterText" maxlength="4" type="text" @input="onInput" @click="onClick"
+                <input @paste="onPaste" ref="hiddenInput" v-model="enterText" maxlength="4" type="text" @input="onInput"
+                    @click="onClick"
                     class="border-none bg-transparent outline-none pl-3 h-[44px] text-[32px] tracking-[39.5px]"></input>
 
                 <div inert class="flex gap-4 absolute top-0 h-full">
@@ -151,6 +152,10 @@ const recode = () => {
             seconds.value = 60;
         }
     }, 1000);
+}
+
+const onPaste = (e) => {
+    console.log(e);
 }
 
 </script>

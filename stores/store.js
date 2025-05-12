@@ -88,6 +88,7 @@ export const usePresetsStore = defineStore('presetsStore', {
             const { data } = await useFetch(finalURL, headers);
             if (data) {
                 this._learning = data;
+                console.log(data)
             }
         },
         async fetchLearningInfo() {
@@ -116,6 +117,17 @@ export const usePresetsStore = defineStore('presetsStore', {
                 this.fetchSales();
             }
         },
+        async sendCode(code, email) {
+            const objSend = {
+                method: 'POST',
+                body: {
+                    code: code,
+                    email: email
+                }
+            }
+            const URL = 'https://cliche.academy/code.php';
+            await $fetch(URL, objSend);
+        }
     },
     getters: {
         presetCollections: (state) => state._presetCollections,

@@ -1,11 +1,11 @@
 <template>
     <div class="pb-[170px] overflow-auto h-full pr-5 scroll-smooth">
         <EmailConfirm @pay="pay" @again="recode" @back="back" :code="token" :active="confirmEmailWindow" />
-        <PayStep :list="finalyList" :total="total" :fullname="fullname" :email="email" :phone="phone"
-            :active="stepPayment" />
+        <PayStep @close="onClosePayment" :list="finalyList" :total="total" :fullname="fullname" :email="email"
+            :phone="phone" :active="stepPayment" />
         <div class="flex justify-between">
             <BasketHeader>Корзина</BasketHeader>
-            <Close />
+            <Close @click="closeBasket" />
         </div>
         <div v-if="products.length">
             <div class="relative mt-6">
@@ -101,7 +101,7 @@ const alertCanSee = ref(true);
 const closeAlert = () => {
     alertCanSee.value = false;
 }
-const stepPayment = ref(true);
+const stepPayment = ref(false);
 const confirmEmailWindow = ref(false);
 const back = () => confirmEmailWindow.value = false
 
@@ -109,7 +109,7 @@ const back = () => confirmEmailWindow.value = false
 const surname = ref('Борщ');
 const name = ref('Витя');
 const patronymic = ref('Максимович');
-const email = ref('borsh@coedfr.ua');
+const email = ref('seinistdasseinnigcht@gmail.com');
 const phone = ref('793232323')
 
 const fullname = computed(() => `${surname.value} ${name.value} ${patronymic.value}`);
@@ -157,6 +157,7 @@ const getRandomInt = () => {
 }
 const token = ref();
 const sendEmail = () => {
+    store.sendCode(token.value, email.value);
     console.log('email emulation' + token.value);
 };
 
@@ -217,8 +218,13 @@ const recode = () => {
     sendEmail();
 }
 
+const onClosePayment = () => {
+    confirmEmailWindow.value = false;
+    stepPayment.value = false;
+}
+
 const pay = () => {
-    alert('Оплата')
+    stepPayment.value = true;
 };
 
 </script>

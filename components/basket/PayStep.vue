@@ -1,8 +1,16 @@
 <template>
     <div :class="active ? 'translate-x-0' : 'translate-x-full'"
         class="absolute flex flex-col justify-between px-5 py-10 z-email w-full h-full top-0 left-0 transform will-change-trasform transition duration-500 bg-white">
+        <Close @click="emit('close')" class="absolute right-5" />
         <div>
-            <BasketHeader>Оплата заказа</BasketHeader>
+            <BasketHeader>Оплата заказа:</BasketHeader>
+            <div class="mt-6">
+                <div v-for="(item, index) in fields" :key="index" class="flex gap-4 justify-between mt-2">
+                    <BasketSimple class="font-medium basis-1/3">{{ item }}:</BasketSimple>
+                    <BasketSimple class="basis-2/3">{{ fValues[index] }}</BasketSimple>
+                </div>
+
+            </div>
         </div>
         <div class="flex flex-col justify-between">
             <form class="payform-tbank" name="payform-tbank" id="payform-tbank" ref="tbankRef">
@@ -30,6 +38,7 @@
 <script setup>
 import BasketHeader from '../text/BasketHeader.vue';
 import BasketSimple from '../text/BasketSimple.vue';
+import Close from './Close.vue';
 useHead({
     script: [
         {
@@ -38,6 +47,10 @@ useHead({
         }
     ]
 });
+const emit = defineEmits(['close']);
+
+const fields = ['ФИО', 'Описание заказа', 'Email', 'Контактый телефон', 'Сумма заказа']
+const fValues = computed(() => [props.fullname, props.list, props.email, props.phone, props.total + ' ₽'])
 
 const props = defineProps({
     active: {
@@ -130,6 +143,7 @@ onMounted(() => {
     /* background-color: #fff; */
     font-size: 16px;
     pointer-events: none;
+    visibility: collapse;
 }
 
 .payform-tbank-row:focus {
@@ -146,6 +160,7 @@ onMounted(() => {
     pointer-events: all;
     border-radius: 60px;
     font-size: 16px;
+    visibility: visible;
 }
 
 .payform-tbank-btn:hover {
