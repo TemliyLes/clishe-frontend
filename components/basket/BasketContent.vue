@@ -209,6 +209,7 @@ const nextStep = () => {
             with_methodic: with_methodic.value,
             with_learning: with_learning.value,
             present: present.value,
+            confirmed: false,
             preset_collections: {
                 set: presetsIds
             }
