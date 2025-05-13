@@ -88,7 +88,6 @@ export const usePresetsStore = defineStore('presetsStore', {
             const { data } = await useFetch(finalURL, headers);
             if (data) {
                 this._learning = data;
-                console.log(data)
             }
         },
         async fetchLearningInfo() {

@@ -1,7 +1,7 @@
 <template>
     <div class="relative">
         <Screen scroll blured class="sm:pb-0 pb-12 mt-24 sm:mt-0">
-            <Superheader>Presets | Color collections</Superheader>
+            <Superheader class="!mt-12 !mb-10 !mt-5 !mb-4">Presets | Color collections</Superheader>
             <Tags @navigate="navigate" :tags="collections" />
             <div v-if="collections">
                 <div v-for="(pc, index) in collections" :key="index" :ref="el => { refPresets[pc.id] = el }">

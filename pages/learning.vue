@@ -17,22 +17,28 @@
                             src="/public/learn.jpg" />
                     </div>
                     <div class="basis-3/4">
-                        <div v-for="infoblock in learningInfo" :key="infoblock.number" class="md:flex gap-6">
-                            <div class="text-[77px] text-main basis-[57px] shrink-0 mt-0 md:-mt-6">
-                                {{ infoblock.number }}.</div>
-                            <div class="basis-1/3 shrink-0">
-                                <SimpleText class="font-medium">{{ infoblock.title }}</SimpleText>
-                                <Tag class="my-4" @navigate="navigateToLections" :data="tagData"
-                                    v-if="infoblock.number === 1"></Tag>
+                        <div v-for="(infoblock, infoIndex) in learningInfo" :key="infoblock.number">
+                            <div v-if="infoIndex" class="h-px bg-light w-full mb-7"></div>
+                            <div class="md:flex gap-6">
+                                <div class="text-[77px] text-main basis-[57px] shrink-0 mt-0 md:-mt-6">
+                                    {{ infoblock.number }}.</div>
+                                <div class="basis-1/3 shrink-0">
+                                    <SimpleText class="font-medium !text-[16px] !md:text-[18px]">{{ infoblock.title }}
+                                    </SimpleText>
+                                    <Tag class="my-4" @navigate="navigateToLections" :data="tagData"
+                                        v-if="infoblock.number === 1"></Tag>
+                                </div>
+                                <div>
+                                    <SimpleText v-for="(p, pIndex) in infoblock.description" :key="pIndex" class="pb-4">
+                                        <span :class="subp.bold ? 'font-bold' : 'font-normal'"
+                                            class="monster !text-[14px] !md:text-[16px]"
+                                            v-for="(subp, subpIndex) in p?.children" :key="subpIndex">
+                                            {{ subp?.text }}
+                                        </span>
+                                    </SimpleText>
+                                </div>
                             </div>
-                            <div>
-                                <SimpleText v-for="(p, pIndex) in infoblock.description" :key="pIndex" class="pb-4">
-                                    <span :class="subp.bold ? 'font-bold' : 'font-normal'" class="monster"
-                                        v-for="(subp, subpIndex) in p?.children" :key="subpIndex">
-                                        {{ subp?.text }}
-                                    </span>
-                                </SimpleText>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -50,16 +56,18 @@
                     </div>
                 </div>
 
-                <div class="sm:flex sm:pt-12 pt-9 gap-6">
-                    <div class="basis-1/4">
-                        <SimpleText :class="fieldClass" v-for="(f, fIndex) in fields" :key="fIndex">
-                            {{ f }}
-                        </SimpleText>
-                    </div>
-                    <div class="basis-3/4">
-                        <SimpleText :class="fieldClass" v-for="(t, tIndex) in values" :key="tIndex">
-                            {{ t }}
-                        </SimpleText>
+                <div class="pt-9 sm:pt-12">
+                    <div v-for="(f, fIndex) in fields" :key="fIndex" class="sm:flex gap-6 ">
+                        <div class="basis-1/4 shrink-0">
+                            <SimpleText :class="fieldClass">
+                                {{ f }}
+                            </SimpleText>
+                        </div>
+                        <div class="basis-3/4">
+                            <SimpleText :class="fieldClass">
+                                {{ values[fIndex] }}
+                            </SimpleText>
+                        </div>
                     </div>
                 </div>
                 <Button class="md:w-[140px] my-3 sm:my-12" @click="addToBasket(basketItem)"
@@ -114,7 +122,7 @@ const costWithCurrency = computed(() => cost.value + ' ₽');
 
 const fields = ['Количество лекций', 'Продолжительность записей', 'Дополнительный материал', 'Формат', 'Доступ', 'Стоимость']
 const values = [count, duration, materials, format, access, costWithCurrency];
-const fieldClass = 'mt-1.5';
+const fieldClass = 'mt-1.5 !text-[16px] !md:text-[18px]';
 
 const learningInfo = computed(() => store?.learning_info?.data?.sort((a, b) => a.number - b.number));
 

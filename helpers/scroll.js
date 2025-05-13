@@ -58,7 +58,7 @@ const scrollToElement = (elem, addshift) => {
     const scrolledBlock = isMobile.value ? app.vueApp._container : currentSlideElement.value;
     scrolledBlock.style.scrollBehavior = 'smooth';
     const shift = isMobile.value ? -20 : 80;
-    const add = isMobile.value ? addshift : 0;
+    const add = addshift ? addshift : 0;
     scrolledBlock.scrollTop = elem?.offsetTop - shift + add;
 }
 

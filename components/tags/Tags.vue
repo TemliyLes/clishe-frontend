@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-6 -mb-4 flex gap-4 flex-wrap">
+    <div class="mt-6 -mb-4 flex gap-3 flex-wrap">
         <Tag @navigate="navigate" v-for="(tag, index) in tags" :key="index" :data="{ name: tag.name, id: tag.id }" />
     </div>
 </template>

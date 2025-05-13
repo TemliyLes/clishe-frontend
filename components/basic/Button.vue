@@ -1,6 +1,6 @@
 <template>
     <div class="grid place-items-center monster h-button rounded-button cursor-pointer border border-px border-main px-6"
-        :class="[colorClasses, disabled ? 'opacity-40 pointer-event-none' : '']">
+        :class="[colorClasses, disabled ? 'opacity-40 pointer-events-none' : '']">
         {{ title }}
     </div>
 </template>
