@@ -140,7 +140,7 @@ const onScroll = (e) => {
         isScrollerInTop.value = false
     }
 
-    if (Math.round(e.target.offsetHeight + e.target.scrollTop) >= e.target.scrollHeight) {
+    if (Math.round(e.target.offsetHeight + e.target.scrollTop) >= e.target.scrollHeight - 1) {
         isScrollerInBottom.value = true
     } else {
         isScrollerInBottom.value = false

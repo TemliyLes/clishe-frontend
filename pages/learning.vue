@@ -94,7 +94,7 @@ import { addToBasket, isInBasket } from '~/helpers/sail';
 import { imgURL } from '~/helpers/api';
 import SimpleText from '~/components/text/SimpleText.vue';
 import Button from '~/components/basic/Button.vue';
-
+const emit = defineEmits(['whited']);
 const store = usePresetsStore();
 const scrollY = ref();
 const isActiveHeader = computed(() => scrollY.value > window?.innerHeight / 2);
@@ -147,6 +147,7 @@ const basketItem = computed(() => {
 });
 const btnTitlePerBasketState = computed(() => !isInBasket(basketItem.value) ? 'Купить' : 'В корзине');
 onBeforeMount(() => {
+    emit('whited');
     clear();
 })
 

@@ -4,7 +4,7 @@
     <PageOverlay />
     <Preloader />
     <TopBar :mb="mobileBlured" :mw="mobileWhite" :ms="mobileStyle" />
-    <NuxtPage />
+    <NuxtPage @whited="setWhiteMobile" />
   </div>
 </template>
 <script setup>
@@ -30,6 +30,10 @@ const mobileBlured = ref();
 const mobileWhite = ref();
 const mobileStyle = ref();
 
+const setWhiteMobile = () => {
+  mobileBlured.value = 'true';
+  mobileWhite.value = 'true';
+}
 
 const scrollHandler = e => {
   requestAnimationFrame(() => {
@@ -45,6 +49,8 @@ const scrollHandler = e => {
     }
   });
 }
+
+
 
 const clearScrollHandler = () => scrollHandler({ target: { scrollTop: 0 } });
 

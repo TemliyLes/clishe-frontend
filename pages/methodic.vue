@@ -77,7 +77,7 @@ const cost = computed(() => store?.methodic?.data?.price);
 const body = computed(() => store?.methodic?.data?.body);
 
 const imSr = ref(null);
-
+const emit = defineEmits(['whited']);
 const vLoaded = {
     mounted: e => {
         imSr.value = e.getAttribute('src')
@@ -110,7 +110,8 @@ const methodicData = computed(() => [
 ]);
 
 onBeforeMount(() => {
-    clear()
+    emit('whited');
+    clear();
 })
 
 </script>
