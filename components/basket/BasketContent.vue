@@ -1,15 +1,17 @@
 <template>
-    <div class="pb-[170px] overflow-auto h-full pr-5 scroll-smooth">
+    <div class="overflow-auto h-full pr-5 scroll-smooth">
         <EmailConfirm @pay="pay" @again="recode" @back="back" :email="email" :code="token"
             :active="confirmEmailWindow" />
         <PayStep @close="onClosePayment" :list="finalyList" :total="total" :fullname="fullname" :email="email"
             :phone="phone" :active="stepPayment" />
-        <div class="flex justify-between">
-            <BasketHeader>Корзина</BasketHeader>
-            <Close @click="closeBasket" />
+        <div class="h-[61px] absolute top-0 w-full bg-white pt-5 z-50 left-0">
+            <div class="flex justify-between px-5 ">
+                <BasketHeader>Корзина</BasketHeader>
+                <Close @click="closeBasket" />
+            </div>
         </div>
         <div>
-            <div v-if="products.length">
+            <div class="pb-9" v-if="products.length">
                 <div class="relative mt-6">
                     <BasketSimple class="text-[16px]">Состав заказа</BasketSimple>
                     <div v-for="(product, index) in productsWithSale" :key="product">
@@ -23,18 +25,19 @@
                             %</span>
                     </SimpleText>
                     <NuxtLink to="/presets" @click="closeBasket">
-                        <BasketHeader class="mt-3 cursor-pointer">Купить</BasketHeader>
+                        <BasketHeader class="mt-3 cursor-pointer font-semibold">Купить</BasketHeader>
                     </NuxtLink>
                     <MiniClose @click="closeAlert" class="absolute top-4 right-4 cursor-pointer" />
                 </div>
 
                 <div class="mt-6">
-                    <BasketHeader>Итого {{ total }} ₽</BasketHeader>
+                    <BasketHeader>Итого: {{ total }} ₽</BasketHeader>
                     <div class="flex gap-3 mt-4">
                         <Check class="shrink-0" v-model="present" />
                         <div>
                             <BasketSimple>Купить в подарок</BasketSimple>
-                            <BasketSimple class="!text-grey mt-2">вы получите сертификат на оплату выбранных коллекций,
+                            <BasketSimple class="!text-grey mt-1 leading-[130%]">вы получите сертификат на оплату
+                                выбранных коллекций,
                                 который
                                 можно отправить другому человеку</BasketSimple>
                         </div>
@@ -51,7 +54,6 @@
                     </div>
                     <BasketSimple class="mt-1 !text-grey">мы отправим письмо для подтверждения почты</BasketSimple>
                 </div>
-
             </div>
             <div class="mt-4 flex" v-if="!products.length">
                 <BasketSimple class="text-[16px]">Ваша корзина пуста. Для оформления заказа необходимо пополнить
@@ -59,16 +61,15 @@
                 </BasketSimple>
             </div>
         </div>
-        <div class="absolute bottom-0 h-[170px] left-0 bg-white w-full p-4 md:p-10" v-if="products.length">
+        <div class="absolute bottom-0 h-[170px] left-0 bg-white w-full p-4 md:pl-5 pr-10" v-if="products.length">
             <!-- <div @click="getFinal()">FINAL</div> -->
             <div class="flex gap-3">
                 <Check class="shrink-0" v-model="confirmCheckbox"></Check>
                 <BasketSimple class="-mt-px !text-[13px]">
-                    Я соглашаюсь с  <NuxtLink class="monster font-bold" to="/confidentiality.docx" external>
+                    Я соглашаюсь с <NuxtLink class="monster font-bold" to="/confidentiality.docx" external>
                         политикой
                         конфиденциальности
-                    </NuxtLink> и даю согласие на <NuxtLink class="monster font-bold" to="/compliance.docx">
-                        обработку
+                    </NuxtLink> и даю согласие на <NuxtLink class="monster font-bold" to="/compliance.docx">обработку
                         персональных данных
                     </NuxtLink>
                 </BasketSimple>

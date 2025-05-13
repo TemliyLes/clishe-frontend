@@ -31,10 +31,14 @@ const storageContoll = () => {
     }
 }
 
+const clearAllBasket = () => {
+    localStorage.removeItem('products');
+}
+
 watch(() => products.value,
     val => {
         localStorage.setItem('products', JSON.stringify(val));
     },
     { deep: true })
 
-export { isOpenedBasket, products, openBasket, closeBasket, addToBasket, removeFromBasket, isInBasket, storageContoll }
+export { isOpenedBasket, products, openBasket, closeBasket, addToBasket, removeFromBasket, isInBasket, storageContoll, clearAllBasket }

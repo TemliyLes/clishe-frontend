@@ -39,6 +39,8 @@
 import BasketHeader from '../text/BasketHeader.vue';
 import BasketSimple from '../text/BasketSimple.vue';
 import Close from './Close.vue';
+import { clearAllBasket } from '~/helpers/sail';
+
 useHead({
     script: [
         {
@@ -108,6 +110,7 @@ onMounted(() => {
                 ]
             });
         }
+        clearAllBasket();
         pay(TPF);
     });
 });
