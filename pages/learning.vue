@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Screen full white bg="none">
+        <Screen :blured="isMobile" full white bg="none">
             <LearningBlock :btn-title="btnTitlePerBasketState" @buy="addToBasket(basketItem)" :access="access"
                 :count="count" />
         </Screen>
