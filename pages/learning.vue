@@ -13,25 +13,27 @@
                 <div class="sm:flex sm:my-12 gap-6">
                     <div class="basis-1/4 pr-4">
 
-                        <img v-loaded class="sticky w-full sm:top-5 my-9 sm:my-0 aspect-educ md:h-auto"
+                        <img v-loaded class="sticky w-full sm:top-5 my-9 sm:my-0 aspect-educ md:h-auto object-cover"
                             src="/public/learn.jpg" />
                     </div>
                     <div class="basis-3/4">
                         <div v-for="(infoblock, infoIndex) in learningInfo" :key="infoblock.number">
-                            <div v-if="infoIndex" class="h-px bg-light w-full mb-7"></div>
+                            <div v-if="infoIndex" class="h-px bg-overlight w-full mb-7"></div>
                             <div class="md:flex gap-6">
-                                <div class="text-[77px] text-main basis-[57px] shrink-0 mt-0 md:-mt-6">
+                                <div class="text-[50px] md:text-[77px] text-main basis-[57px] shrink-0 -mt-6">
                                     {{ infoblock.number }}.</div>
                                 <div class="basis-1/3 shrink-0">
-                                    <SimpleText class="font-medium !text-[16px] !md:text-[18px]">{{ infoblock.title }}
+                                    <SimpleText class="font-medium !text-[16px] !md:text-[18px] leading-[140%]">{{
+                                        infoblock.title }}
                                     </SimpleText>
-                                    <Tag class="my-4" @navigate="navigateToLections" :data="tagData"
+                                    <Tag width="190" class="my-4" @navigate="navigateToLections" :data="tagData"
                                         v-if="infoblock.number === 1"></Tag>
                                 </div>
-                                <div>
-                                    <SimpleText v-for="(p, pIndex) in infoblock.description" :key="pIndex" class="pb-4">
+                                <div class="md:-mt-1">
+                                    <SimpleText v-for="(p, pIndex) in infoblock.description" :key="pIndex"
+                                        class="pb-4 leading-[130%]">
                                         <span :class="subp.bold ? 'font-bold' : 'font-normal'"
-                                            class="monster !text-[14px] !md:text-[16px]"
+                                            class="monster !text-[14px] !md:text-[16px] leading-[130%]"
                                             v-for="(subp, subpIndex) in p?.children" :key="subpIndex">
                                             {{ subp?.text }}
                                         </span>
@@ -59,18 +61,18 @@
                 <div class="pt-9 sm:pt-12">
                     <div v-for="(f, fIndex) in fields" :key="fIndex" class="sm:flex gap-6 ">
                         <div class="basis-1/4 shrink-0">
-                            <SimpleText :class="fieldClass">
+                            <SimpleText class="!text-grey" :class="fieldClass">
                                 {{ f }}
                             </SimpleText>
                         </div>
                         <div class="basis-3/4">
-                            <SimpleText :class="fieldClass">
+                            <SimpleText class="!text-main" :class="fieldClass">
                                 {{ values[fIndex] }}
                             </SimpleText>
                         </div>
                     </div>
                 </div>
-                <Button class="md:w-[140px] my-3 sm:my-12" @click="addToBasket(basketItem)"
+                <Button class="md:w-[140px] my-6 sm:my-12" @click="addToBasket(basketItem)"
                     :title="btnTitlePerBasketState" />
             </div>
         </Screen>
@@ -82,7 +84,7 @@
 import Screen from '~/components/basic/Screen.vue';
 import LearningBlock from '~/components/blocks/LearningBlock.vue';
 import Footer from '~/components/footer/Footer.vue';
-import { clear, scrollToElement } from '~/helpers/scroll';
+import { clear, scrollToElement, scrollY } from '~/helpers/scroll';
 import Header from '~/components/text/Header.vue';
 import Title from '~/components/text/Title.vue';
 import Faq from '~/components/presets/Faq.vue';
@@ -92,11 +94,12 @@ import { usePresetsStore } from '~/stores/store';
 import { isMobile } from '~/helpers/break';
 import { addToBasket, isInBasket } from '~/helpers/sail';
 import { imgURL } from '~/helpers/api';
+
 import SimpleText from '~/components/text/SimpleText.vue';
 import Button from '~/components/basic/Button.vue';
 const emit = defineEmits(['whited']);
 const store = usePresetsStore();
-const scrollY = ref();
+
 const isActiveHeader = computed(() => scrollY.value > window?.innerHeight / 2);
 const imSr = ref(null);
 
@@ -122,7 +125,7 @@ const costWithCurrency = computed(() => cost.value + ' ₽');
 
 const fields = ['Количество лекций', 'Продолжительность записей', 'Дополнительный материал', 'Формат', 'Доступ', 'Стоимость']
 const values = [count, duration, materials, format, access, costWithCurrency];
-const fieldClass = 'mt-1.5 !text-[16px] !md:text-[18px]';
+const fieldClass = 'mt-1.5 !text-[16px] !md:text-[18px] text-grey';
 
 const learningInfo = computed(() => store?.learning_info?.data?.sort((a, b) => a.number - b.number));
 

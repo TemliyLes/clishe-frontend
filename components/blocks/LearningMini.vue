@@ -10,7 +10,7 @@
                 </SimpleText>
                 <img hidden v-loaded class="sticky w-full sm:top-5 my-4 md:my-9 sm:my-0 h-[388px] md:h-auto"
                     src="/public/learn.jpg" />
-                <div class="flex gap-4 basis-1/2 flex-wrap mt-4">
+                <div class="flex gap-2 md:gap-4 basis-1/2 flex-wrap mt-4">
                     <Tag class="!h-[29px] !py-0.5 !px-3 !border-light" v-for="(tag, index) in tags" :key="index"
                         :data="{ name: tag, id: index }">
                     </Tag>
@@ -24,7 +24,7 @@
                     </NuxtLink>
                 </div>
             </div>
-            <div class="flex gap-2 md:gap-4">
+            <div class="flex gap-4">
                 <div class="w-[49%]">
                     <img class="aspect-learn object-fit" src="/public/minilearn1.jpg" alt="">
                 </div>

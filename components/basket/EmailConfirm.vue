@@ -1,5 +1,5 @@
 <template>
-    <div class="absolute flex flex-col justify-between px-5 py-10 z-email w-full h-full top-0 left-0 transform will-change-trasform transition duration-500 bg-white"
+    <div class="absolute flex flex-col justify-between px-5 pt-10 pb-[40px] md:pb-[52px] z-email w-full h-full top-0 left-0 transform will-change-trasform transition duration-500 bg-white"
         :class="active ? 'translate-x-0' : 'translate-x-full'" @click="focusIn()">
         <div>
             <BasketHeader>Подтверждение e-mail</BasketHeader>

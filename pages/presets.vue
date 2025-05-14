@@ -8,6 +8,16 @@
                     <PresetCollection :collection="pc" />
                 </div>
             </div>
+            <div class="pt-16 sm:min-h-[650px] sm:pb-32">
+                <div class="block sm:flex gap-4">
+                    <div class="basis-1/3">
+                        <Title class="!mt-1">часто задаваемые вопросы</Title>
+                    </div>
+                    <div class="basis-3/4">
+                        <Faq />
+                    </div>
+                </div>
+            </div>
         </Screen>
         <Footer />
     </div>
@@ -19,6 +29,8 @@ import Superheader from '~/components/text/Superheader.vue';
 import PresetCollection from '~/components/presets/PresetCollection.vue';
 import Footer from '~/components/footer/Footer.vue';
 import Tags from '~/components/tags/Tags.vue';
+import Faq from '../components/presets/Faq.vue';
+import Title from '~/components/text/Title.vue';
 
 import { clear, scrollToElement } from '~/helpers/scroll';
 

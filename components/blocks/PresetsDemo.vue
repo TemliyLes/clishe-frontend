@@ -18,9 +18,9 @@
                     <NextArrow class="-mt-[7px]" />
                 </div>
                 <LearningMini />
-                <div class="flex gap-3">
+                <div class="md:flex gap-3">
                     <div class="basis-1/5 shrink-0">
-                        <Title class="!mt-3">часто задаваемые вопросы</Title>
+                        <Title class="!mt-3 !mb-6 !md:mb-0 ">часто задаваемые вопросы</Title>
                     </div>
                     <Faq />
                 </div>

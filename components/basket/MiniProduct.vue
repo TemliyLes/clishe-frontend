@@ -9,7 +9,7 @@
                 <div class="flex gap-4 !mb-0">
                     <BasketSimple class="font-medium">Стоимость: {{ data.withSale ? data.withSale.toFixed(2) :
                         data.cost.toFixed(2)
-                        }} ₽
+                    }} ₽
                     </BasketSimple>
                     <BasketSimple v-if="data.withSale" class="line-through !text-light">{{ data.cost.toFixed(2) }} ₽
                     </BasketSimple>
@@ -17,7 +17,7 @@
             </div>
             <MiniClose class="cursor-pointer absolute right-0 top-1" @click="removeFromBasket(data)" />
         </div>
-        <div v-if="!noline" class="w-full my-4 h-px bg-light will-change-transform"></div>
+        <div v-if="!noline" class="w-full my-4 h-px bg-overlight will-change-transform"></div>
     </div>
 </template>
 <script setup>

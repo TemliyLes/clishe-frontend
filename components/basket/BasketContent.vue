@@ -21,7 +21,7 @@
                 <div class="bg-yep py-3 pl-2.5 pr-8 mt-4 rounded-xl relative"
                     v-if="alertCanSee && onlyPresets.length === 1">
                     <SimpleText :style="fontSize([16, 16])">
-                        при приобретении двух и более коллекций цветов <span class="font-medium monster">скидка - 10
+                        при приобретении двух и более коллекций цветов <span class="font-medium monster">скидка – 10
                             %</span>
                     </SimpleText>
                     <NuxtLink to="/presets" @click="closeBasket">
@@ -61,7 +61,8 @@
                 </BasketSimple>
             </div>
         </div>
-        <div class="absolute bottom-0 h-[170px] left-0 bg-white w-full p-4 md:pl-5 pr-10" v-if="products.length">
+        <div class="absolute bottom-0 h-[170px] left-0 bg-white w-full p-4 md:pl-5 pr-6 md:pr-10"
+            v-if="products.length">
             <!-- <div @click="getFinal()">FINAL</div> -->
             <div class="flex gap-3">
                 <Check class="shrink-0" v-model="confirmCheckbox"></Check>

@@ -2,7 +2,7 @@
     <div class="mt-2 mb-9">
         <Container class="my-6">
             <Title>
-                Выпускные работы наших учеников
+                for your eyes
             </Title>
         </Container>
 

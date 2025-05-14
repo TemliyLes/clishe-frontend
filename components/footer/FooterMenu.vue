@@ -15,10 +15,10 @@
                     <IGIL class="cursor-pointer" />
                 </NuxtLink>
             </div>
-            <div class="monster leading-6 my-3 text-light !text-[12px]" :style="fontSize(14, 16)">
+            <div class="monster leading-6 my-3 text-light !text-[12px] leading-[120%]" :style="fontSize(14, 16)">
                 * Instagram признан экстремистской организацией и запрещен на территории России
             </div>
-            <div class="monster leading-6 my-3 text-white !text-[12px]" :style="fontSize(14, 16)">
+            <div class="monster leading-6 my-3 text-white !text-[12px] leading-[120%]" :style="fontSize(14, 16)">
                 ИП Урядова Алина Васильевна<br />
                 ИНН: 642102268108<br />
                 ОГРНИП: 324645700053870
