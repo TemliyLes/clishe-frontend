@@ -2,8 +2,9 @@
     <div class="basis-1/3">
         <Title class="!mb-4">{{ title }}</Title>
         <div v-if="list">
-            <NuxtLink v-for="(a, index) in list" :key="index" :style="fontSize(14, 16)" :to="a.to"
-                class="monster text-white cursor-pointer mb-3 block" :external="a.external">
+            <NuxtLink v-for="(a, index) in list" :target="a.blank ? '_blank' : ''" :key="index"
+                :style="fontSize(14, 16)" :to="a.to" class="monster text-white cursor-pointer mb-3 block"
+                :external="a.external">
                 {{ a.title }}
             </NuxtLink>
 

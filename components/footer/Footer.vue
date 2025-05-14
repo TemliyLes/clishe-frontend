@@ -29,6 +29,8 @@ import { fontSize } from '~/helpers/freeze';
 import FooterMenu from './FooterMenu.vue';
 import FooterLogo from '~/assets/icons/FooterLogo.vue';
 
+import { getDocURL } from '~/helpers/docs';
+
 const footerMenuData = [
     {
         title: 'Products',
@@ -51,19 +53,22 @@ const footerMenuData = [
         title: 'Клиентам',
         list: [
             {
-                title: 'Согласие',
-                to: '/compliance.pdf',
-                external: true
+                title: 'Положение',
+                to: getDocURL('position'),
+                external: true,
+                blank: true
             },
             {
-                title: 'Положение',
-                to: '/confidentiality.pdf',
-                external: true
+                title: 'Реклама',
+                to: getDocURL('advertising'),
+                external: true,
+                blank: true
             },
             {
                 title: 'Публичная оферта',
-                to: '/public.pdf',
-                external: true
+                to: getDocURL('public'),
+                external: true,
+                blank: true
             },
         ],
     },

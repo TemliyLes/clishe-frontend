@@ -10,8 +10,8 @@
                 </div>
                 <div
                     class="cursor-pointer flex gap-4 items-center justify-center relative my-16 md:mt-0 md:mb-16 relative">
-                    <div class="absolute h-px bg-light w-screen -top-6"></div>
-                    <div class="absolute h-px bg-light w-screen top-10"></div>
+                    <div class="absolute h-px bg-overlight w-screen -top-5"></div>
+                    <div class="absolute h-px bg-overlight w-screen top-11"></div>
                     <NuxtLink to="/presets">
                         <SimpleText class="text-main" :size="[14, 16]">Посмотреть все колекции</SimpleText>
                     </NuxtLink>

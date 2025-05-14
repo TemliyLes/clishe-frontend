@@ -66,10 +66,13 @@
             <div class="flex gap-3">
                 <Check class="shrink-0" v-model="confirmCheckbox"></Check>
                 <BasketSimple class="-mt-px !text-[13px]">
-                    Я соглашаюсь с <NuxtLink class="monster font-bold" to="/confidentiality.docx" external>
+                    Я соглашаюсь с <NuxtLink class="monster font-bold" target="_blank" :to="getDocURL('position')"
+                        external>
                         политикой
                         конфиденциальности
-                    </NuxtLink> и даю согласие на <NuxtLink class="monster font-bold" to="/compliance.docx">обработку
+                    </NuxtLink> и даю согласие на <NuxtLink class="monster font-bold" :to="getDocURL('compliance')"
+                        target="_blank" external>
+                        обработку
                         персональных данных
                     </NuxtLink>
                 </BasketSimple>
@@ -102,6 +105,7 @@ import Input from '../basic/Input.vue';
 import PayStep from './PayStep.vue';
 
 import { usePresetsStore } from '~/stores/store';
+import { getDocURL } from '~/helpers/docs';
 
 const store = usePresetsStore();
 

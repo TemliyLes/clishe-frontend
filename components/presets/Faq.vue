@@ -8,7 +8,7 @@
             <Collapsed :active="testActive(index)">
                 <SimpleText class="!my-4 pr-12 md:pr-16">{{ item.answer }}</SimpleText>
             </Collapsed>
-            <div class="my-6 h-px w-full bg-light will-change-transform"></div>
+            <div class="my-6 h-px w-full bg-overlight will-change-transform"></div>
         </div>
     </div>
 </template>

@@ -17,6 +17,7 @@ export default {
                 'yep': '#FFF2CD',
                 'blue': '#108EEA',
                 'error': '#EA3E00',
+                'overlight': '#DEDEDE'
             },
             margin: {
                 'h1': '2%',
