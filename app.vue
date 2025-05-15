@@ -26,6 +26,7 @@ const { fetchCollections, fetchAboutBlock, fetchWithLove, fetchFAQ, fetchThemes,
 const route = useRoute();
 const app = useNuxtApp();
 
+
 const mobileBlured = ref();
 const mobileWhite = ref();
 const mobileStyle = ref();

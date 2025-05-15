@@ -12,7 +12,12 @@
         </div>
         <div>
             <div class="pb-9" v-if="products.length">
-                <div class="relative mt-6">
+                <div class="relative mt-2">
+                    <BasketSimple class="mb-4">После оплаты любого продукта вы получите <NuxtLink
+                            class="monster font-medium" target="_blank" external
+                            to="https://www.instagram.com/cliche.academy">ссылку
+                            на телеграм-канал</NuxtLink> с файлами,
+                        инструкцией и вспомогательными материалами.</BasketSimple>
                     <BasketSimple class="text-[16px]">Состав заказа</BasketSimple>
                     <div v-for="(product, index) in productsWithSale" :key="product">
                         <MiniProduct :noline="index === products.length - 1" :data="product" />
@@ -61,7 +66,7 @@
                 </BasketSimple>
             </div>
         </div>
-        <div class="absolute bottom-0 h-[170px] left-0 bg-white w-full p-4 md:pl-5 pr-6 md:pr-10"
+        <div class="absolute bottom-0 h-[158px] md:h-[170px] left-0 bg-white w-full p-4 md:pb-6 md:pt-9 md:pl-5 pr-6 md:pr-10 md:flex md:flex-col md:justify-between"
             v-if="products.length">
             <!-- <div @click="getFinal()">FINAL</div> -->
             <div class="flex gap-3">
@@ -78,7 +83,7 @@
                     </NuxtLink>
                 </BasketSimple>
             </div>
-            <Button :disabled="!confirmCheckbox" class="mt-3 md:mt-5" title="Продолжить" @click="nextStep()"></Button>
+            <Button :disabled="!confirmCheckbox" class="mt-6" title="Продолжить" @click="nextStep()"></Button>
         </div>
         <div class="absolute bottom-4 w-full pr-12" v-if="!products.length">
             <Button @click="closeBasket" title="Вернуться на сайт"></Button>
@@ -119,11 +124,11 @@ const confirmEmailWindow = ref(false);
 const back = () => confirmEmailWindow.value = false
 
 
-const surname = ref('Борщ');
-const name = ref('Витя');
-const patronymic = ref('Максимович');
-const email = ref('seinistdasseinnigcht@gmail.com');
-const phone = ref('793232323')
+const surname = ref('');
+const name = ref('');
+const patronymic = ref('');
+const email = ref('');
+const phone = ref('')
 
 const fullname = computed(() => `${surname.value} ${name.value} ${patronymic.value}`);
 

@@ -11,7 +11,7 @@
                     {{ title }}
                 </Header>
                 <div class="sm:flex sm:my-12 gap-6">
-                    <div class="basis-1/4 pr-4">
+                    <div class="basis-1/4 md:pr-4">
 
                         <img v-loaded class="sticky w-full sm:top-5 my-9 sm:my-0 aspect-educ md:h-auto object-cover"
                             src="/public/learn.jpg" />

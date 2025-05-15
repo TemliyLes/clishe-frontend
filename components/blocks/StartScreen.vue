@@ -5,13 +5,17 @@
             это миллисекунда жизни
         </Superheader>
         <ClientOnly>
-            <img class="aspect-mainscreen sm:h-mainscreen object-cover object-[0, 75%] w-full mt-4 sm:mt-0"
+            <img v-if="!isMobile"
+                class="aspect-mainscreen sm:h-mainscreen object-cover object-[0, 75%] w-full mt-4 sm:mt-0"
                 src="/public/alinabg.jpg" />
+            <img v-if="isMobile"
+                class="aspect-mainscreen sm:h-mainscreen object-cover object-[0, 75%] w-full mt-4 sm:mt-0"
+                src="/public/alinabg_m.jpg" />
         </ClientOnly>
     </div>
 </template>
 
 <script setup>
 import Superheader from '../text/Superheader.vue';
-
+import { isMobile } from '~/helpers/break';
 </script>

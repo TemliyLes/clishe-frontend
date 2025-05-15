@@ -7,7 +7,7 @@
                 :class="transClass" :fill="bg" />
             <path
                 d="M15.9558 8.8573C15.5381 8.60554 15.1579 8.29788 14.8256 7.94467V10.0768C14.8256 10.3889 15.0786 10.642 15.3907 10.642C15.7028 10.642 15.9558 10.3889 15.9558 10.0768V8.8573Z"
-                fill="#3B3938" />
+                :class="transClass" :fill="bg" />
             <circle cx="18.692" cy="4.3077" r="4.23593" fill="#EA3E00" />
         </svg>
         <svg v-if="!products.length" width="24" height="24" viewBox="0 0 24 24" fill="none"

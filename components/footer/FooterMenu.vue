@@ -11,7 +11,7 @@
         </div>
         <div v-if="!list.length">
             <div class="flex gap-4">
-                <NuxtLink target="_blank" external to="https://www.instagram.com/facepublicenemy/?hl=ru">
+                <NuxtLink target="_blank" external to="https://www.instagram.com/cliche.academy">
                     <IGIL class="cursor-pointer" />
                 </NuxtLink>
             </div>
