@@ -41,7 +41,7 @@ import { usePresetsStore } from '~/stores/store';
 const store = usePresetsStore();
 const refPresets = ref([])
 
-const collections = computed(() => store?.presetCollections?.data)
+const collections = computed(() => store?.presetCollections?.data.sort((a, b) => a.order - b.order))
 
 const navigate = id => {
     scrollToElement(refPresets.value[id]);

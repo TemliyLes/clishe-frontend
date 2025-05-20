@@ -1,17 +1,21 @@
 <template>
     <div class="mt-4">
-        <div class="flex gap-5 pr-8 relative h-[84px]">
-            <img class="w-[84px] h-[84px] object-cover" :src="url" alt="" />
+        <div class="flex gap-2.5 md:gap-5 md:pr-8 relative h-[84px]">
+            <img class="w-[84px] h-[84px] object-cover shrink-0" :src="url" alt="" />
             <div class="mb-2">
-                <BasketHeader class="mb-[12px] ">{{ data.name }}</BasketHeader>
-                <BasketSimple v-if="!data.special" class="mb-[8px]">Количество цветов: {{
+                <BasketHeader class="mb-[8px] pr-4 leading-[130%]">{{ data.name }}</BasketHeader>
+                <BasketSimple v-if="!data.special" class="mb-[6px]">Количество цветов: {{
                     data.colorsCount }}</BasketSimple>
-                <div class="flex gap-4 !mb-0">
-                    <BasketSimple class="font-medium">Стоимость: {{ data.withSale ? data.withSale.toFixed(2) :
+                <div class="flex md:gap-4 gap-2 !mb-0">
+                    <BasketSimple class="font-medium" :class="isMobile ? '!text-[13px]' : ''">Стоимость: {{ data.withSale
+                        ?
+                        data.withSale.toFixed(2) :
                         data.cost.toFixed(2)
-                    }} ₽
+                        }} ₽
                     </BasketSimple>
-                    <BasketSimple v-if="data.withSale" class="line-through !text-light">{{ data.cost.toFixed(2) }} ₽
+                    <BasketSimple v-if="data.withSale" class="line-through !text-light"
+                        :class="isMobile ? '!text-[13px]' : ''">{{
+                            data.cost.toFixed(2) }} ₽
                     </BasketSimple>
                 </div>
             </div>
@@ -26,6 +30,7 @@ import BasketHeader from '../text/BasketHeader.vue';
 import BasketSimple from '../text/BasketSimple.vue';
 import MiniClose from './MiniClose.vue';
 import { removeFromBasket } from '~/helpers/sail';
+import { isMobile } from '~/helpers/break';
 const props = defineProps({
     data: {
         type: Object,

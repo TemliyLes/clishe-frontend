@@ -2,8 +2,8 @@
     <div class="overflow-auto h-full pr-5 scroll-smooth">
         <EmailConfirm @pay="pay" @again="recode" @back="back" :email="email" :code="token"
             :active="confirmEmailWindow" />
-        <PayStep @close="onClosePayment" :list="finalyList" :total="total" :fullname="fullname" :email="email"
-            :phone="phone" :active="stepPayment" />
+        <PayStep @close="onClosePayment" :code="token.value" :list="finalyList" :total="total" :fullname="fullname"
+            :email="email" :phone="phone" :active="stepPayment" />
         <div class="h-[61px] absolute top-0 w-full bg-white pt-5 z-50 left-0">
             <div class="flex justify-between px-5 ">
                 <BasketHeader>Корзина</BasketHeader>
@@ -223,7 +223,8 @@ const nextStep = () => {
             confirmed: false,
             preset_collections: {
                 set: presetsIds
-            }
+            },
+            total: total.value
         }
 
         store.createSale(postData);

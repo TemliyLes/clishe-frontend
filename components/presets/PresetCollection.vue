@@ -1,7 +1,7 @@
 <template>
     <div class="mt-12 sm:my-16" v-if="collection">
-        <SimpleText big class="mb-4 sm:mb-6">{{ collection.name }}</SimpleText>
-        <SimpleText>{{ collection.description }}</SimpleText>
+        <SimpleText v-if="!short" big class="mb-4 sm:mb-6">{{ collection.name }}</SimpleText>
+        <SimpleText v-if="!short">{{ collection.description }}</SimpleText>
         <div class="relative mt-12 mb-4 sm:my-12 transition transition-all" ref="slideContainer">
             <div v-for="(preset, index) in collection.presets" :key="index" class="transition duration-700"
                 :class="[index ? 'absolute top-0 inset-0' : 'relative', testActive(index) ? 'opacity-100 z-40' : 'opacity-0 z-20']">
@@ -16,7 +16,7 @@
                 </div>
             </div>
         </div>
-        <SimpleText>Количество цветов: {{ collection.colorCount }}</SimpleText>
+        <SimpleText>Количество цветов: {{ collection.colorsCount }}</SimpleText>
         <SimpleText>Стоимость: {{ collection.cost }}</SimpleText>
 
         <div class="flex gap-4 my-3 sm:my-12">
@@ -44,6 +44,10 @@ const props = defineProps({
     hasMoreBtn: {
         type: Boolean,
         default: true
+    },
+    short: {
+        type: Boolean,
+        default: false
     }
 });
 

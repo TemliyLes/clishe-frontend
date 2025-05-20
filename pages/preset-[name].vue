@@ -1,14 +1,14 @@
 <template>
     <div>
         <Screen blured scroll>
-            <Superheader class="sm:!mt-16 !mt-24">{{ name }}</Superheader>
+            <Superheader class="sm:!mt-16 !mt-24">{{ data?.name }}</Superheader>
             <div v-if="data">
                 <Header restructed static :static-active="activeHeader" class="!mt-12">
-                    {{ data?.detailPageTitle }}
+                    {{ data?.description }}
                 </Header>
             </div>
 
-            <PresetCollection v-if="data" :has-more-btn="false" :collection="data" />
+            <PresetCollection v-if="data" :has-more-btn="false" :collection="data" short />
             <div
                 class="w-full mt-9 sm:mt-0 sm:h-screen h-96 absolute overflow-hidden -ml-container sm:-ml-container-d pt-screen">
                 <img class="object-cover h-full w-full" :src="imgURL(imgSrc)" />

@@ -29,6 +29,7 @@
                 <input :value="phone" class="payform-tbank-row" type="tel" placeholder="Контактный телефон"
                     name="phone">
                 <input class="payform-tbank-row payform-tbank-btn monster" type="submit" value="Оплатить">
+                <input class="payform-tbank-row" type="hidden" name="DATA" value="Number=1111111 | Phone=9099099090">
             </form>
         </div>
     </div>
@@ -77,6 +78,10 @@ const props = defineProps({
     },
     list: {
         type: String,
+        default: '',
+    },
+    code: {
+        type: Number,
         default: '',
     }
 })

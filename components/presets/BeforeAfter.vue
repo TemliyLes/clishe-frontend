@@ -25,8 +25,7 @@
                         :src="imgURL(data.beforePhoto.url)" />
                 </div>
             </div>
-            <Image
-                class="absolute w-full h-full absolute top-0 left-0 object-cover pointer-events-none grayscale select-none"
+            <Image class="absolute w-full h-full absolute top-0 left-0 object-cover pointer-events-none select-none"
                 :src="imgURL(data.afterPhoto.url)" />
         </div>
     </div>

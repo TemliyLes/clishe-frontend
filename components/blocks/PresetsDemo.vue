@@ -4,7 +4,7 @@
             <div class="pt-16 pb-8 md:py-12">
                 <Header>Presets | Color collections</Header>
                 <div v-if="store.presetCollections">
-                    <div v-for="(pc, index) in store.presetCollections.data" :key="index">
+                    <div v-for="(pc, index) in collections" :key="index">
                         <PresetCollection :collection="pc" />
                     </div>
                 </div>
@@ -42,5 +42,7 @@ import Title from '../text/Title.vue';
 
 import { usePresetsStore } from '~/stores/store';
 const store = usePresetsStore();
+
+const collections = computed(() => store?.presetCollections?.data.sort((a, b) => a.order - b.order));
 
 </script>
