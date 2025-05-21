@@ -2,7 +2,7 @@
     <div class="overflow-auto h-full pr-5 scroll-smooth">
         <EmailConfirm @pay="pay" @again="recode" @back="back" :email="email" :code="token"
             :active="confirmEmailWindow" />
-        <PayStep @close="onClosePayment" :code="token.value" :list="finalyList" :total="total" :fullname="fullname"
+        <PayStep @close="onClosePayment" :code="token" :list="finalyList" :total="total" :fullname="fullname"
             :email="email" :phone="phone" :active="stepPayment" />
         <div class="h-[61px] absolute top-0 w-full bg-white pt-5 z-50 left-0">
             <div class="flex justify-between px-5 ">
@@ -55,7 +55,7 @@
                         <Input place="Имя" v-model="name" />
                         <Input place="Отчество" v-model="patronymic" />
                         <Input place="Ваш email" v-model="email" email />
-                        <Input place="Контактный телефон" v-model="phone" />
+                        <Input place="Контактный телефон" v-model="phone" phone />
                     </div>
                     <BasketSimple class="mt-1 !text-grey">мы отправим письмо для подтверждения почты</BasketSimple>
                 </div>
@@ -167,7 +167,7 @@ const total = computed(() => {
     return productsWithSale.value.reduce((acc, current) => {
         const addition = current.withSale ? current.withSale : current.cost;
         return acc + addition;
-    }, 0).toFixed(2)
+    }, 0)?.toFixed(2)
 });
 const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
 const getRandomInt = () => {
@@ -192,6 +192,8 @@ const nextStep = () => {
         } else {
             result = !!EMAIL_REGEXP.test(val);
         }
+
+
         if (!result) {
             finalResult = false;
             if (!firstErrorElement) {
@@ -210,6 +212,7 @@ const nextStep = () => {
         }
     }
     if (finalResult) {
+        token.value = getRandomInt();
         confirmEmailWindow.value = true;
         const presetsIds = onlyPresets.value.map((el) => {
             return { documentId: el.documentId }
@@ -224,11 +227,12 @@ const nextStep = () => {
             preset_collections: {
                 set: presetsIds
             },
-            total: total.value
+            total: total.value,
+            token: token.value
         }
 
         store.createSale(postData);
-        token.value = getRandomInt();
+
         sendEmail();
     }
 }

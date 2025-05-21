@@ -1,7 +1,8 @@
 <template>
     <input :email="email"
         class="mt-3 block w-full border border-1 border-light rounded-md text-[14px] focus:outline outline-0 monster h-[44px] px-3 focus:border-blue"
-        type="text" :placeholder="place" :value="modelValue" @blur="onOut" @input="onInput" @focus="onFocus">
+        :type="phone ? 'number' : 'text'" :placeholder="place" :value="modelValue" @blur="onOut" @input="onInput"
+        @focus="onFocus">
 </template>
 
 <script setup>
@@ -20,6 +21,10 @@ const props = defineProps({
         default: '',
     },
     error: {
+        type: Boolean,
+        default: false,
+    },
+    phone: {
         type: Boolean,
         default: false,
     }

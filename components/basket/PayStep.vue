@@ -14,6 +14,7 @@
         </div>
         <div class="flex flex-col justify-between">
             <form class="payform-tbank" name="payform-tbank" id="payform-tbank" ref="tbankRef">
+                <input class="payform-tbank-row" type="hidden" name="DATA" :value="`code=${code}`">
                 <input class="payform-tbank-row" type="hidden" name="terminalkey" value="1745854311395DEMO">
                 <input class="payform-tbank-row" type="hidden" name="frame" value="false">
                 <input class="payform-tbank-row" type="hidden" name="language" value="ru">
@@ -29,7 +30,6 @@
                 <input :value="phone" class="payform-tbank-row" type="tel" placeholder="Контактный телефон"
                     name="phone">
                 <input class="payform-tbank-row payform-tbank-btn monster" type="submit" value="Оплатить">
-                <input class="payform-tbank-row" type="hidden" name="DATA" value="Number=1111111 | Phone=9099099090">
             </form>
         </div>
     </div>
@@ -110,7 +110,7 @@ onMounted(() => {
                         "PaymentMethod": "full_prepayment",
                         "PaymentObject": "service",
                         "Tax": "none",
-                        "MeasurementUnit": "pc"
+                        "MeasurementUnit": "pc",
                     }
                 ]
             });

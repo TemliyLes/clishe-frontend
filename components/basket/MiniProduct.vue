@@ -7,15 +7,16 @@
                 <BasketSimple v-if="!data.special" class="mb-[6px]">Количество цветов: {{
                     data.colorsCount }}</BasketSimple>
                 <div class="flex md:gap-4 gap-2 !mb-0">
-                    <BasketSimple class="font-medium" :class="isMobile ? '!text-[13px]' : ''">Стоимость: {{ data.withSale
-                        ?
-                        data.withSale.toFixed(2) :
-                        data.cost.toFixed(2)
-                        }} ₽
+                    <BasketSimple class="font-medium" :class="isMobile ? '!text-[13px]' : ''">Стоимость: {{
+                        data.withSale
+                            ?
+                            data?.withSale?.toFixed(2) :
+                            data?.cost?.toFixed(2)
+                    }} ₽
                     </BasketSimple>
                     <BasketSimple v-if="data.withSale" class="line-through !text-light"
                         :class="isMobile ? '!text-[13px]' : ''">{{
-                            data.cost.toFixed(2) }} ₽
+                            data?.cost?.toFixed(2) }} ₽
                     </BasketSimple>
                 </div>
             </div>
