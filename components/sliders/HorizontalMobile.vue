@@ -59,7 +59,7 @@ const onTouchstart = (e) => {
 }
 
 const onTouchend = (e) => {
-    const left = e.changedTouches[0].clientX < startPoint.value ? true : false;
+    const left = e.changedTouches[0].clientX < startPoint.value ? false : true;
     slideLeft(left);
 }
 </script>

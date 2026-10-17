@@ -35,11 +35,12 @@ export const usePresetsStore = defineStore('presetsStore', {
             }
         },
         async fetchWithLove() {
-            const URL = 'with-love-background?populate[0]=background'
+            const URL = 'with-love-background?populate[0]=background&&populate[1]=video_desktop&&populate[2]=video_mobile'
             const finalURL = HOST + '/api/' + URL;
             const { data } = await useFetch(finalURL, headers);
             if (data) {
                 this._withLove = data;
+                // console.log(data)
             }
         },
         async fetchFAQ() {
@@ -73,6 +74,7 @@ export const usePresetsStore = defineStore('presetsStore', {
             if (data) {
                 this._sales = data;
             }
+            return data
         },
         async fetchLections() {
             const URL = 'lections'
@@ -99,22 +101,31 @@ export const usePresetsStore = defineStore('presetsStore', {
             }
         },
         async createSale(postData) {
-            const URL = 'sales'
-            const findMailer = this._sales?.data.find((el) => el.email === postData.email);
-            const id = findMailer ? findMailer.documentId : null;
-            const additionId = id ? `/${id}` : '';
-            const finalURL = HOST + '/api/' + URL + additionId;
-            const objSend = {
-                method: id ? 'PUT' : 'POST',
-                body: {
-                    headers,
-                    data: postData
+
+            // console.log('------------------------------')
+            const newData = await this.fetchSales()
+            console.log(newData?.value?.data, 'newData')
+            const newarr = newData?.value?.data
+            if (newarr) {
+                const URL = 'sales'
+                const findMailer = newarr.find((el) => el.email === postData.email);
+                const id = findMailer ? findMailer.documentId : null;
+                const additionId = id ? `/${id}` : '';
+                const finalURL = HOST + '/api/' + URL + additionId;
+                const objSend = {
+                    method: id ? 'PUT' : 'POST',
+                    body: {
+                        headers,
+                        data: postData
+                    }
+                };
+                const data = await $fetch(finalURL, objSend);
+                // console.log(data, 'newData')
+                if (data) {
+                    this.fetchSales();
                 }
-            };
-            const data = await $fetch(finalURL, objSend);
-            if (data) {
-                this.fetchSales();
             }
+
         },
         async sendCode(code, email) {
             const objSend = {

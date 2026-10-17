@@ -179,7 +179,7 @@ const sendEmail = () => {
     console.log('email emulation' + token.value);
 };
 
-const nextStep = () => {
+const nextStep = async () => {
     let finalResult = true;
     let firstErrorElement = null;
     const elems = inputs.value?.children;
@@ -231,14 +231,34 @@ const nextStep = () => {
             token: token.value
         }
 
-        store.createSale(postData);
-
+        await store.createSale(postData);
+        // console.log('EEEEEEEEEEEEEEEEE')
         sendEmail();
     }
 }
 
 const recode = () => {
+
     token.value = getRandomInt();
+    const presetsIds = onlyPresets.value.map((el) => {
+        return { documentId: el.documentId }
+    });
+    const postData = {
+        name: fullname.value,
+        email: email.value,
+        with_methodic: with_methodic.value,
+        with_learning: with_learning.value,
+        present: present.value,
+        confirmed: false,
+        preset_collections: {
+            set: presetsIds
+        },
+        total: total.value,
+        token: token.value
+    }
+
+    const res = store.createSale(postData);
+    console.log(res)
     sendEmail();
 }
 

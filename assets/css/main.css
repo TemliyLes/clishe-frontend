@@ -91,3 +91,7 @@ footer a:hover {
 .logo-group.active .logo-elem {
   transform: translateX(0);
 }
+
+.videocanvas::-webkit-media-controls-start-playback-button {
+  display: none;
+}

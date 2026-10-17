@@ -9,6 +9,7 @@ const headers = {
 
 
 const HOST = window?.location?.href.includes('//localhost') ? 'http://localhost:1337' : 'https://api.cliche.academy'
+// const HOST = 'https://api.cliche.academy'
 console.log(HOST, ' is host');
 const imgURL = src => HOST + src
 export { headers, HOST, imgURL }
